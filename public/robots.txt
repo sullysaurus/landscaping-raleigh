@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://landscapingraleigh.com/sitemap.xml
+
+# Block common bot directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
