@@ -1,0 +1,124 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+}
+
+const { 
+  title = "Garden & Art Landscapes - Professional Landscaping Services in Raleigh, NC",
+  description = "Expert landscaping services in Raleigh, Durham, Cary & Chapel Hill. Licensed landscape contractor specializing in hardscapes, design, irrigation, lighting & maintenance since 2005.",
+  keywords = "landscaping Raleigh, landscape design NC, hardscapes Durham, irrigation systems Cary, outdoor lighting Chapel Hill, lawn maintenance North Carolina"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    
+    <!-- Local Business Schema -->
+    <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Garden & Art Landscapes",
+      "image": "https://gardenartlandscapes.com/img/bg.jpg",
+      "description": "Professional landscaping services using sustainable land management practices since 2005",
+      "url": "https://gardenartlandscapes.com",
+      "telephone": "919-235-2245",
+      "email": "normanrabins@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4909 Wood Valley Drive",
+        "addressLocality": "Raleigh",
+        "addressRegion": "NC",
+        "postalCode": "27613",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "35.8915",
+        "longitude": "-78.7912"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
+      "serviceArea": {
+        "@type": "Place",
+        "name": "Raleigh, Durham, Chapel Hill, Cary, Holly Springs, NC"
+      },
+      "areaServed": ["Raleigh", "Durham", "Chapel Hill", "Cary", "Holly Springs"],
+      "priceRange": "$$",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "47"
+      }
+    }
+    </script>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="business.business" />
+    <meta property="og:url" content="https://gardenartlandscapes.com" />
+    <meta property="og:image" content="https://gardenartlandscapes.com/img/bg.jpg" />
+    <meta property="business:contact_data:street_address" content="4909 Wood Valley Drive" />
+    <meta property="business:contact_data:locality" content="Raleigh" />
+    <meta property="business:contact_data:region" content="NC" />
+    <meta property="business:contact_data:postal_code" content="27613" />
+    <meta property="business:contact_data:country_name" content="United States" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://gardenartlandscapes.com/img/bg.jpg" />
+
+    <!-- Local Business Additional Meta -->
+    <meta name="geo.region" content="US-NC" />
+    <meta name="geo.placename" content="Raleigh" />
+    <meta name="geo.position" content="35.8915;-78.7912" />
+    <meta name="ICBM" content="35.8915, -78.7912" />
+
+    <style>
+      @import 'tailwindcss';
+      
+      /* Force edge-to-edge layout */
+      * {
+        box-sizing: border-box;
+      }
+      
+      html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+        overflow-x: hidden;
+      }
+      
+      body > * {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+      }
+    </style>
+  </head>
+  <body class="m-0 p-0 font-sans antialiased overflow-x-hidden">
+    <slot />
+  </body>
+</html>

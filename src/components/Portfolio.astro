@@ -1,0 +1,177 @@
+---
+const landscapeProjects = [
+  { src: "/img/portfolio/1.jpg", alt: "Landscape design project" },
+  { src: "/img/portfolio/2.jpg", alt: "Garden landscaping project" },
+  { src: "/img/portfolio/3.jpg", alt: "Outdoor living space" },
+  { src: "/img/portfolio/4.jpg", alt: "Professional hardscaping" },
+  { src: "/img/portfolio/5.JPG", alt: "Landscape installation" },
+  { src: "/img/portfolio/6.jpg", alt: "Residential landscaping" },
+  { src: "/img/portfolio/7.JPG", alt: "Water features" },
+  { src: "/img/portfolio/8.jpg", alt: "Garden transformation" },
+  { src: "/img/portfolio/9.jpg", alt: "Custom landscape design" },
+  { src: "/img/portfolio/10.jpg", alt: "Maintenance services" },
+  { src: "/img/portfolio/11.jpg", alt: "Professional services" },
+  { src: "/img/portfolio/12.jpg", alt: "Seasonal landscaping" },
+  { src: "/img/portfolio/13.jpg", alt: "Landscape installation" }
+];
+
+const customArtProjects = [
+  { src: "/img/portfolio/s1.jpg", alt: "Custom metal artwork for landscapes" },
+  { src: "/img/portfolio/s2.jpg", alt: "Artistic landscape elements" },
+  { src: "/img/portfolio/s3.jpg", alt: "Garden art installation" },
+  { src: "/img/portfolio/s4.jpg", alt: "Custom landscape art piece" },
+  { src: "/img/portfolio/s5.jpg", alt: "Artistic metalwork for gardens" },
+  { src: "/img/portfolio/s6.jpg", alt: "Custom garden sculpture" },
+  { src: "/img/portfolio/s7.jpg", alt: "Landscape art and design" },
+  { src: "/img/portfolio/s8.jpg", alt: "Artistic garden features" }
+];
+---
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-24 bg-gray-50">
+  
+  <div class="px-6 lg:px-8 max-w-7xl mx-auto relative">
+
+    <!-- Landscape Gallery -->
+    <div class="mb-20">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h3 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Landscape Projects</h3>
+        <p class="text-gray-600 max-w-2xl mx-auto">Professional landscaping that transforms ordinary spaces into extraordinary outdoor experiences</p>
+      </div>
+      
+      <!-- Premium Grid Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {landscapeProjects.map((project, index) => (
+          <div class="group cursor-pointer">
+            <div class="overflow-hidden rounded-2xl aspect-[4/3] hover:shadow-lg transition-shadow duration-300">
+              <img 
+                src={project.src} 
+                alt={project.alt} 
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                onclick="openModal(this)"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Custom Art Gallery -->
+    <div>
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h3 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Custom Art & Metalwork</h3>
+        <p class="text-gray-600 max-w-2xl mx-auto">Handcrafted artistic elements that bring unique character to outdoor spaces</p>
+      </div>
+
+      <!-- Premium Grid Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {customArtProjects.map((artwork, index) => (
+          <div class="group cursor-pointer">
+            <div class="overflow-hidden rounded-2xl aspect-[3/4] hover:shadow-lg transition-shadow duration-300">
+              <img 
+                src={artwork.src} 
+                alt={artwork.alt} 
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                onclick="openModal(this)"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-20">
+      <div class="inline-flex flex-col sm:flex-row gap-4">
+        <a 
+          href="tel:919-235-2245"
+          class="bg-green-600 text-white font-bold py-4 px-8 rounded-2xl hover:bg-green-700 transition-all duration-300 hover:scale-105 shadow-lg"
+        >
+          Get Free Consultation
+        </a>
+        <a 
+          href="#contact"
+          class="bg-white text-gray-900 font-bold py-4 px-8 rounded-2xl border border-gray-300 hover:bg-gray-50 transition-all duration-300 hover:scale-105"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enhanced Modal -->
+  <div id="imageModal" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" onclick="closeModal()">
+    <div class="relative max-w-7xl max-h-full">
+      <img id="modalImage" src="" alt="" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl" />
+      <button onclick="closeModal()" class="absolute -top-12 right-0 text-white text-2xl font-bold hover:text-gray-300 transition-colors bg-black/50 rounded-full w-10 h-10 flex items-center justify-center">×</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .masonry-grid {
+    column-count: 2;
+    column-gap: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .masonry-grid {
+      column-count: 3;
+      column-gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .masonry-grid {
+      column-count: 4;
+      column-gap: 2rem;
+    }
+  }
+  
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  @media (min-width: 640px) {
+    .masonry-item {
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .masonry-item {
+      margin-bottom: 2rem;
+    }
+  }
+</style>
+
+<script>
+  function openModal(img) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    modal.classList.remove('hidden');
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
+</script>
