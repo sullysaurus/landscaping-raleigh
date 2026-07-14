@@ -12,6 +12,7 @@ const scores = [
 ];
 
 const completed = [
+  'GitHub and Netlify production connected to main',
   'Correct production domain and canonical URLs',
   'Search-focused title, description and Raleigh hero copy',
   'Open Graph and social sharing metadata',
@@ -79,7 +80,7 @@ const accessItems = [
       </div>
       <div class="growth-score" aria-label="SEO health score 73 out of 100">
         <div class="ring ring-one"></div><div class="ring ring-two"></div><div class="ring ring-three"></div>
-        <div class="score-copy"><strong>73</strong><span>out of 100</span><small>Current build</small></div>
+        <div class="score-copy"><strong>73</strong><span>out of 100</span><small>Live production</small></div>
       </div>
     </section>
 
@@ -111,7 +112,7 @@ const accessItems = [
     </section>
 
     <section class="completed-work">
-      <div class="section-title"><p class="eyebrow">Fixed and ready</p><span>{completed.length} improvements completed</span></div>
+      <div class="section-title"><p class="eyebrow">Fixed and live</p><span>{completed.length} improvements completed</span></div>
       <div class="completed-list">
         {completed.map((item, index) => <p><span>{String(index + 1).padStart(2, '0')}</span><i>✓</i>{item}</p>)}
       </div>

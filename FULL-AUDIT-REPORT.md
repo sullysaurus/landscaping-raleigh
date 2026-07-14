@@ -8,7 +8,7 @@ Scope: current Astro production build, live Netlify site, public local-search si
 
 ## Executive summary
 
-The current build has a solid technical and on-page foundation. Its provisional SEO health score is **73/100**, up from the earlier pre-fix score of 53/100. The live website is still serving the older build, however, so Google and social platforms cannot benefit from most of the improvements until the current branch is merged and deployed.
+The production website now has a solid technical and on-page foundation. Its provisional SEO health score is **73/100**, up from the earlier pre-fix score of 53/100. Netlify is connected to the repository's new default `main` branch, and production is serving commit `085d989` from that branch.
 
 | Category | Current build |
 | --- | ---: |
@@ -20,7 +20,7 @@ The current build has a solid technical and on-page foundation. Its provisional 
 | AI search readiness | 48/100 |
 | Images | 65/100 |
 
-## Fixed in the current build
+## Fixed and deployed
 
 - Canonical URLs now use the indexed `www.landscapingraleigh.com` domain.
 - Homepage title and description target Raleigh landscape design and Triangle services.
@@ -37,19 +37,10 @@ The current build has a solid technical and on-page foundation. Its provisional 
 - The 2.2 MB lighting PNG was replaced with a roughly 396 KB JPEG.
 - Netlify security headers, asset caching rules and direct apex-to-`www` redirects are included.
 - License wording now clearly associates `#1901` with the NC landscape contractor credential.
-
-## Critical live-site discrepancy
-
-Production is still serving the older site. Current live checks found:
-
-- The live canonical and social-image URLs still point to `gardenandartlandscapes.com`.
-- `/robots.txt` returns `404`.
-- `/sitemap.xml` returns `404`.
-- `/privacy/` is not deployed.
-- No JSON-LD is live.
-- The new security and cache rules are not live.
-
-Deploying the current build fixes these items together. After deployment, recrawl the homepage, robots file, sitemap and privacy page before submitting the sitemap in Search Console.
+- GitHub's default branch and Netlify's production branch are both `main`.
+- The live homepage, `robots.txt`, XML sitemap, privacy page and private SEO dashboard return `200`.
+- The deployed homepage uses the correct canonical and Open Graph URLs and contains valid JSON-LD.
+- The contact form is detected by Netlify with a honeypot field enabled.
 
 ## Remaining work
 
@@ -83,13 +74,12 @@ Deploying the current build fixes these items together. After deployment, recraw
 
 ## Recommended order
 
-1. Merge and deploy the current build.
-2. Verify Search Console, submit the sitemap and set up analytics conversions.
-3. Verify and complete the Google Business Profile.
-4. Confirm address policy, hours, license and owned profile URLs.
-5. Publish service pages, reviews and case studies.
-6. Add responsive image formats and a branded social card.
+1. Verify Search Console, submit the sitemap and set up analytics conversions.
+2. Verify and complete the Google Business Profile.
+3. Confirm address policy, hours, license and owned profile URLs.
+4. Publish service pages, reviews and case studies.
+5. Add responsive image formats and a branded social card.
 
 ## Audit limitations
 
-No authenticated Search Console, GA4 or Google Business Profile data was available. Live Core Web Vitals, index coverage, query performance, map rankings, review velocity and a comprehensive backlink profile must be assessed after deployment and account access.
+No authenticated Search Console, GA4 or Google Business Profile data was available. Live Core Web Vitals, index coverage, query performance, map rankings, review velocity and a comprehensive backlink profile must be assessed after those accounts are connected and have collected enough data.

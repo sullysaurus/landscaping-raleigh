@@ -17,10 +17,13 @@
 - [x] Direct apex-domain redirects
 - [x] Clear license wording
 
-## Do immediately after deployment
+## Deployment verification
 
-- [ ] Confirm `/`, `/robots.txt`, `/sitemap.xml` and `/privacy/` return `200`
-- [ ] Confirm the live canonical and social image use `www.landscapingraleigh.com`
+- [x] Set GitHub's default branch to `main`
+- [x] Set Netlify's production branch to `main`
+- [x] Confirm `/`, `/robots.txt`, `/sitemap.xml` and `/privacy/` return `200`
+- [x] Confirm the live canonical and social image use `www.landscapingraleigh.com`
+- [x] Confirm the deployed JSON-LD parses successfully
 - [ ] Validate JSON-LD with Google’s Rich Results Test and Schema.org Validator
 - [ ] Verify the site in Google Search Console
 - [ ] Submit `/sitemap.xml` in Search Console
