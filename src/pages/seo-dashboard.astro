@@ -48,17 +48,6 @@ const nextMoves = [
   },
 ];
 
-const accessItems = [
-  'Google Business Profile manager access',
-  'Correct public address or service-area policy',
-  'Current business hours and service territory',
-  'License, bonding and insurance confirmation',
-  'Owned social and directory profile links',
-  'Eligible customer contact export for email setup',
-  'Projects approved for before/after photos or video',
-  'Recent clients who may be asked for reviews',
-];
-
 const resultCards = [
   { label: 'Website traffic', value: 'Ready to connect', source: 'Google Analytics', copy: 'Visitors, popular pages and whether traffic is growing.' },
   { label: 'Google searches', value: 'Ready to connect', source: 'Search Console', copy: 'The exact searches people use and which pages they find.' },
@@ -70,10 +59,10 @@ const programItems = [
   { label: 'Website expansion', target: '8 new pages', status: 'Planned' },
   { label: 'Keyword blog content', target: '2+ posts each week', status: 'Planned' },
   { label: 'Facebook · Instagram · Google', target: 'Cross-post each strong idea', status: 'Planned' },
-  { label: 'Google Business Profile', target: 'Build and maintain', status: 'Needs access' },
-  { label: 'Email list & review campaign', target: 'Set up, import and connect', status: 'Needs contacts' },
-  { label: 'Before/after photos & video', target: 'Capture project proof', status: 'Choose project' },
-  { label: 'Analytics & search reporting', target: 'Dashboard + weekly report', status: 'Needs access' },
+  { label: 'Google Business Profile', target: 'Build and maintain', status: 'Danny coordinating' },
+  { label: 'Email list & review campaign', target: 'Set up, import and connect', status: 'Danny coordinating' },
+  { label: 'Before/after photos & video', target: 'Capture project proof', status: 'Schedule project' },
+  { label: 'Analytics & search reporting', target: 'Dashboard + weekly report', status: 'Danny coordinating' },
 ];
 ---
 
@@ -184,15 +173,6 @@ const programItems = [
       </div>
     </section>
 
-    <section class="access-section">
-      <div>
-        <p class="eyebrow light">Needed from Norman</p>
-        <h2>A few details unlock<br /><em>the next stage.</em></h2>
-        <p>No passwords need to be shared. Manager access is the safer way to connect Google accounts.</p>
-      </div>
-      <ul>{accessItems.map((item) => <li><span>○</span>{item}</li>)}</ul>
-    </section>
-
     <section class="cadence-section">
       <div class="section-title"><p class="eyebrow">Recommended rhythm</p><span>Consistent enough to compound, simple enough to sustain</span></div>
       <div class="cadence-grid">
@@ -291,12 +271,6 @@ const programItems = [
     .next-list h2 { font-size: 27px; line-height: 1; }
     .next-list p { color: var(--ink-soft); font-size: 11px; line-height: 1.65; margin: 8px 0 0; max-width: 650px; }
     .next-list small { color: var(--ink-muted); font-size: 8px; letter-spacing: .1em; padding-top: 6px; text-align: right; text-transform: uppercase; }
-    .access-section { background: var(--forest); color: var(--white); display: grid; gap: 88px; grid-template-columns: .8fr 1.2fr; padding: 58px 48px; }
-    .access-section h2 { font-size: 42px; }
-    .access-section > div > p:last-child { color: rgba(255,253,247,.58); font-size: 10px; line-height: 1.65; margin: 22px 0 0; max-width: 420px; }
-    .access-section ul { list-style: none; margin: 0; padding: 0; }
-    .access-section li { border-top: 1px solid var(--line-light); color: rgba(255,253,247,.78); display: flex; font-size: 11px; gap: 16px; padding: 11px 0; }
-    .access-section li span { color: var(--clay); }
     .cadence-grid { border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 28px; }
     .cadence-grid p { margin: 0; padding: 19px 20px 0 0; }
     .cadence-grid p + p { border-left: 1px solid var(--line); padding-left: 20px; }
@@ -314,18 +288,19 @@ const programItems = [
       .report-hero { gap: 42px; grid-template-columns: 1fr; padding: 56px 20px 48px; }
       .hero-message h1 { font-size: 48px; }
       .growth-score { justify-self: center; width: 260px; }
-      .growth-path, .result-card-grid, .program-tracker, .report-grid, .completed-list, .access-section, .cadence-grid { grid-template-columns: 1fr; }
+      .growth-path, .result-card-grid, .program-tracker, .report-grid, .completed-list, .cadence-grid { grid-template-columns: 1fr; }
       .growth-path article + article { border-left: 0; border-top: 1px solid var(--line); }
       .live-results, .score-panel, .completed-work, .next-section, .cadence-section { padding: 42px 20px; }
       .section-title { align-items: flex-start; flex-direction: column; gap: 8px; }
       .live-results .section-title h2 { font-size: 34px; }
       .result-card-grid article { min-height: 0; }
       .program-tracker { gap: 38px; padding: 48px 20px; }
+      .tracker-list article { grid-template-columns: 28px 1fr; padding: 10px 0; }
+      .tracker-list b { grid-column: 2; }
       .score-row { grid-template-columns: 120px 1fr 26px; }
       .completed-list p { min-height: 0; }
       .next-list article { grid-template-columns: 28px 1fr; }
       .next-list small { grid-column: 2; text-align: left; }
-      .access-section { gap: 38px; padding: 48px 20px; }
       .cadence-grid p, .cadence-grid p + p { border-left: 0; border-top: 1px solid var(--line); padding: 16px 0; }
       .report-footer { align-items: flex-start; flex-direction: column; gap: 10px; padding: 18px 20px; }
     }

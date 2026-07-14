@@ -116,15 +116,6 @@ const roadmap = [
   },
 ];
 
-const ownerItems = [
-  'Google Business Profile manager access—no password sharing',
-  'The correct public address or service-area policy',
-  'Current hours, service areas and preferred project types',
-  'Confirmation of license, bonding and insurance details',
-  'Access to strong projects and permission to photograph or film them',
-  'An export of eligible past and current customer contacts',
-  'A short list of happy clients who may be asked for a review',
-];
 ---
 
 <BaseLayout
@@ -292,10 +283,10 @@ const ownerItems = [
     </section>
 
     <section class="partnership">
-      <div class="owner-needs">
-        <p class="eyebrow">What I need from Norman</p>
-        <h2>A few details unlock the plan.</h2>
-        <ul>{ownerItems.map((item) => <li><span>○</span>{item}</li>)}</ul>
+      <div class="investment-intro">
+        <p class="eyebrow">The working arrangement</p>
+        <h2>Focused weekly work.<br /><em>One clear monthly cost.</em></h2>
+        <p>Danny will coordinate the account access, customer information and project scheduling directly so the work keeps moving without creating a homework list for Norman.</p>
       </div>
 
       <aside class="investment">
@@ -313,11 +304,6 @@ const ownerItems = [
       <p class="eyebrow light">What success looks like</p>
       <h2>A clearer local presence, stronger proof and a growing understanding of what brings the right clients to Garden & Art.</h2>
       <p>No one can promise a Google ranking, and search growth takes time. This plan steadily adds the pages, photos, reviews and useful posts that give Garden & Art more chances to be found and chosen.</p>
-    </section>
-
-    <section class="next-step">
-      <p class="eyebrow">Recommended next step</p>
-      <h2>Confirm the official business details, Google access and first project to photograph.</h2>
     </section>
 
     <footer class="proposal-footer">
@@ -417,12 +403,9 @@ const ownerItems = [
     .measurement li { border-top: 1px solid var(--line-light); color: rgba(255,253,247,.82); font-size: 12px; padding: 10px 0; }
     .measurement > p:last-child { color: rgba(255,253,247,.68); font-size: 12px; line-height: 1.65; margin: 0; }
 
-    .partnership { display: grid; grid-template-columns: 1.35fr .65fr; padding: 72px 48px; }
-    .owner-needs { padding-right: 72px; }
-    .owner-needs h2 { font-size: 41px; }
-    .owner-needs ul { display: grid; gap: 0 28px; grid-template-columns: 1fr 1fr; list-style: none; margin: 29px 0 0; padding: 0; }
-    .owner-needs li { border-top: 1px solid var(--line); color: var(--ink-soft); display: grid; font-size: 12px; gap: 9px; grid-template-columns: 14px 1fr; line-height: 1.55; padding: 12px 0; }
-    .owner-needs li span { color: var(--clay); }
+    .partnership { align-items: center; display: grid; gap: 72px; grid-template-columns: 1.25fr .75fr; padding: 72px 48px; }
+    .investment-intro h2 { font-size: 45px; }
+    .investment-intro > p:last-child { color: var(--ink-soft); font-size: 13px; line-height: 1.7; margin: 25px 0 0; max-width: 560px; }
     .investment { background: var(--forest-deep); color: var(--white); padding: 30px; }
     .rate { align-items: baseline; display: flex; gap: 9px; margin: -2px 0 18px; }
     .rate strong { color: var(--clay); font-family: var(--serif); font-size: 49px; font-weight: 400; letter-spacing: -.04em; }
@@ -440,9 +423,6 @@ const ownerItems = [
     .expectation { background: var(--forest-deep); color: var(--white); padding: 66px 48px; }
     .expectation h2 { color: var(--white); font-size: clamp(38px, 4.1vw, 58px); max-width: 1040px; }
     .expectation > p:last-child { color: rgba(255,253,247,.68); font-size: 12px; line-height: 1.7; margin: 25px 0 0; max-width: 760px; }
-    .next-step { background: var(--clay); color: var(--white); display: grid; gap: 40px; grid-template-columns: .35fr 1.65fr; padding: 34px 48px; }
-    .next-step .eyebrow { color: rgba(255,253,247,.75); margin: 6px 0 0; }
-    .next-step h2 { color: var(--white); font-size: 29px; line-height: 1.05; }
     .proposal-footer { align-items: center; background: var(--paper); color: var(--ink-muted); display: flex; font-size: 10px; justify-content: space-between; letter-spacing: .04em; padding: 18px 48px; }
     .proposal-footer p { margin: 0; }
     .proposal-footer a { text-underline-offset: 3px; }
@@ -482,11 +462,8 @@ const ownerItems = [
       .rhythm, .measurement { padding: 50px 20px; }
       .rhythm-list p { grid-template-columns: 105px 1fr; }
       .partnership { padding: 54px 20px; }
-      .owner-needs { padding: 0 0 38px; }
-      .owner-needs ul { grid-template-columns: 1fr; }
+      .investment-intro { padding-bottom: 38px; }
       .expectation { padding: 54px 20px; }
-      .next-step { gap: 12px; grid-template-columns: 1fr; padding: 34px 20px; }
-      .next-step h2 { font-size: 25px; }
       .proposal-footer { align-items: flex-start; flex-direction: column; gap: 7px; padding: 17px 20px; }
     }
 
@@ -494,7 +471,7 @@ const ownerItems = [
       @page { margin: .35in; size: letter; }
       :global(body) { background: var(--paper); }
       .proposal { -webkit-print-color-adjust: exact; box-shadow: none; margin: 0; max-width: none; print-color-adjust: exact; }
-      .proposal-header, .proposal-hero, .growth-model, .foundation-note, .monthly-output, .included-work, .search-plan, .roadmap, .rhythm, .measurement, .partnership, .expectation, .next-step { padding-left: 30px; padding-right: 30px; }
+      .proposal-header, .proposal-hero, .growth-model, .foundation-note, .monthly-output, .included-work, .search-plan, .roadmap, .rhythm, .measurement, .partnership, .expectation { padding-left: 30px; padding-right: 30px; }
       .workstream, .roadmap-list article, .investment, .growth-steps article { break-inside: avoid; }
     }
   </style>
