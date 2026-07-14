@@ -29,6 +29,7 @@ Astro writes the static site to `dist/`.
 - `src/components/` contains reusable interface elements.
 - `src/styles/global.css` contains the design system and responsive styles.
 - `public/` contains project photography, artwork, icons, and the web manifest.
+- `FULL-AUDIT-REPORT.md`, `ACTION-PLAN.md`, and `KEYWORD-RESEARCH.md` contain the current SEO findings and roadmap.
 
 ## Contact form
 
