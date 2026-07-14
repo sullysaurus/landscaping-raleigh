@@ -48,22 +48,46 @@ const schema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Organization',
+      '@type': 'HomeAndConstructionBusiness',
       '@id': 'https://www.landscapingraleigh.com/#organization',
       name: 'Garden & Art Landscapes',
       alternateName: 'Garden & Art by Norman Rabins, Ltd.',
+      description: 'Licensed landscape design, installation and garden care serving Raleigh and the Triangle since 2005.',
       url: 'https://www.landscapingraleigh.com/',
+      logo: 'https://www.landscapingraleigh.com/apple-touch-icon.png',
       image: 'https://www.landscapingraleigh.com/img/hero-garden.jpg',
       telephone: '+1-919-235-2245',
       email: 'normanrabins@gmail.com',
       foundingDate: '2005',
-      founder: {
-        '@type': 'Person',
-        name: 'Norman Rabins',
-        jobTitle: 'Founder, horticulturist and artist',
+      founder: { '@id': 'https://www.landscapingraleigh.com/#norman-rabins' },
+      areaServed: [
+        { '@type': 'City', name: 'Raleigh' },
+        { '@type': 'City', name: 'Durham' },
+        { '@type': 'City', name: 'Chapel Hill' },
+        { '@type': 'City', name: 'Cary' },
+        { '@type': 'City', name: 'Holly Springs' },
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Landscape services',
+        itemListElement: services.map((service) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: service.title,
+            areaServed: { '@type': 'City', name: 'Raleigh' },
+          },
+        })),
       },
-      areaServed: ['Raleigh', 'Durham', 'Chapel Hill', 'Cary', 'Holly Springs'],
       knowsAbout: ['Landscape design', 'Hardscaping', 'Rainwater harvesting', 'Irrigation', 'Outdoor lighting', 'Garden maintenance'],
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://www.landscapingraleigh.com/#norman-rabins',
+      name: 'Norman Rabins',
+      jobTitle: 'Founder, horticulturist and artist',
+      worksFor: { '@id': 'https://www.landscapingraleigh.com/#organization' },
+      image: 'https://www.landscapingraleigh.com/img/about/norman2.jpg',
     },
     {
       '@type': 'WebSite',
@@ -252,7 +276,7 @@ const schema = {
     <p>Serving Raleigh, Durham, Chapel Hill, Cary, Holly Springs and surrounding communities.</p>
     <div class="footer-meta">
       <span>© {new Date().getFullYear()} Garden & Art Landscapes</span>
-      <span>Licensed · Bonded · Insured #1901</span>
+      <span>NC Landscape Contractor #1901 · Bonded & insured</span>
       <a href="/privacy/">Privacy</a>
       <a href="https://dannysullivan.ai" target="_blank" rel="noopener noreferrer">Website by Danny Sullivan</a>
     </div>

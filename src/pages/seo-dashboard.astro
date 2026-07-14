@@ -1,0 +1,259 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeafMark from '../components/LeafMark.astro';
+
+const scores = [
+  { label: 'Technical SEO', value: 82 },
+  { label: 'On-page SEO', value: 82 },
+  { label: 'Structured data', value: 82 },
+  { label: 'Content quality', value: 72 },
+  { label: 'Images', value: 65 },
+  { label: 'Performance', value: 60 },
+];
+
+const completed = [
+  'Correct production domain and canonical URLs',
+  'Search-focused title, description and Raleigh hero copy',
+  'Open Graph and social sharing metadata',
+  'Robots file and XML sitemap',
+  'Local business, founder, website and service schema',
+  'Privacy page and inquiry-form privacy notice',
+  'Image alt text, dimensions and stable layouts',
+  'Faster hero and optimized lighting image',
+  'Noindex protection for private utility pages',
+  'Security headers and asset caching',
+  'Direct apex-to-www redirects',
+  'Clear NC contractor license wording',
+];
+
+const nextMoves = [
+  {
+    number: '01',
+    title: 'Connect Google',
+    owner: 'Danny + Norman',
+    copy: 'Verify Search Console, submit the sitemap, install Analytics conversion tracking and confirm the Google Business Profile.',
+  },
+  {
+    number: '02',
+    title: 'Strengthen local proof',
+    owner: 'Norman supplies access',
+    copy: 'Confirm the address policy, hours, service areas and license status; correct listings and begin a steady review-request rhythm.',
+  },
+  {
+    number: '03',
+    title: 'Publish what wins work',
+    owner: 'Ongoing monthly block',
+    copy: 'Build service pages and before-and-after case studies, then use real search and inquiry data to choose the next topic.',
+  },
+];
+
+const accessItems = [
+  'Google Business Profile manager access',
+  'Correct public address or service-area policy',
+  'Current business hours and service territory',
+  'License, bonding and insurance confirmation',
+  'Owned social and directory profile links',
+  'Recent clients who may be asked for reviews',
+];
+---
+
+<BaseLayout
+  title="SEO Progress Dashboard | Garden & Art Landscapes"
+  description="A private progress dashboard for the Garden & Art Landscapes SEO program."
+  noindex
+>
+  <main class="seo-report">
+    <header class="report-header">
+      <a class="report-brand" href="/" aria-label="Garden and Art Landscapes home">
+        <LeafMark />
+        <span>Garden <i>&</i> Art Landscapes</span>
+      </a>
+      <div><span>SEO field report</span><strong>Updated July 14, 2026</strong></div>
+    </header>
+
+    <section class="report-hero">
+      <div class="hero-message">
+        <p class="eyebrow">Current position</p>
+        <h1>The groundwork is ready.<br /><em>Now we build visibility.</em></h1>
+        <p>The website’s core SEO foundation is in place. The next gains come from connecting Google, confirming the business information and consistently publishing proof of the work.</p>
+      </div>
+      <div class="growth-score" aria-label="SEO health score 73 out of 100">
+        <div class="ring ring-one"></div><div class="ring ring-two"></div><div class="ring ring-three"></div>
+        <div class="score-copy"><strong>73</strong><span>out of 100</span><small>Current build</small></div>
+      </div>
+    </section>
+
+    <section class="growth-path" aria-label="SEO growth stages">
+      <article class="complete"><span>01</span><div><strong>Groundwork</strong><small>Technical foundation</small></div><b>Complete</b></article>
+      <article class="active"><span>02</span><div><strong>Visibility</strong><small>Google + local proof</small></div><b>Next</b></article>
+      <article><span>03</span><div><strong>Growth</strong><small>Content + measurement</small></div><b>Planned</b></article>
+    </section>
+
+    <section class="report-grid">
+      <div class="score-panel">
+        <div class="section-title"><p class="eyebrow">Health by area</p><span>Directional until Google data is connected</span></div>
+        <div class="score-list">
+          {scores.map((score) => (
+            <div class="score-row">
+              <span>{score.label}</span>
+              <div class="score-track" aria-hidden="true"><i style={`width:${score.value}%`}></i></div>
+              <strong>{score.value}</strong>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <aside class="measurement-note">
+        <p class="eyebrow light">What the score means</p>
+        <strong>Strong foundation.<br />Limited real-world data.</strong>
+        <p>Search Console, Analytics and Business Profile insights will replace assumptions with actual searches, calls and inquiries after they are connected.</p>
+      </aside>
+    </section>
+
+    <section class="completed-work">
+      <div class="section-title"><p class="eyebrow">Fixed and ready</p><span>{completed.length} improvements completed</span></div>
+      <div class="completed-list">
+        {completed.map((item, index) => <p><span>{String(index + 1).padStart(2, '0')}</span><i>✓</i>{item}</p>)}
+      </div>
+    </section>
+
+    <section class="next-section">
+      <div class="section-title"><p class="eyebrow">What comes next</p><span>Highest-value work, in order</span></div>
+      <div class="next-list">
+        {nextMoves.map((move) => (
+          <article>
+            <span>{move.number}</span>
+            <div><h2>{move.title}</h2><p>{move.copy}</p></div>
+            <small>{move.owner}</small>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="access-section">
+      <div>
+        <p class="eyebrow light">Needed from Norman</p>
+        <h2>A few details unlock<br /><em>the next stage.</em></h2>
+        <p>No passwords need to be shared. Manager access is the safer way to connect Google accounts.</p>
+      </div>
+      <ul>{accessItems.map((item) => <li><span>○</span>{item}</li>)}</ul>
+    </section>
+
+    <section class="cadence-section">
+      <div class="section-title"><p class="eyebrow">Recommended rhythm</p><span>Consistent enough to compound, simple enough to sustain</span></div>
+      <div class="cadence-grid">
+        <p><strong>Weekly</strong><span>Short progress and inquiry snapshot</span></p>
+        <p><strong>Every 2 weeks</strong><span>Useful Google update</span></p>
+        <p><strong>Monthly</strong><span>Project photos, content and insights</span></p>
+        <p><strong>Quarterly</strong><span>Seasonal email and strategy review</span></p>
+      </div>
+    </section>
+
+    <footer class="report-footer">
+      <p>Prepared by <a href="https://dannysullivan.ai" target="_blank" rel="noopener noreferrer">Danny Sullivan</a></p>
+      <nav aria-label="Report links"><a href="/proposal/">View proposal</a><a href="/">View website</a></nav>
+    </footer>
+  </main>
+
+  <style>
+    :global(body) { background: var(--paper-deep); }
+    .seo-report { background: var(--paper); box-shadow: var(--shadow-lift); margin: 24px auto; max-width: 1240px; }
+    .report-header { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding: 24px 48px; }
+    .report-brand { align-items: center; display: flex; font-family: var(--serif); font-size: 20px; gap: 9px; text-decoration: none; }
+    .report-brand > span { white-space: nowrap; }
+    .report-brand svg { color: var(--forest); height: 30px; width: 30px; }
+    .report-brand i { color: var(--clay); font-weight: 400; }
+    .report-header > div { align-items: end; display: flex; flex-direction: column; }
+    .report-header > div span, .report-header > div strong { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
+    .report-header > div span { color: var(--clay-dark); }
+    .report-header > div strong { color: var(--ink-muted); font-weight: 500; margin-top: 4px; }
+    .report-hero { align-items: center; display: grid; gap: 72px; grid-template-columns: 1fr 330px; padding: 64px 48px; }
+    .hero-message h1 { font-size: clamp(52px, 5.5vw, 76px); }
+    .hero-message > p:last-child { color: var(--ink-soft); font-size: 14px; line-height: 1.75; margin: 28px 0 0; max-width: 680px; }
+    .growth-score { aspect-ratio: 1; display: grid; place-items: center; position: relative; }
+    .ring { border: 1px solid var(--line); border-radius: 50%; position: absolute; }
+    .ring-one { inset: 0; }
+    .ring-two { border-color: rgba(201,111,74,.38); inset: 25px; }
+    .ring-three { background: var(--forest); border: 0; inset: 54px; }
+    .score-copy { color: var(--white); display: flex; flex-direction: column; position: relative; text-align: center; z-index: 1; }
+    .score-copy strong { color: var(--clay); font-family: var(--serif); font-size: 82px; font-weight: 400; letter-spacing: -.06em; line-height: .85; }
+    .score-copy span, .score-copy small { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
+    .score-copy span { color: rgba(255,253,247,.7); margin-top: 9px; }
+    .score-copy small { color: rgba(255,253,247,.4); margin-top: 20px; }
+    .growth-path { border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); }
+    .growth-path article { align-items: center; display: grid; gap: 16px; grid-template-columns: 28px 1fr auto; padding: 24px 32px; }
+    .growth-path article + article { border-left: 1px solid var(--line); }
+    .growth-path article > span { color: var(--ink-muted); font-size: 9px; }
+    .growth-path strong { display: block; font-family: var(--serif); font-size: 20px; font-weight: 400; }
+    .growth-path small { color: var(--ink-muted); display: block; font-size: 8px; letter-spacing: .08em; margin-top: 2px; text-transform: uppercase; }
+    .growth-path b { color: var(--ink-muted); font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+    .growth-path .complete b { color: var(--leaf); }
+    .growth-path .active { background: var(--paper-deep); }
+    .growth-path .active b, .growth-path .active > span { color: var(--clay-dark); }
+    .report-grid { display: grid; grid-template-columns: 1.45fr .55fr; }
+    .score-panel { padding: 52px 48px; }
+    .section-title { align-items: baseline; display: flex; justify-content: space-between; }
+    .section-title .eyebrow { margin: 0; }
+    .section-title > span { color: var(--ink-muted); font-size: 9px; }
+    .score-list { margin-top: 26px; }
+    .score-row { align-items: center; border-top: 1px solid var(--line); display: grid; gap: 18px; grid-template-columns: 150px 1fr 28px; min-height: 45px; }
+    .score-row > span { color: var(--ink-soft); font-size: 11px; }
+    .score-row > strong { color: var(--forest); font-size: 11px; font-variant-numeric: tabular-nums; text-align: right; }
+    .score-track { background: rgba(29,40,34,.08); height: 3px; }
+    .score-track i { background: var(--clay); display: block; height: 100%; }
+    .measurement-note { background: var(--forest-deep); color: var(--white); padding: 52px 38px; }
+    .measurement-note > strong { display: block; font-family: var(--serif); font-size: 29px; font-weight: 400; line-height: 1.1; margin-top: 54px; }
+    .measurement-note > p:last-child { color: rgba(255,253,247,.58); font-size: 11px; line-height: 1.7; margin: 24px 0 0; }
+    .completed-work, .next-section, .cadence-section { border-top: 1px solid var(--line); padding: 52px 48px; }
+    .completed-list { border-left: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 28px; }
+    .completed-list p { align-items: start; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); display: grid; font-size: 10px; gap: 10px; grid-template-columns: 22px 14px 1fr; line-height: 1.5; margin: 0; min-height: 72px; padding: 16px; }
+    .completed-list p span { color: var(--ink-muted); font-size: 8px; }
+    .completed-list p i { color: var(--clay-dark); font-style: normal; }
+    .next-list { border-top: 1px solid var(--line); margin-top: 28px; }
+    .next-list article { align-items: start; display: grid; gap: 24px; grid-template-columns: 36px 1fr 170px; padding: 24px 0; }
+    .next-list article + article { border-top: 1px solid var(--line); }
+    .next-list article > span { color: var(--clay-dark); font-size: 9px; padding-top: 5px; }
+    .next-list h2 { font-size: 27px; line-height: 1; }
+    .next-list p { color: var(--ink-soft); font-size: 11px; line-height: 1.65; margin: 8px 0 0; max-width: 650px; }
+    .next-list small { color: var(--ink-muted); font-size: 8px; letter-spacing: .1em; padding-top: 6px; text-align: right; text-transform: uppercase; }
+    .access-section { background: var(--forest); color: var(--white); display: grid; gap: 88px; grid-template-columns: .8fr 1.2fr; padding: 58px 48px; }
+    .access-section h2 { font-size: 42px; }
+    .access-section > div > p:last-child { color: rgba(255,253,247,.58); font-size: 10px; line-height: 1.65; margin: 22px 0 0; max-width: 420px; }
+    .access-section ul { list-style: none; margin: 0; padding: 0; }
+    .access-section li { border-top: 1px solid var(--line-light); color: rgba(255,253,247,.78); display: flex; font-size: 11px; gap: 16px; padding: 11px 0; }
+    .access-section li span { color: var(--clay); }
+    .cadence-grid { border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 28px; }
+    .cadence-grid p { margin: 0; padding: 19px 20px 0 0; }
+    .cadence-grid p + p { border-left: 1px solid var(--line); padding-left: 20px; }
+    .cadence-grid strong { display: block; font-family: var(--serif); font-size: 20px; font-weight: 400; }
+    .cadence-grid span { color: var(--ink-muted); display: block; font-size: 9px; line-height: 1.5; margin-top: 5px; }
+    .report-footer { align-items: center; background: var(--forest-deep); color: rgba(255,253,247,.5); display: flex; font-size: 8px; justify-content: space-between; padding: 18px 48px; }
+    .report-footer p { margin: 0; }
+    .report-footer a { text-underline-offset: 3px; }
+    .report-footer nav { display: flex; gap: 24px; }
+    @media (max-width: 760px) {
+      .seo-report { box-shadow: none; margin: 0; }
+      .report-header { align-items: flex-start; padding: 20px; }
+      .report-brand { font-size: 16px; }
+      .report-header > div { max-width: 105px; text-align: right; }
+      .report-hero { gap: 42px; grid-template-columns: 1fr; padding: 56px 20px 48px; }
+      .hero-message h1 { font-size: 48px; }
+      .growth-score { justify-self: center; width: 260px; }
+      .growth-path, .report-grid, .completed-list, .access-section, .cadence-grid { grid-template-columns: 1fr; }
+      .growth-path article + article { border-left: 0; border-top: 1px solid var(--line); }
+      .score-panel, .completed-work, .next-section, .cadence-section { padding: 42px 20px; }
+      .section-title { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .score-row { grid-template-columns: 120px 1fr 26px; }
+      .completed-list p { min-height: 0; }
+      .next-list article { grid-template-columns: 28px 1fr; }
+      .next-list small { grid-column: 2; text-align: left; }
+      .access-section { gap: 38px; padding: 48px 20px; }
+      .cadence-grid p, .cadence-grid p + p { border-left: 0; border-top: 1px solid var(--line); padding: 16px 0; }
+      .report-footer { align-items: flex-start; flex-direction: column; gap: 10px; padding: 18px 20px; }
+    }
+    @media print {
+      :global(body) { background: var(--paper); }
+      .seo-report { box-shadow: none; margin: 0; max-width: none; print-color-adjust: exact; }
+    }
+  </style>
+</BaseLayout>

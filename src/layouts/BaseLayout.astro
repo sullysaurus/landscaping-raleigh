@@ -6,10 +6,24 @@ interface Props {
   description: string;
   noindex?: boolean;
   image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageAlt?: string;
+  imageType?: string;
   schema?: Record<string, unknown>;
 }
 
-const { title, description, noindex = false, image = '/img/hero-garden.jpg', schema } = Astro.props;
+const {
+  title,
+  description,
+  noindex = false,
+  image = '/img/hero-garden.jpg',
+  imageWidth = 1774,
+  imageHeight = 887,
+  imageAlt = 'A lush, professionally designed garden by Garden & Art Landscapes in Raleigh, North Carolina',
+  imageType = 'image/jpeg',
+  schema,
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
 ---
@@ -20,17 +34,25 @@ const socialImage = new URL(image, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalURL} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Garden & Art Landscapes" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImage} />
+    <meta property="og:image:secure_url" content={socialImage} />
+    <meta property="og:image:type" content={imageType} />
+    <meta property="og:image:width" content={String(imageWidth)} />
+    <meta property="og:image:height" content={String(imageHeight)} />
+    <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
     <meta name="theme-color" content="#18352b" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

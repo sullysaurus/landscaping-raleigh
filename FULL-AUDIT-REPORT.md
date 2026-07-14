@@ -1,104 +1,95 @@
 # Garden & Art Landscapes SEO Audit
 
-Audited: July 14, 2026  
-Scope: pre-launch Astro build, currently indexed website, and public local-search signals
+Audited: July 14, 2026
+
+Domain: `https://www.landscapingraleigh.com/`
+
+Scope: current Astro production build, live Netlify site, public local-search signals
 
 ## Executive summary
 
-The redesigned site is a strong visual and brand foundation, with good metadata, original photography, clear contact actions, credible credentials, and search-friendly static HTML. Its biggest weakness is structural: one homepage is being asked to rank for eight services and several cities.
+The current build has a solid technical and on-page foundation. Its provisional SEO health score is **73/100**, up from the earlier pre-fix score of 53/100. The live website is still serving the older build, however, so Google and social platforms cannot benefit from most of the improvements until the current branch is merged and deployed.
 
-The provisional SEO health score is **53/100**. This is directional because the new site is not deployed, Search Console and analytics were not available, and live Core Web Vitals could not be measured.
-
-| Category | Score |
+| Category | Current build |
 | --- | ---: |
-| Technical SEO | 59/100 |
+| Technical SEO | 82/100 |
 | Content quality | 72/100 |
-| On-page SEO | 65/100 |
-| Structured data | 0/100 |
-| Performance | 45/100 |
-| AI search readiness | 40/100 |
-| Images | 45/100 |
+| On-page SEO | 82/100 |
+| Structured data | 82/100 |
+| Performance | 60/100 |
+| AI search readiness | 48/100 |
+| Images | 65/100 |
 
-## Most important findings
+## Fixed in the current build
 
-### 1. Domain migration is the launch priority
+- Canonical URLs now use the indexed `www.landscapingraleigh.com` domain.
+- Homepage title and description target Raleigh landscape design and Triangle services.
+- The page has one H1 and a clear H2/H3 hierarchy.
+- `robots.txt` and a valid XML sitemap are included.
+- The sitemap includes the homepage and privacy page and excludes noindexed routes.
+- Homepage schema now identifies a `HomeAndConstructionBusiness`, Norman Rabins, the website, five service areas and the offered services.
+- A privacy page is linked beside the inquiry form and in the footer.
+- The proposal and thank-you pages use `noindex, follow`.
+- Open Graph and X/Twitter metadata now include the canonical URL, site name, locale, secure image URL, image type, dimensions and descriptive image alt text.
+- The current 1,774 × 887 hero image is large enough to produce a useful social preview.
+- All 29 rendered images include alt attributes and intrinsic width and height.
+- The hero image is a real high-priority image rather than a CSS background.
+- The 2.2 MB lighting PNG was replaced with a roughly 396 KB JPEG.
+- Netlify security headers, asset caching rules and direct apex-to-`www` redirects are included.
+- License wording now clearly associates `#1901` with the NC landscape contractor credential.
 
-Google currently indexes `https://www.landscapingraleigh.com/`, but the redesign generates canonical URLs for `https://gardenandartlandscapes.com/`. The proposed domain currently has no public DNS record. The live site's `robots.txt` also points to a sitemap on a third domain, `gardenartlandscapes.com`, while `/sitemap.xml` returns a 404.
+## Critical live-site discrepancy
 
-The safest SEO choice is to keep `landscapingraleigh.com` as the primary domain and redirect the brand domain to it. If the client deliberately wants the new brand domain, deploy it first, redirect every old URL to its closest new equivalent with permanent 301 redirects, and verify both domains in Google Search Console.
+Production is still serving the older site. Current live checks found:
 
-### 2. Local business information is inconsistent
+- The live canonical and social-image URLs still point to `gardenandartlandscapes.com`.
+- `/robots.txt` returns `404`.
+- `/sitemap.xml` returns `404`.
+- `/privacy/` is not deployed.
+- No JSON-LD is live.
+- The new security and cache rules are not live.
 
-The new site uses `4909 Wood Valley Drive`; BBB and several older listings use `5732 N Hawthorne Way`. The business name also appears in more than one form. The phone number is consistent.
+Deploying the current build fixes these items together. After deployment, recrawl the homepage, robots file, sitemap and privacy page before submitting the sitemap in Search Console.
 
-Confirm the authoritative business name and current address, then correct the major listings. If clients do not visit a staffed and signed business location, treat the company as a service-area business, hide the home address on Google, and consider removing it from the public website. Google explicitly requires service-area businesses that do not receive customers at their address to hide it.
+## Remaining work
 
-### 3. Google Business Profile should come before a blog
+### Owner or account access required
 
-The exact profile could not be verified in public search, so ownership and status must be checked while signed into Norman's Google account. Claiming or correcting the profile is the highest-value local growth action. Complete the services, service areas, hours, business description, photos, and website link; then establish a consistent review-request process.
+1. Verify the website in Google Search Console and submit `https://www.landscapingraleigh.com/sitemap.xml`.
+2. Set up GA4 and track form submissions, phone taps and email clicks.
+3. Claim or verify the Google Business Profile and confirm the primary category, hours, service areas, services, website and photos.
+4. Confirm whether customers visit a staffed business location. If this is a home-based service-area business, hide the street address on Google and consider showing only Raleigh, NC on the website.
+5. Resolve the address conflict between `4909 Wood Valley Drive` and older listings using `5732 N Hawthorne Way`.
+6. Verify that license `#1901`, bonding and insurance claims are current.
+7. Confirm owned social and directory profile URLs before adding `sameAs` schema.
+8. Correct the authoritative name, address policy and phone across BBB, Bing Places, Apple Business, Porch, Yelp, Houzz, Angi and Yellow Pages.
 
-Google says local visibility is primarily shaped by relevance, distance, and prominence, and that complete information, links, and reviews contribute to those signals.
+### Content and authority work
 
-### 4. The site needs dedicated revenue pages
+1. Create focused Raleigh service pages for landscape design, hardscaping, irrigation/drainage, outdoor lighting and garden maintenance.
+2. Turn existing photography into project case studies with location, challenge, approach and result.
+3. Add genuine reviews or testimonials and link to license verification.
+4. Explain the inquiry process, expected response time, project fit and typical timeline.
+5. Publish two useful local pieces per month, alternating a project story with a homeowner guide.
+6. Add a focused About page for Norman and a separate Garden Art page when the content schedule allows.
 
-The homepage contains approximately 493 rendered words and is the only indexable content page. Each service receives only one sentence, and all internal navigation points to page anchors. This makes it difficult to rank for searches such as “hardscaping Raleigh,” “rain garden installation Raleigh,” or “landscape lighting Raleigh.”
+### Performance and sharing improvements
 
-Create dedicated pages for:
+1. The image library is still about 11 MB. Generate responsive AVIF/WebP variants and `srcset` values through Astro’s image pipeline.
+2. Target roughly 150–300 KB for the hero and under 200 KB for most delivered gallery variants.
+3. A dedicated branded 1,200 × 630 social card would improve brand recognition, although the current hero image and metadata are technically usable.
+4. Verify the deployed preview with Facebook Sharing Debugger and LinkedIn Post Inspector.
+5. Confirm all domain variants redirect to the canonical `https://www.landscapingraleigh.com/` URL in one hop after deployment.
 
-- Landscape design in Raleigh
-- Hardscaping and retaining walls
-- Irrigation, rainwater, and drainage
-- Outdoor landscape lighting
-- Garden and lawn maintenance
-- Sod installation
+## Recommended order
 
-Each page should use original project photos, explain Norman's process, include Raleigh-specific expertise, show credentials and proof, answer common buying questions, and end with a clear inquiry action.
-
-### 5. Technical foundations are incomplete
-
-The Astro build succeeds and produces crawlable static HTML. Titles, descriptions, canonicals, social metadata, headings, the homepage image alt text, and the thank-you page's `noindex` directive are implemented well.
-
-Before launch, add:
-
-- A correct `robots.txt` and XML sitemap
-- Local business and service JSON-LD, validated with Google's Rich Results Test
-- Search Console and analytics
-- A privacy page for the contact form
-- Deployment redirects and security/cache headers
-
-Do not copy the old site's unsupported `AggregateRating` markup unless the displayed review data is genuine, visible on the page, and eligible under Google's guidelines.
-
-### 6. Images need another optimization pass
-
-The 29 image assets total approximately 13.3 MB. The outdoor-lighting PNG alone is about 2.2 MB, portfolio images approach 1 MB each, and the HTML images do not include intrinsic width and height attributes. Convert large images to responsive AVIF/WebP variants, add `srcset`, `sizes`, width, and height, and serve the hero through an optimized image component rather than only as a CSS background.
-
-## Content and trust opportunities
-
-The strongest differentiator is Norman's combination of horticultural experience, sustainable practices, original art, and more than 20 years working in the Triangle. Preserve the brand-led hero, but make the supporting sentence explicitly say “landscape design, installation, and garden care in Raleigh.”
-
-Turn project photos into individual case studies that explain the client's goal, site challenge, materials or plant choices, Norman's approach, location, and result. Add selected testimonials, a link to license verification, a clear description of what happens after an inquiry, and a domain-based email address when practical.
-
-Start with Raleigh. Add Cary, Durham, Chapel Hill, or Holly Springs landing pages only when each page can contain distinct projects, testimonials, and genuinely local information. Avoid duplicated city pages.
-
-## Recommended publishing cadence
-
-- Google Business Profile: one useful update every two weeks; weekly is reasonable during the active season when there is real project news.
-- Photos: add authentic before-and-after or finished-project photos after each completed project, or at least monthly.
-- Reviews: ask every completed customer and respond promptly; never gate or incentivize reviews.
-- Blog and case studies: two strong pieces per month, alternating a homeowner guide and a project story.
-- Email: one seasonal newsletter per quarter with explicit opt-in. This is a retention and referral channel, not the first acquisition priority.
-
-## Sources
-
-- [Google: improve local ranking](https://support.google.com/business/answer/7091)
-- [Google: service-area business rules](https://support.google.com/business/answer/9157481)
-- [Google: Business Profile posts](https://support.google.com/business/answer/7342169)
-- [Google: manage customer reviews](https://support.google.com/business/answer/3474050)
-- [Google Search Central: LocalBusiness structured data](https://developers.google.com/search/docs/appearance/structured-data/local-business)
-- [Google Search Central: sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview)
-- [Current indexed website](https://www.landscapingraleigh.com/)
-- [BBB business profile](https://www.bbb.org/us/nc/raleigh/profile/landscape-design/garden-art-landscapes-0593-90123309)
+1. Merge and deploy the current build.
+2. Verify Search Console, submit the sitemap and set up analytics conversions.
+3. Verify and complete the Google Business Profile.
+4. Confirm address policy, hours, license and owned profile URLs.
+5. Publish service pages, reviews and case studies.
+6. Add responsive image formats and a branded social card.
 
 ## Audit limitations
 
-The redesign was audited from source and its production build. The new domain was not live, and no Google Business Profile access, Search Console, analytics, backlink provider, real-user Core Web Vitals, or geo-grid ranking data was available. Scores should be refreshed after launch and again after 60–90 days of data collection.
+No authenticated Search Console, GA4 or Google Business Profile data was available. Live Core Web Vitals, index coverage, query performance, map rankings, review velocity and a comprehensive backlink profile must be assessed after deployment and account access.

@@ -1,55 +1,68 @@
-# Garden & Art Landscapes: 90-Day SEO Growth Plan
+# Garden & Art Landscapes: SEO Action Plan
 
-## Days 1–14: protect and establish the foundation
+## Completed in code
 
-1. Decide the primary domain. The recommended low-risk choice is `landscapingraleigh.com`; redirect all alternate domains to it. If moving to the new domain, prepare one-to-one permanent redirects before launch.
-2. Correct `robots.txt`, generate an XML sitemap, and submit the final property in Google Search Console and Bing Webmaster Tools.
-3. Claim or verify the Google Business Profile. Configure it as a service-area business if customers do not visit the address.
-4. Confirm one authoritative business name, address policy, phone number, license number, service areas, and hours.
-5. Correct the highest-visibility citation conflicts, beginning with Google, BBB, Apple Business, Bing Places, Porch, Yelp, Houzz, Angi, and Yellow Pages.
-6. Add GA4 or a privacy-conscious analytics tool and track form submissions, phone-link clicks, email clicks, and Google Business Profile visits with UTMs.
-7. Add LocalBusiness/Service structured data, a privacy page, correct redirects, and deployment headers.
+- [x] Correct canonical production domain
+- [x] Homepage title, description and Raleigh-focused hero copy
+- [x] Open Graph and X/Twitter sharing metadata
+- [x] Share-image dimensions and descriptive alt text
+- [x] Crawlable static HTML and heading hierarchy
+- [x] `robots.txt` and XML sitemap
+- [x] HomeAndConstructionBusiness, Person, WebSite and service schema
+- [x] Privacy page and form privacy notice
+- [x] `noindex, follow` on proposal and thank-you pages
+- [x] Image alt text and intrinsic dimensions
+- [x] High-priority hero image loading
+- [x] Netlify security headers and asset caching
+- [x] Direct apex-domain redirects
+- [x] Clear license wording
 
-## Days 15–45: build pages that can rank and convert
+## Do immediately after deployment
 
-1. Publish the first three service pages:
-   - `/landscape-design-raleigh/`
-   - `/hardscaping-raleigh/`
-   - `/irrigation-rainwater-raleigh/`
-2. Publish two detailed project case studies using original photography and specific project facts.
-3. Add testimonials, license verification, the project process, typical project fit, expected response time, and what happens after an inquiry.
-4. Start a simple review workflow: send every completed customer the direct Google review link, then reply to each review.
-5. Begin biweekly Google Business Profile posts and monthly project-photo updates.
-6. Optimize the largest images and add responsive formats and intrinsic dimensions.
+- [ ] Confirm `/`, `/robots.txt`, `/sitemap.xml` and `/privacy/` return `200`
+- [ ] Confirm the live canonical and social image use `www.landscapingraleigh.com`
+- [ ] Validate JSON-LD with Google’s Rich Results Test and Schema.org Validator
+- [ ] Verify the site in Google Search Console
+- [ ] Submit `/sitemap.xml` in Search Console
+- [ ] Set up GA4 and form, phone and email conversion events
+- [ ] Test the share preview in Facebook and LinkedIn tools
+- [ ] Confirm all domain variants redirect in one hop
 
-## Days 46–90: expand useful local authority
+## Information needed from Norman
 
-1. Publish the remaining priority service pages for lighting, maintenance, and sod.
-2. Publish two strong pieces per month. Start with:
-   - What landscape design costs in Raleigh
-   - Working with Raleigh's clay soil
-   - Native plants for shaded Raleigh gardens
-   - Rain gardens and drainage for Triangle properties
-3. Pursue three to five genuine local mentions or links through nurseries, builders, garden clubs, the JC Raulston Arboretum community, sustainable-landscape programs, and completed-project partners.
-4. Add a quarterly seasonal email opt-in. Do not automatically subscribe contact-form leads.
-5. Review Search Console queries, map calls and clicks, organic inquiries, and form conversion rate monthly. Improve pages based on the queries and services that generate qualified leads.
+- [ ] Correct current public address
+- [ ] Whether customers visit that address or it should be hidden as a service-area business
+- [ ] Current business hours
+- [ ] Confirmed service areas
+- [ ] Current license, bonding and insurance status
+- [ ] Owned Google, Facebook, Instagram, LinkedIn, Houzz and directory profile URLs
+- [ ] Google Business Profile manager access
 
-## Priority order
+## First 30 days
 
-1. Domain and redirects
-2. Google Business Profile and NAP cleanup
-3. Search Console, analytics, sitemap, schema
-4. Dedicated service pages
-5. Reviews and project case studies
-6. Local guides and partnerships
-7. Quarterly mailing list
+- [ ] Claim or complete the Google Business Profile
+- [ ] Correct conflicting directory listings
+- [ ] Create the direct review link and request template
+- [ ] Publish the first Raleigh service page
+- [ ] Publish the first before-and-after project case study
+- [ ] Add verified testimonials or Google reviews to the website
 
-## Success measures for the first 90 days
+## Next 60–90 days
 
-- One canonical domain with clean redirects and no crawl-file conflicts
-- Verified and fully completed Google Business Profile
-- Consistent core business information across major listings
-- Six useful service pages and at least two project case studies
-- A steady stream of genuine recent reviews
-- Increasing non-brand impressions for Raleigh service queries
-- Measurable organic and Maps phone calls, form submissions, and qualified inquiries
+- [ ] Publish the remaining priority service pages
+- [ ] Publish two strong local guides or project stories per month
+- [ ] Add authentic project photos to Google at least monthly
+- [ ] Post one useful Google update every two weeks
+- [ ] Send one opt-in seasonal email
+- [ ] Review Search Console, GA4 and Business Profile results monthly
+- [ ] Convert large images to responsive AVIF/WebP variants
+- [ ] Create a branded 1,200 × 630 social sharing card
+
+## Monthly success measures
+
+- Non-brand Google impressions for Raleigh service searches
+- Organic and Google Business Profile calls
+- Contact-form submissions and qualified inquiries
+- Review count, rating and response time
+- Top landing pages and converting searches
+- Published project photos, case studies and local guides
