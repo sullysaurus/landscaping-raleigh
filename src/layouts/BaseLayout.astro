@@ -6,9 +6,10 @@ interface Props {
   description: string;
   noindex?: boolean;
   image?: string;
+  schema?: Record<string, unknown>;
 }
 
-const { title, description, noindex = false, image = '/img/hero-garden.jpg' } = Astro.props;
+const { title, description, noindex = false, image = '/img/hero-garden.jpg', schema } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
 ---
@@ -30,6 +31,7 @@ const socialImage = new URL(image, Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
     <meta name="theme-color" content="#18352b" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />

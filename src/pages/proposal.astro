@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeafMark from '../components/LeafMark.astro';
+
+const services = [
+  {
+    title: 'Google Business Profile',
+    copy: 'Create or claim the listing seen in Google Search and Maps. Complete the services, contact details and photos, then publish up to two updates each month.',
+    value: 'Be easier to find and contact locally.',
+  },
+  {
+    title: 'Google Search Console',
+    copy: 'Set up Google’s free search-reporting tool, submit the website, fix indexing problems and see which searches lead people to Garden & Art.',
+    value: 'Know how customers find the website.',
+  },
+  {
+    title: 'Google Analytics',
+    copy: 'Set up private website measurement and track the actions that matter: contact forms, phone taps and email clicks—not personal customer information.',
+    value: 'Connect the work to real inquiries.',
+  },
+  {
+    title: 'Local website content',
+    copy: 'Improve local search details and publish one Raleigh-area project story or helpful guide each month within the available time.',
+    value: 'Build visibility and explain the work clearly.',
+  },
+  {
+    title: 'Reviews & reputation',
+    copy: 'Create a direct Google review link and ready-to-send request, monitor new reviews and help write thoughtful responses.',
+    value: 'Turn happy clients into trusted proof.',
+  },
+  {
+    title: 'Project photography',
+    copy: 'Photograph one focused project each month, including matched before-and-after views, then edit and prepare the images for every channel.',
+    value: 'Show the quality and transformation visually.',
+  },
+  {
+    title: 'Instagram & Facebook',
+    copy: 'Reuse the strongest project photos, Google updates and website stories on Instagram and Facebook instead of creating three separate campaigns.',
+    value: 'Stay visible in more places without wasting time.',
+  },
+  {
+    title: 'Mailing list & email',
+    copy: 'Set up an opt-in list, branded template and website signup. Send one seasonal email and prepare a simple quarterly rhythm.',
+    value: 'Encourage repeat work and referrals.',
+  },
+  {
+    title: 'Clear reporting',
+    copy: 'Build a live dashboard, send a short weekly update and provide monthly insights on visibility, reviews, calls and inquiries.',
+    value: 'See what was done, what worked and what is next.',
+  },
+];
+---
+
+<BaseLayout
+  title="Local Growth Proposal | Garden & Art Landscapes"
+  description="A concise 90-day local visibility and client growth proposal for Garden & Art Landscapes."
+  noindex
+>
+  <main class="sheet">
+    <header class="sheet-header">
+      <a class="brand" href="/" aria-label="Garden and Art Landscapes home">
+        <LeafMark />
+        <span>Garden <i>&</i> Art Landscapes</span>
+      </a>
+      <p>90-day growth partnership <span>·</span> July 2026</p>
+    </header>
+
+    <section class="proposal-hero">
+      <div class="proposal-hero-copy">
+        <p class="eyebrow">The outcome</p>
+        <h1>More local visibility.<br />More trust. <em>More inquiries.</em></h1>
+      </div>
+      <p class="proposal-hero-note">A focused 90-day program that turns Garden & Art’s experience, reputation and project photography into a measurable system for client growth.</p>
+    </section>
+
+    <section class="proposal-services" aria-labelledby="services-title">
+      <div class="services-heading">
+        <p class="eyebrow">What I will handle</p>
+        <h2 id="services-title">Everything below is included.</h2>
+        <p>Google remains the main focus. The same strong photos and stories are then reused across social and email to create more value from every hour.</p>
+      </div>
+      <div class="proposal-service-list">
+      {services.map((service, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>{service.title}</h3>
+            <p>{service.copy}</p>
+            <p class="value">✓ {service.value}</p>
+          </div>
+        </article>
+      ))}
+      </div>
+    </section>
+
+    <section class="program">
+      <div class="included">
+        <div class="section-heading">
+          <p class="eyebrow">How the 90 days work</p>
+          <p>Month one builds the foundation. Months two and three create fresh proof, maintain visibility and use real inquiry data to guide the next priority.</p>
+        </div>
+        <div class="month-row">
+          <p><span>01</span><strong>Set up</strong> Google, tracking, reviews, email and the first photo session.</p>
+          <p><span>02–03</span><strong>Maintain</strong> photos, posts, content, reviews, reporting and improvements.</p>
+        </div>
+      </div>
+
+      <aside class="investment">
+        <p class="eyebrow light">Simple investment</p>
+        <div class="rate"><strong>$100</strong><span>per hour</span></div>
+        <div class="price-row waived"><span>One-time setup</span><strong><s>$500</s> Waived</strong></div>
+        <div class="price-row"><span>Monthly · 8 hours</span><strong>$800</strong></div>
+        <div class="total"><span>90-day investment</span><strong>$2,400</strong></div>
+        <p class="payment">Preferred-client courtesy: the usual $500 setup fee is waived. $800 per month for three months. Extra time only with approval.</p>
+      </aside>
+    </section>
+
+    <section class="next-step">
+      <div>
+        <p class="eyebrow light">Recommended next step</p>
+        <h2>Confirm Google access and official business details.</h2>
+      </div>
+    </section>
+
+    <footer class="sheet-footer">
+      <p>Prepared by <a href="https://dannysullivan.ai" target="_blank" rel="noopener noreferrer">Danny Sullivan</a></p>
+      <p>Time is tracked and summarized. Search rankings are not guaranteed.</p>
+    </footer>
+  </main>
+
+  <style>
+    :global(body) { background: var(--paper-deep); }
+    .sheet { background: var(--paper); box-shadow: 0 18px 60px rgba(24,53,43,.12); margin: 24px auto; max-width: 1200px; min-height: 100vh; }
+    .sheet-header { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; margin: 0 auto; max-width: 1360px; padding: 23px 48px; }
+    .sheet-header > p { color: var(--ink-muted); font-size: 9px; letter-spacing: .14em; margin: 0; text-transform: uppercase; }
+    .sheet-header > p span { color: var(--clay); margin: 0 5px; }
+    .brand { align-items: center; display: flex; font-family: var(--serif); font-size: 20px; gap: 9px; text-decoration: none; }
+    .brand span { white-space: nowrap; }
+    .brand svg { color: var(--forest); height: 30px; width: 30px; }
+    .brand i { color: var(--clay); font-weight: 400; }
+    .proposal-hero { align-items: end; display: grid; gap: clamp(48px, 8vw, 120px); grid-template-columns: 1.45fr .55fr; margin: 0 auto; max-width: 1360px; padding: 64px 48px 54px; }
+    .proposal-hero h1 { font-size: clamp(52px, 5.65vw, 82px); line-height: .92; }
+    .proposal-hero-note { color: var(--ink-soft); font-size: 14px; line-height: 1.75; margin: 0 0 4px; max-width: 440px; }
+    .proposal-services { background: var(--paper-deep); border-top: 1px solid var(--line); padding: 44px 48px; }
+    .services-heading { align-items: end; display: grid; gap: 30px; grid-template-columns: .6fr 1.3fr .8fr; margin-bottom: 30px; }
+    .services-heading .eyebrow { margin: 0; }
+    .services-heading h2 { font-size: 34px; line-height: 1.02; }
+    .services-heading > p:last-child { color: var(--ink-soft); font-size: 10px; line-height: 1.6; margin: 0; }
+    .proposal-service-list { border-left: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); }
+    .proposal-service-list article { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); display: grid; gap: 10px; grid-template-columns: 22px 1fr; min-height: 174px; padding: 20px 18px; }
+    .proposal-service-list article > span { color: var(--clay-dark); font-size: 8px; letter-spacing: .12em; padding-top: 5px; }
+    .proposal-service-list h3 { color: var(--forest); font-family: var(--serif); font-size: 21px; font-weight: 400; line-height: 1; margin: 0 0 10px; }
+    .proposal-service-list p { color: var(--ink-soft); font-size: 11px; line-height: 1.5; margin: 0; }
+    .proposal-service-list .value { color: var(--clay-dark); font-size: 10px; font-weight: 700; margin-top: 10px; }
+    .program { display: grid; grid-template-columns: 1.5fr .5fr; margin: 0 auto; max-width: 1360px; padding: 40px 48px; }
+    .included { padding: 5px 64px 0 0; }
+    .section-heading { align-items: end; display: flex; gap: 48px; justify-content: space-between; }
+    .section-heading .eyebrow { margin-bottom: 0; white-space: nowrap; }
+    .section-heading > p:last-child { color: var(--ink-soft); font-size: 11px; line-height: 1.55; margin: 0; max-width: 400px; }
+    .month-row { border-top: 1px solid var(--line); display: grid; gap: 28px; grid-template-columns: 1fr 1fr; margin-top: 24px; }
+    .month-row p { color: var(--ink-soft); font-size: 10px; line-height: 1.6; margin: 0; padding-top: 14px; }
+    .month-row span { color: var(--clay-dark); display: block; font-size: 8px; letter-spacing: .12em; margin-bottom: 5px; }
+    .month-row strong { color: var(--forest); font-family: var(--serif); font-size: 17px; font-weight: 400; }
+    .investment { background: var(--forest-deep); color: var(--white); padding: 27px 30px 25px; }
+    .rate { align-items: baseline; display: flex; gap: 8px; margin: -2px 0 15px; }
+    .rate strong { color: var(--clay); font-family: var(--serif); font-size: 44px; font-weight: 400; letter-spacing: -.04em; }
+    .rate span { color: rgba(255,253,247,.55); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+    .price-row { border-top: 1px solid var(--line-light); display: flex; font-size: 10px; justify-content: space-between; padding: 9px 0; }
+    .price-row span { color: rgba(255,253,247,.6); }
+    .price-row strong { font-weight: 600; }
+    .price-row.waived strong { color: var(--clay); }
+    .price-row.waived s { color: rgba(255,253,247,.42); font-weight: 400; margin-right: 5px; }
+    .total { align-items: end; border-top: 1px solid var(--line-light); display: flex; justify-content: space-between; padding-top: 12px; }
+    .total span { color: rgba(255,253,247,.58); font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
+    .total strong { font-family: var(--serif); font-size: 25px; font-weight: 400; }
+    .payment { color: rgba(255,253,247,.48); font-size: 8px; line-height: 1.5; margin: 11px 0 0; }
+    .next-step { align-items: center; background: var(--clay); color: var(--white); display: flex; justify-content: space-between; padding: 24px 48px; }
+    .next-step .eyebrow { margin-bottom: 5px; }
+    .next-step h2 { font-family: var(--serif); font-size: 25px; font-weight: 400; margin: 0; }
+    .sheet-footer { align-items: center; background: var(--forest-deep); color: rgba(255,253,247,.45); display: flex; font-size: 8px; justify-content: space-between; letter-spacing: .04em; padding: 15px 48px; }
+    .sheet-footer p { margin: 0; }
+    .sheet-footer a { color: inherit; text-underline-offset: 3px; }
+    @media (max-width: 760px) {
+      .sheet-header { align-items: flex-start; gap: 16px; padding: 20px; }
+      .sheet { box-shadow: none; margin: 0; }
+      .sheet-header > p { line-height: 1.5; max-width: 115px; text-align: right; }
+      .sheet-header > p span { display: none; }
+      .brand { font-size: 16px; }
+      .brand svg { height: 27px; width: 27px; }
+      .proposal-hero { gap: 28px; grid-template-columns: 1fr; padding: 60px 20px 48px; }
+      .proposal-hero h1 { font-size: clamp(45px, 13vw, 60px); }
+      .proposal-services { padding: 44px 20px; }
+      .services-heading { align-items: flex-start; gap: 14px; grid-template-columns: 1fr; }
+      .services-heading h2 { font-size: 32px; }
+      .proposal-service-list { grid-template-columns: 1fr; }
+      .proposal-service-list article { min-height: 0; padding: 23px 18px; }
+      .proposal-service-list p { font-size: 12px; }
+      .proposal-service-list .value { font-size: 11px; }
+      .program { grid-template-columns: 1fr; padding: 44px 20px; }
+      .included { padding: 0 0 32px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+      .month-row { grid-template-columns: 1fr; }
+      .investment { padding: 28px; }
+      .next-step { align-items: flex-start; flex-direction: column; gap: 22px; padding: 34px 20px; }
+      .next-step h2 { font-size: 24px; line-height: 1.15; }
+      .sheet-footer { align-items: flex-start; flex-direction: column; gap: 8px; padding: 17px 20px; }
+    }
+    @media print {
+      @page { margin: 0; size: letter; }
+      :global(body) { background: var(--paper); }
+      .sheet { -webkit-print-color-adjust: exact; box-shadow: none; margin: 0; max-width: none; print-color-adjust: exact; }
+      .sheet-header { padding-top: 18px; }
+      .proposal-hero { padding-bottom: 42px; padding-top: 48px; }
+      .sheet-footer { padding-bottom: 12px; padding-top: 12px; }
+    }
+  </style>
+</BaseLayout>

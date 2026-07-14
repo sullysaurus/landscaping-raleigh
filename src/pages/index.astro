@@ -3,44 +3,81 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import LeafMark from '../components/LeafMark.astro';
 import ArrowIcon from '../components/ArrowIcon.astro';
 
+// Local full-page previews can jump past native lazy-loaded images before they
+// are requested. Load them eagerly in development while preserving the lighter
+// production behavior.
+const belowFoldLoading = import.meta.env.DEV ? 'eager' : 'lazy';
+
 const services = [
-  { number: '01', title: 'Landscape design', copy: 'Thoughtful plant selection, layout, lighting and irrigation—composed around how you want to live outdoors.', image: '/img/services/landscape.jpg' },
-  { number: '02', title: 'Hardscapes', copy: 'Patios, retaining walls and walkways that give the garden structure and age beautifully.', image: '/img/services/firepit.jpg' },
-  { number: '03', title: 'Water systems', copy: 'Rainwater harvesting and efficient irrigation systems designed to conserve natural resources.', image: '/img/services/sprinkler.jpg' },
-  { number: '04', title: 'Outdoor lighting', copy: 'Subtle, custom lighting that extends the garden into the evening without overpowering it.', image: '/img/services/lighting.png' },
-  { number: '05', title: 'Lawn & bed care', copy: 'Practical, attentive maintenance for healthy lawns, perennial beds and seasonal color.', image: '/img/services/lawn.jpg' },
-  { number: '06', title: 'Sod installation', copy: 'Durable, healthy new lawns installed efficiently for everyday foot traffic and play.', image: '/img/services/sod.jpg' },
-  { number: '07', title: 'Cleanups & mulching', copy: 'Seasonal clearing, re-edging and mulching that brings order and vitality back to the garden.', image: '/img/services/cleanup.jpg' },
-  { number: '08', title: 'Tree work & pruning', copy: 'Careful pruning that supports the long-term form, health and safety of trees and shrubs.', image: '/img/services/pruning.jpg' },
+  { number: '01', title: 'Landscape design', copy: 'Thoughtful plant selection, layout, lighting and irrigation—composed around how you want to live outdoors.', image: '/img/services/landscape.jpg', width: 972, height: 972 },
+  { number: '02', title: 'Hardscapes', copy: 'Patios, retaining walls and walkways that give the garden structure and age beautifully.', image: '/img/services/firepit.jpg', width: 1024, height: 1024 },
+  { number: '03', title: 'Water systems', copy: 'Rainwater harvesting and efficient irrigation systems designed to conserve natural resources.', image: '/img/services/sprinkler.jpg', width: 889, height: 887 },
+  { number: '04', title: 'Outdoor lighting', copy: 'Subtle, custom lighting that extends the garden into the evening without overpowering it.', image: '/img/services/lighting.jpg', width: 1067, height: 1067 },
+  { number: '05', title: 'Lawn & bed care', copy: 'Practical, attentive maintenance for healthy lawns, perennial beds and seasonal color.', image: '/img/services/lawn.jpg', width: 250, height: 250 },
+  { number: '06', title: 'Sod installation', copy: 'Durable, healthy new lawns installed efficiently for everyday foot traffic and play.', image: '/img/services/sod.jpg', width: 400, height: 396 },
+  { number: '07', title: 'Cleanups & mulching', copy: 'Seasonal clearing, re-edging and mulching that brings order and vitality back to the garden.', image: '/img/services/cleanup.jpg', width: 418, height: 420 },
+  { number: '08', title: 'Tree work & pruning', copy: 'Careful pruning that supports the long-term form, health and safety of trees and shrubs.', image: '/img/services/pruning.jpg', width: 396, height: 399 },
 ];
 
 const landscapes = [
-  { src: '/img/portfolio/1.jpg', alt: 'Curved block retaining wall beside a freshly mulched planting bed', caption: 'Curved retaining wall & planting bed' },
-  { src: '/img/portfolio/6.jpg', alt: 'Natural stone garden pond with a small waterfall', caption: 'Natural stone pond & waterfall' },
-  { src: '/img/portfolio/3.jpg', alt: 'Custom wooden garden gate opening onto a flagstone path', caption: 'Garden gate & flagstone path' },
-  { src: '/img/portfolio/10.jpg', alt: 'Brick patio garden with a fountain and new plantings', caption: 'Brick patio garden & fountain' },
-  { src: '/img/portfolio/12.jpg', alt: 'Terraced retaining walls built around a mature oak tree', caption: 'Terraced beds around a mature oak' },
-  { src: '/img/portfolio/14.jpg', alt: 'Large custom stone outdoor fireplace and flagstone patio', caption: 'Stone fireplace & flagstone patio' },
-  { src: '/img/portfolio/16.JPG', alt: 'Circular brick fire pit with stone garden benches', caption: 'Woodland fire pit & stone seating' },
+  { src: '/img/portfolio/1.jpg', alt: 'Curved block retaining wall beside a freshly mulched planting bed', caption: 'Curved retaining wall & planting bed', width: 1350, height: 1800 },
+  { src: '/img/portfolio/6.jpg', alt: 'Natural stone garden pond with a small waterfall', caption: 'Natural stone pond & waterfall', width: 1800, height: 1350 },
+  { src: '/img/portfolio/3.jpg', alt: 'Custom wooden garden gate opening onto a flagstone path', caption: 'Garden gate & flagstone path', width: 1350, height: 1800 },
+  { src: '/img/portfolio/10.jpg', alt: 'Brick patio garden with a fountain and new plantings', caption: 'Brick patio garden & fountain', width: 1200, height: 1600 },
+  { src: '/img/portfolio/12.jpg', alt: 'Terraced retaining walls built around a mature oak tree', caption: 'Terraced beds around a mature oak', width: 1200, height: 1600 },
+  { src: '/img/portfolio/14.jpg', alt: 'Large custom stone outdoor fireplace and flagstone patio', caption: 'Stone fireplace & flagstone patio', width: 1000, height: 1333 },
+  { src: '/img/portfolio/16.JPG', alt: 'Circular brick fire pit with stone garden benches', caption: 'Woodland fire pit & stone seating', width: 1000, height: 1333 },
 ];
 
 const art = [
-  { src: '/img/portfolio/s1.jpg', alt: 'Copper fish sculpture mounted on a tall purple wooden panel', caption: 'Copper fish study' },
-  { src: '/img/portfolio/s2.jpg', alt: 'Copper flower and leaf relief arranged on a purple panel', caption: 'Botanical copper relief' },
-  { src: '/img/portfolio/s3.jpg', alt: 'Long abstract metal face mounted on a dark wooden plank', caption: 'Long-form garden figure' },
-  { src: '/img/portfolio/s4.jpg', alt: 'Tall pink wooden garden figure with copper eyes and mouth', caption: 'Copper-faced tree figure' },
-  { src: '/img/portfolio/s5.jpg', alt: 'Lime green wooden garden face with metal eyes and mouth', caption: 'Lime garden face' },
-  { src: '/img/portfolio/s6.jpg', alt: 'Curved wooden face sculpture with copper features mounted on a tree', caption: 'Curved copper portrait' },
-  { src: '/img/portfolio/s7.jpg', alt: 'Tall terracotta garden panel with an abstract metal figure', caption: 'Terracotta garden panel' },
-  { src: '/img/portfolio/s8.jpg', alt: 'Purple painted wooden face with simple copper features', caption: 'Purple garden portrait' },
-  { src: '/img/portfolio/s9.jpg', alt: 'Abstract metal face assembled on a deep blue wooden panel', caption: 'Blue found-metal portrait' },
-  { src: '/img/portfolio/s10.jpg', alt: 'Found-metal face with spiral eyes framed in blue wood', caption: 'Spiral-eye portrait' },
-  { src: '/img/portfolio/s11.jpg', alt: 'Minimal copper face mounted on a square natural wood panel', caption: 'Minimal copper face' },
-  { src: '/img/portfolio/s12.jpg', alt: 'Tall hammered copper figure on red and blue wooden slats', caption: 'Hammered copper figure' },
+  { src: '/img/portfolio/s1.jpg', alt: 'Copper fish sculpture mounted on a tall purple wooden panel', caption: 'Copper fish study', width: 375, height: 500 },
+  { src: '/img/portfolio/s2.jpg', alt: 'Copper flower and leaf relief arranged on a purple panel', caption: 'Botanical copper relief', width: 375, height: 500 },
+  { src: '/img/portfolio/s3.jpg', alt: 'Long abstract metal face mounted on a dark wooden plank', caption: 'Long-form garden figure', width: 480, height: 640 },
+  { src: '/img/portfolio/s4.jpg', alt: 'Tall pink wooden garden figure with copper eyes and mouth', caption: 'Copper-faced tree figure', width: 480, height: 640 },
+  { src: '/img/portfolio/s5.jpg', alt: 'Lime green wooden garden face with metal eyes and mouth', caption: 'Lime garden face', width: 480, height: 640 },
+  { src: '/img/portfolio/s6.jpg', alt: 'Curved wooden face sculpture with copper features mounted on a tree', caption: 'Curved copper portrait', width: 360, height: 480 },
+  { src: '/img/portfolio/s7.jpg', alt: 'Tall terracotta garden panel with an abstract metal figure', caption: 'Terracotta garden panel', width: 360, height: 480 },
+  { src: '/img/portfolio/s8.jpg', alt: 'Purple painted wooden face with simple copper features', caption: 'Purple garden portrait', width: 360, height: 480 },
+  { src: '/img/portfolio/s9.jpg', alt: 'Abstract metal face assembled on a deep blue wooden panel', caption: 'Blue found-metal portrait', width: 360, height: 480 },
+  { src: '/img/portfolio/s10.jpg', alt: 'Found-metal face with spiral eyes framed in blue wood', caption: 'Spiral-eye portrait', width: 480, height: 640 },
+  { src: '/img/portfolio/s11.jpg', alt: 'Minimal copper face mounted on a square natural wood panel', caption: 'Minimal copper face', width: 480, height: 640 },
+  { src: '/img/portfolio/s12.jpg', alt: 'Tall hammered copper figure on red and blue wooden slats', caption: 'Hammered copper figure', width: 500, height: 668 },
 ];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.landscapingraleigh.com/#organization',
+      name: 'Garden & Art Landscapes',
+      alternateName: 'Garden & Art by Norman Rabins, Ltd.',
+      url: 'https://www.landscapingraleigh.com/',
+      image: 'https://www.landscapingraleigh.com/img/hero-garden.jpg',
+      telephone: '+1-919-235-2245',
+      email: 'normanrabins@gmail.com',
+      foundingDate: '2005',
+      founder: {
+        '@type': 'Person',
+        name: 'Norman Rabins',
+        jobTitle: 'Founder, horticulturist and artist',
+      },
+      areaServed: ['Raleigh', 'Durham', 'Chapel Hill', 'Cary', 'Holly Springs'],
+      knowsAbout: ['Landscape design', 'Hardscaping', 'Rainwater harvesting', 'Irrigation', 'Outdoor lighting', 'Garden maintenance'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://www.landscapingraleigh.com/#website',
+      url: 'https://www.landscapingraleigh.com/',
+      name: 'Garden & Art Landscapes',
+      publisher: { '@id': 'https://www.landscapingraleigh.com/#organization' },
+      inLanguage: 'en-US',
+    },
+  ],
+};
 ---
 
-<BaseLayout title="Garden & Art Landscapes | Raleigh Landscape Design" description="Custom landscape design, installation, sustainable water systems and garden art in Raleigh, Durham, Chapel Hill and the Triangle since 2005.">
+<BaseLayout title="Garden & Art Landscapes | Raleigh Landscape Design" description="Custom landscape design, installation, sustainable water systems and garden art in Raleigh, Durham, Chapel Hill and the Triangle since 2005." schema={schema}>
   <a class="skip-link" href="#top">Skip to main content</a>
   <header class="site-header" data-header>
     <a class="brand" href="#top" aria-label="Garden and Art Landscapes home">
@@ -62,12 +99,12 @@ const art = [
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-image" aria-hidden="true"></div>
+      <img class="hero-image" src="/img/hero-garden.jpg" alt="" width="1774" height="887" fetchpriority="high" decoding="async" aria-hidden="true" />
       <div class="hero-scrim"></div>
       <div class="hero-content">
         <p class="eyebrow light">Raleigh, North Carolina · Since 2005</p>
         <h1 id="hero-heading">Landscapes with<br /><em>a point of view.</em></h1>
-        <p class="hero-intro">Artful, sustainable gardens shaped by horticultural knowledge and built for the way you live.</p>
+        <p class="hero-intro">Landscape design, installation and garden care in Raleigh, shaped by horticultural knowledge and an artist’s eye.</p>
         <div class="hero-actions">
           <a class="button button-clay" href="#contact">Plan your landscape <ArrowIcon /></a>
           <a class="text-link light" href="#work">Explore our work <span>↓</span></a>
@@ -108,7 +145,7 @@ const art = [
       <div class="gallery">
         {landscapes.map((image, index) => (
           <figure class={image.class ?? ''}>
-            <img src={image.src} alt={image.alt} loading="lazy" />
+            <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading={belowFoldLoading} decoding="async" />
             <figcaption><span>{String(index + 1).padStart(2, '0')}</span> {image.caption}</figcaption>
           </figure>
         ))}
@@ -126,7 +163,7 @@ const art = [
         {services.map((service) => (
           <article class="service-item">
             <span class="service-number">{service.number}</span>
-            <img src={service.image} alt="" loading="lazy" />
+            <img src={service.image} alt="" width={service.width} height={service.height} loading="lazy" decoding="async" />
             <div>
               <h3>{service.title}</h3>
               <p>{service.copy}</p>
@@ -138,7 +175,7 @@ const art = [
 
     <section id="about" class="about section-pad">
       <div class="about-portrait">
-        <img src="/img/about/norman2.jpg" alt="Norman Rabins, artist and horticulturist" loading="lazy" />
+        <img src="/img/about/norman2.jpg" alt="Norman Rabins, artist and horticulturist" width="1200" height="846" loading={belowFoldLoading} decoding="async" />
         <div class="portrait-caption"><span>Norman Rabins</span><span>Founder · Horticulturist · Artist</span></div>
       </div>
       <div class="about-story">
@@ -175,7 +212,7 @@ const art = [
       <div class="art-grid">
         {art.map((image, index) => (
           <figure>
-            <img src={image.src} alt={image.alt} loading="lazy" />
+            <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading={belowFoldLoading} decoding="async" />
             <figcaption>{image.caption} <span>{String(index + 1).padStart(2, '0')}</span></figcaption>
           </figure>
         ))}
@@ -206,6 +243,7 @@ const art = [
           <button class="button button-clay" type="submit">Send inquiry <ArrowIcon /></button>
         </div>
       </form>
+      <p class="form-privacy">Your information is used only to respond to your inquiry. <a href="/privacy/">Privacy policy</a>.</p>
     </section>
   </main>
 
@@ -215,6 +253,7 @@ const art = [
     <div class="footer-meta">
       <span>© {new Date().getFullYear()} Garden & Art Landscapes</span>
       <span>Licensed · Bonded · Insured #1901</span>
+      <a href="/privacy/">Privacy</a>
       <a href="https://dannysullivan.ai" target="_blank" rel="noopener noreferrer">Website by Danny Sullivan</a>
     </div>
   </footer>
