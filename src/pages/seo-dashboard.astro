@@ -30,21 +30,21 @@ const completed = [
 const nextMoves = [
   {
     number: '01',
-    title: 'Connect Google',
+    title: 'Connect Google and the dashboard',
     owner: 'Danny + Norman',
-    copy: 'Verify Search Console, submit the sitemap, install Analytics conversion tracking and confirm the Google Business Profile.',
+    copy: 'Connect Analytics, Search Console and the Google Business Profile so traffic, searches, calls and completed work appear in one client view.',
   },
   {
     number: '02',
-    title: 'Strengthen local proof',
-    owner: 'Norman supplies access',
-    copy: 'Confirm the address policy, hours, service areas and license status; correct listings and begin a steady review-request rhythm.',
+    title: 'Build the eight new pages',
+    owner: 'First 90 days',
+    copy: 'Publish focused service pages, Norman’s story and a before-and-after project hub so each important service has a clear place to be found.',
   },
   {
     number: '03',
-    title: 'Publish what wins work',
-    owner: 'Ongoing monthly block',
-    copy: 'Build service pages and before-and-after case studies, then use real search and inquiry data to choose the next topic.',
+    title: 'Start the weekly publishing system',
+    owner: 'At least 2 posts weekly',
+    copy: 'Publish keyword-based blog posts, cross-post them to Facebook, Instagram and Google, and support them with Danny’s project photography and video.',
   },
 ];
 
@@ -54,13 +54,32 @@ const accessItems = [
   'Current business hours and service territory',
   'License, bonding and insurance confirmation',
   'Owned social and directory profile links',
+  'Eligible customer contact export for email setup',
+  'Projects approved for before/after photos or video',
   'Recent clients who may be asked for reviews',
+];
+
+const resultCards = [
+  { label: 'Website traffic', value: 'Ready to connect', source: 'Google Analytics', copy: 'Visitors, popular pages and whether traffic is growing.' },
+  { label: 'Google searches', value: 'Ready to connect', source: 'Search Console', copy: 'The exact searches people use and which pages they find.' },
+  { label: 'Calls & inquiries', value: 'Tracking planned', source: 'Website actions', copy: 'Contact forms, phone taps and email clicks from the website.' },
+  { label: 'Work completed', value: 'Tracker ready', source: 'Weekly update', copy: 'Pages, blog posts, social posts, emails, photos and reviews.' },
+];
+
+const programItems = [
+  { label: 'Website expansion', target: '8 new pages', status: 'Planned' },
+  { label: 'Keyword blog content', target: '2+ posts each week', status: 'Planned' },
+  { label: 'Facebook · Instagram · Google', target: 'Cross-post each strong idea', status: 'Planned' },
+  { label: 'Google Business Profile', target: 'Build and maintain', status: 'Needs access' },
+  { label: 'Email list & review campaign', target: 'Set up, import and connect', status: 'Needs contacts' },
+  { label: 'Before/after photos & video', target: 'Capture project proof', status: 'Choose project' },
+  { label: 'Analytics & search reporting', target: 'Dashboard + weekly report', status: 'Needs access' },
 ];
 ---
 
 <BaseLayout
   title="SEO Progress Dashboard | Garden & Art Landscapes"
-  description="A private progress dashboard for the Garden & Art Landscapes SEO program."
+  description="A client progress dashboard for the Garden & Art Landscapes growth program."
   noindex
 >
   <main class="seo-report">
@@ -88,6 +107,40 @@ const accessItems = [
       <article class="complete"><span>01</span><div><strong>Groundwork</strong><small>Technical foundation</small></div><b>Complete</b></article>
       <article class="active"><span>02</span><div><strong>Visibility</strong><small>Google + local proof</small></div><b>Next</b></article>
       <article><span>03</span><div><strong>Growth</strong><small>Content + measurement</small></div><b>Planned</b></article>
+    </section>
+
+    <section class="live-results" aria-labelledby="results-title">
+      <div class="section-title">
+        <div><p class="eyebrow">Live business results</p><h2 id="results-title">One place to see if the work is working.</h2></div>
+        <span>Data appears after Google access is connected</span>
+      </div>
+      <div class="result-card-grid">
+        {resultCards.map((card) => (
+          <article>
+            <span>{card.label}</span>
+            <strong>{card.value}</strong>
+            <p>{card.copy}</p>
+            <small>{card.source}</small>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="program-tracker" aria-labelledby="tracker-title">
+      <header>
+        <p class="eyebrow light">90-day work tracker</p>
+        <h2 id="tracker-title">The plan, the target<br /><em>and the current status.</em></h2>
+        <p>Once the program begins, this section will show completed pages, weekly posts, photo and video work, review outreach and the next action.</p>
+      </header>
+      <div class="tracker-list">
+        {programItems.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <div><strong>{item.label}</strong><small>{item.target}</small></div>
+            <b>{item.status}</b>
+          </article>
+        ))}
+      </div>
     </section>
 
     <section class="report-grid">
@@ -143,9 +196,9 @@ const accessItems = [
     <section class="cadence-section">
       <div class="section-title"><p class="eyebrow">Recommended rhythm</p><span>Consistent enough to compound, simple enough to sustain</span></div>
       <div class="cadence-grid">
-        <p><strong>Weekly</strong><span>Short progress and inquiry snapshot</span></p>
-        <p><strong>Every 2 weeks</strong><span>Useful Google update</span></p>
-        <p><strong>Monthly</strong><span>Project photos, content and insights</span></p>
+        <p><strong>Twice weekly</strong><span>Keyword blog post and channel cross-posting</span></p>
+        <p><strong>Weekly</strong><span>Traffic, completed work and next-step report</span></p>
+        <p><strong>Monthly</strong><span>Website pages, project photos or video and review work</span></p>
         <p><strong>Quarterly</strong><span>Seasonal email and strategy review</span></p>
       </div>
     </section>
@@ -191,6 +244,27 @@ const accessItems = [
     .growth-path .complete b { color: var(--leaf); }
     .growth-path .active { background: var(--paper-deep); }
     .growth-path .active b, .growth-path .active > span { color: var(--clay-dark); }
+
+    .live-results { border-bottom: 1px solid var(--line); padding: 56px 48px; }
+    .live-results .section-title { align-items: end; }
+    .live-results .section-title h2 { font-size: 38px; margin-top: 10px; }
+    .result-card-grid { border-left: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 32px; }
+    .result-card-grid article { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); display: flex; flex-direction: column; min-height: 220px; padding: 22px; }
+    .result-card-grid article > span { color: var(--ink-muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .result-card-grid article > strong { color: var(--forest); font-family: var(--serif); font-size: 25px; font-weight: 400; line-height: 1.05; margin-top: 31px; }
+    .result-card-grid article > p { color: var(--ink-soft); font-size: 12px; line-height: 1.6; margin: 15px 0 24px; }
+    .result-card-grid article > small { color: var(--clay-dark); font-size: 9px; font-weight: 700; letter-spacing: .08em; margin-top: auto; text-transform: uppercase; }
+
+    .program-tracker { background: var(--forest); color: var(--white); display: grid; gap: 70px; grid-template-columns: .68fr 1.32fr; padding: 58px 48px; }
+    .program-tracker header h2 { color: var(--white); font-size: 42px; }
+    .program-tracker header > p:last-child { color: rgba(255,253,247,.66); font-size: 12px; line-height: 1.65; margin: 24px 0 0; }
+    .tracker-list { border-top: 1px solid var(--line-light); }
+    .tracker-list article { align-items: center; border-bottom: 1px solid var(--line-light); display: grid; gap: 16px; grid-template-columns: 28px 1fr auto; min-height: 62px; }
+    .tracker-list article > span { color: var(--clay); font-size: 9px; }
+    .tracker-list strong { display: block; font-size: 12px; font-weight: 600; }
+    .tracker-list small { color: rgba(255,253,247,.58); display: block; font-size: 10px; margin-top: 2px; }
+    .tracker-list b { color: var(--clay); font-size: 9px; letter-spacing: .09em; text-transform: uppercase; }
+
     .report-grid { display: grid; grid-template-columns: 1.45fr .55fr; }
     .score-panel { padding: 52px 48px; }
     .section-title { align-items: baseline; display: flex; justify-content: space-between; }
@@ -240,10 +314,13 @@ const accessItems = [
       .report-hero { gap: 42px; grid-template-columns: 1fr; padding: 56px 20px 48px; }
       .hero-message h1 { font-size: 48px; }
       .growth-score { justify-self: center; width: 260px; }
-      .growth-path, .report-grid, .completed-list, .access-section, .cadence-grid { grid-template-columns: 1fr; }
+      .growth-path, .result-card-grid, .program-tracker, .report-grid, .completed-list, .access-section, .cadence-grid { grid-template-columns: 1fr; }
       .growth-path article + article { border-left: 0; border-top: 1px solid var(--line); }
-      .score-panel, .completed-work, .next-section, .cadence-section { padding: 42px 20px; }
+      .live-results, .score-panel, .completed-work, .next-section, .cadence-section { padding: 42px 20px; }
       .section-title { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .live-results .section-title h2 { font-size: 34px; }
+      .result-card-grid article { min-height: 0; }
+      .program-tracker { gap: 38px; padding: 48px 20px; }
       .score-row { grid-template-columns: 120px 1fr 26px; }
       .completed-list p { min-height: 0; }
       .next-list article { grid-template-columns: 28px 1fr; }
