@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeafMark from '../components/LeafMark.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
+---
+
+<BaseLayout
+  title="Thank You | Garden & Art Landscapes"
+  description="Thank you for contacting Garden & Art Landscapes."
+  noindex
+>
+  <main class="thanks-page">
+    <a class="thanks-brand" href="/" aria-label="Garden and Art Landscapes home">
+      <LeafMark />
+      <span>Garden <i>&</i> Art</span>
+    </a>
+
+    <section class="thanks-content">
+      <p class="eyebrow light">Inquiry received</p>
+      <h1>Thank you for<br /><em>reaching out.</em></h1>
+      <p>Norman will review your message and get back to you soon. We’re looking forward to hearing what you imagine for your outdoor space.</p>
+      <div class="thanks-actions">
+        <a class="button button-clay" href="/">Return to the garden <ArrowIcon /></a>
+        <a class="thanks-phone" href="tel:+19192352245">Or call 919 235 2245</a>
+      </div>
+    </section>
+
+    <LeafMark class="thanks-leaf" />
+  </main>
+</BaseLayout>

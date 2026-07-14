@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeafMark from '../components/LeafMark.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
+
+const services = [
+  { number: '01', title: 'Landscape design', copy: 'Thoughtful plant selection, layout, lighting and irrigation—composed around how you want to live outdoors.', image: '/img/services/landscape.jpg' },
+  { number: '02', title: 'Hardscapes', copy: 'Patios, retaining walls and walkways that give the garden structure and age beautifully.', image: '/img/services/firepit.jpg' },
+  { number: '03', title: 'Water systems', copy: 'Rainwater harvesting and efficient irrigation systems designed to conserve natural resources.', image: '/img/services/sprinkler.jpg' },
+  { number: '04', title: 'Outdoor lighting', copy: 'Subtle, custom lighting that extends the garden into the evening without overpowering it.', image: '/img/services/lighting.png' },
+  { number: '05', title: 'Lawn & bed care', copy: 'Practical, attentive maintenance for healthy lawns, perennial beds and seasonal color.', image: '/img/services/lawn.jpg' },
+  { number: '06', title: 'Sod installation', copy: 'Durable, healthy new lawns installed efficiently for everyday foot traffic and play.', image: '/img/services/sod.jpg' },
+  { number: '07', title: 'Cleanups & mulching', copy: 'Seasonal clearing, re-edging and mulching that brings order and vitality back to the garden.', image: '/img/services/cleanup.jpg' },
+  { number: '08', title: 'Tree work & pruning', copy: 'Careful pruning that supports the long-term form, health and safety of trees and shrubs.', image: '/img/services/pruning.jpg' },
+];
+
+const landscapes = [
+  { src: '/img/portfolio/1.jpg', alt: 'Curved block retaining wall beside a freshly mulched planting bed', caption: 'Curved retaining wall & planting bed' },
+  { src: '/img/portfolio/6.jpg', alt: 'Natural stone garden pond with a small waterfall', caption: 'Natural stone pond & waterfall' },
+  { src: '/img/portfolio/3.jpg', alt: 'Custom wooden garden gate opening onto a flagstone path', caption: 'Garden gate & flagstone path' },
+  { src: '/img/portfolio/10.jpg', alt: 'Brick patio garden with a fountain and new plantings', caption: 'Brick patio garden & fountain' },
+  { src: '/img/portfolio/12.jpg', alt: 'Terraced retaining walls built around a mature oak tree', caption: 'Terraced beds around a mature oak' },
+  { src: '/img/portfolio/14.jpg', alt: 'Large custom stone outdoor fireplace and flagstone patio', caption: 'Stone fireplace & flagstone patio' },
+  { src: '/img/portfolio/16.JPG', alt: 'Circular brick fire pit with stone garden benches', caption: 'Woodland fire pit & stone seating' },
+];
+
+const art = [
+  { src: '/img/portfolio/s1.jpg', alt: 'Copper fish sculpture mounted on a tall purple wooden panel', caption: 'Copper fish study' },
+  { src: '/img/portfolio/s2.jpg', alt: 'Copper flower and leaf relief arranged on a purple panel', caption: 'Botanical copper relief' },
+  { src: '/img/portfolio/s3.jpg', alt: 'Long abstract metal face mounted on a dark wooden plank', caption: 'Long-form garden figure' },
+  { src: '/img/portfolio/s4.jpg', alt: 'Tall pink wooden garden figure with copper eyes and mouth', caption: 'Copper-faced tree figure' },
+  { src: '/img/portfolio/s5.jpg', alt: 'Lime green wooden garden face with metal eyes and mouth', caption: 'Lime garden face' },
+  { src: '/img/portfolio/s6.jpg', alt: 'Curved wooden face sculpture with copper features mounted on a tree', caption: 'Curved copper portrait' },
+  { src: '/img/portfolio/s7.jpg', alt: 'Tall terracotta garden panel with an abstract metal figure', caption: 'Terracotta garden panel' },
+  { src: '/img/portfolio/s8.jpg', alt: 'Purple painted wooden face with simple copper features', caption: 'Purple garden portrait' },
+  { src: '/img/portfolio/s9.jpg', alt: 'Abstract metal face assembled on a deep blue wooden panel', caption: 'Blue found-metal portrait' },
+  { src: '/img/portfolio/s10.jpg', alt: 'Found-metal face with spiral eyes framed in blue wood', caption: 'Spiral-eye portrait' },
+  { src: '/img/portfolio/s11.jpg', alt: 'Minimal copper face mounted on a square natural wood panel', caption: 'Minimal copper face' },
+  { src: '/img/portfolio/s12.jpg', alt: 'Tall hammered copper figure on red and blue wooden slats', caption: 'Hammered copper figure' },
+];
+---
+
+<BaseLayout title="Garden & Art Landscapes | Raleigh Landscape Design" description="Custom landscape design, installation, sustainable water systems and garden art in Raleigh, Durham, Chapel Hill and the Triangle since 2005.">
+  <a class="skip-link" href="#top">Skip to main content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Garden and Art Landscapes home">
+      <LeafMark class="brand-mark" />
+      <span>Garden <i>&</i> Art</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+      <span class="sr-only">Toggle navigation</span>
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation" data-nav>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-call" href="tel:+19192352245">919 235 2245</a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-image" aria-hidden="true"></div>
+      <div class="hero-scrim"></div>
+      <div class="hero-content">
+        <p class="eyebrow light">Raleigh, North Carolina · Since 2005</p>
+        <h1 id="hero-heading">Landscapes with<br /><em>a point of view.</em></h1>
+        <p class="hero-intro">Artful, sustainable gardens shaped by horticultural knowledge and built for the way you live.</p>
+        <div class="hero-actions">
+          <a class="button button-clay" href="#contact">Plan your landscape <ArrowIcon /></a>
+          <a class="text-link light" href="#work">Explore our work <span>↓</span></a>
+        </div>
+      </div>
+      <div class="hero-note">
+        <span>Licensed</span>
+        <strong>NC Landscape Contractor #1901</strong>
+      </div>
+      <svg class="hero-path" viewBox="0 0 500 180" fill="none" aria-hidden="true">
+        <path d="M-8 175C91 111 140 152 209 103 278 54 320 109 390 67 431 42 450 19 512 9" />
+      </svg>
+    </section>
+
+    <section class="manifesto section-pad" aria-label="Our approach">
+      <div class="manifesto-kicker">
+        <LeafMark />
+        <p class="eyebrow">The garden as a living canvas</p>
+      </div>
+      <div class="manifesto-copy">
+        <h2>We bring structure, color and life into balance.</h2>
+        <p>Every site has its own rhythm. We listen to the land, work with the Carolina climate and compose spaces that feel discovered—not imposed.</p>
+      </div>
+      <aside class="field-note">
+        <span class="field-number">20+</span>
+        <p>years designing and building in the Triangle</p>
+      </aside>
+    </section>
+
+    <section id="work" class="work section-pad">
+      <div class="section-heading work-heading">
+        <div>
+          <p class="eyebrow">Selected landscapes</p>
+          <h2>Made to grow<br /><em>better with time.</em></h2>
+        </div>
+        <p>From intimate garden rooms to complete property transformations, our work pairs enduring structure with plantings that evolve through every season.</p>
+      </div>
+      <div class="gallery">
+        {landscapes.map((image, index) => (
+          <figure class={image.class ?? ''}>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+            <figcaption><span>{String(index + 1).padStart(2, '0')}</span> {image.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section id="services" class="services section-pad">
+      <div class="services-intro">
+        <p class="eyebrow light">What we do</p>
+        <h2>From first sketch<br />to <em>full bloom.</em></h2>
+        <p>Design, installation and care handled with one horticulturist’s eye from beginning to end.</p>
+        <a class="button button-paper" href="#contact">Discuss your project <ArrowIcon /></a>
+      </div>
+      <div class="service-list">
+        {services.map((service) => (
+          <article class="service-item">
+            <span class="service-number">{service.number}</span>
+            <img src={service.image} alt="" loading="lazy" />
+            <div>
+              <h3>{service.title}</h3>
+              <p>{service.copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="about" class="about section-pad">
+      <div class="about-portrait">
+        <img src="/img/about/norman2.jpg" alt="Norman Rabins, artist and horticulturist" loading="lazy" />
+        <div class="portrait-caption"><span>Norman Rabins</span><span>Founder · Horticulturist · Artist</span></div>
+      </div>
+      <div class="about-story">
+        <p class="eyebrow">Cultivated across continents</p>
+        <h2>A gardener’s knowledge.<br /><em>An artist’s instinct.</em></h2>
+        <p class="story-lead">Norman Rabins grew up in Johannesburg and studied horticulture in Cape Town. The vivid diversity of the Cape Fynbos and the imagination of African folk art still shape his work today.</p>
+        <p>Before making North Raleigh home, Norman served as Head Gardener for the daylily, peony and iris collections at the New York Botanical Garden. His path has moved through farms, nurseries, botanical collections and design studios—each adding a layer to how he sees the land.</p>
+        <details>
+          <summary>Experience & certifications <span>+</span></summary>
+          <div class="credentials">
+            <div>
+              <h3>Selected experience</h3>
+              <p>New York Botanical Garden · Head Gardener</p>
+              <p>Cape Technikon · Landscape Design Lecturer</p>
+              <p>Residential project management · Triangle area</p>
+            </div>
+            <div>
+              <h3>Training</h3>
+              <p>National Diploma in Horticulture</p>
+              <p>NC Ornamental & Turf Pesticide License</p>
+              <p>Rain Garden & Sustainable Landscape certifications</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="art" class="art section-pad">
+      <div class="art-heading">
+        <p class="eyebrow">Beyond the garden</p>
+        <h2>Original art,<br /><em>rooted in place.</em></h2>
+        <p>Custom metalwork gives a landscape a focal point that belongs nowhere else.</p>
+      </div>
+      <div class="art-grid">
+        {art.map((image, index) => (
+          <figure>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+            <figcaption>{image.caption} <span>{String(index + 1).padStart(2, '0')}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section id="contact" class="contact section-pad">
+      <div class="contact-copy">
+        <p class="eyebrow light">Start a conversation</p>
+        <h2>Let’s make something<br /><em>beautiful grow.</em></h2>
+        <p>Tell us a little about your space and what you imagine for it. We’ll get back to you to talk through the possibilities.</p>
+        <div class="contact-details">
+          <a href="tel:+19192352245">919 235 2245</a>
+          <a href="mailto:normanrabins@gmail.com">normanrabins@gmail.com</a>
+          <address>4909 Wood Valley Drive<br />Raleigh, NC 27613</address>
+        </div>
+      </div>
+      <form class="contact-form" name="contact" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+        <div class="form-row">
+          <label>My name is <input type="text" name="name" autocomplete="name" placeholder="Your name" required /></label>
+          <label>and you can reach me at <input type="email" name="email" autocomplete="email" placeholder="Email address" required /></label>
+        </div>
+        <label>I’d like to talk about <textarea name="message" rows="3" placeholder="A new garden, a patio, seasonal care…" required></textarea></label>
+        <div class="form-footer">
+          <label class="phone-field">Phone <input type="tel" name="phone" autocomplete="tel" placeholder="Optional" /></label>
+          <button class="button button-clay" type="submit">Send inquiry <ArrowIcon /></button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand"><LeafMark /><span>Garden <i>&</i> Art Landscapes</span></div>
+    <p>Serving Raleigh, Durham, Chapel Hill, Cary, Holly Springs and surrounding communities.</p>
+    <div class="footer-meta">
+      <span>© {new Date().getFullYear()} Garden & Art Landscapes</span>
+      <span>Licensed · Bonded · Insured #1901</span>
+      <a href="https://dannysullivan.ai" target="_blank" rel="noopener noreferrer">Website by Danny Sullivan</a>
+    </div>
+  </footer>
+
+  <script>
+    const button = document.querySelector('[data-menu-button]');
+    const nav = document.querySelector('[data-nav]');
+    const header = document.querySelector('[data-header]');
+    button?.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      nav?.classList.toggle('is-open', !open);
+    });
+    nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      button?.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+    }));
+    const observer = new IntersectionObserver(([entry]) => header?.classList.toggle('is-scrolled', !entry.isIntersecting));
+    const sentinel = document.querySelector('.hero');
+    if (sentinel) observer.observe(sentinel);
+  </script>
+</BaseLayout>
