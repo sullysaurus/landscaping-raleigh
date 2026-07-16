@@ -1,312 +1,568 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LeafMark from '../components/LeafMark.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
 
-const scores = [
-  { label: 'Technical SEO', value: 82 },
-  { label: 'On-page SEO', value: 82 },
-  { label: 'Structured data', value: 82 },
-  { label: 'Content quality', value: 72 },
-  { label: 'Images', value: 65 },
-  { label: 'Performance', value: 60 },
+const headlineKeywords = [
+  { keyword: 'landscaping raleigh nc', volume: '1,300', role: 'Homepage', width: 100 },
+  { keyword: 'landscape design raleigh nc', volume: '320', role: 'Service page', width: 47 },
+  { keyword: 'landscape lighting raleigh nc', volume: '110', role: 'Service page', width: 29 },
+  { keyword: 'hardscaping raleigh nc', volume: '90', role: 'Service page', width: 25 },
+  { keyword: 'native plants raleigh nc', volume: '30', role: 'Authority topic', width: 15 },
 ];
 
-const completed = [
-  'GitHub and Netlify production connected to main',
-  'Correct production domain and canonical URLs',
-  'Search-focused title, description and Raleigh hero copy',
-  'Open Graph and social sharing metadata',
-  'Robots file and XML sitemap',
-  'Local business, founder, website and service schema',
-  'Privacy page and inquiry-form privacy notice',
-  'Image alt text, dimensions and stable layouts',
-  'Faster hero and optimized lighting image',
-  'Noindex protection for private utility pages',
-  'Security headers and asset caching',
-  'Direct apex-to-www redirects',
-  'Clear NC contractor license wording',
+const opportunityNotes = [
+  { number: '01', label: 'Lead with the category', copy: 'The homepage has the largest local opportunity. It should clearly say Raleigh landscaping and send visitors into the right specialty.' },
+  { number: '02', label: 'Win with expertise', copy: 'Norman’s horticulture, botanical-garden and design experience is the advantage generic contractors cannot easily copy.' },
+  { number: '03', label: 'Prove, then explain', copy: 'Strong service pages and real project stories should come before a large volume of blog posts.' },
 ];
 
-const nextMoves = [
+const launchTargets = [
+  { value: '32+', label: 'indexable releases', copy: 'Eight anchor pages plus at least two search-led posts each week for twelve weeks.' },
+  { value: '8', label: 'anchor website pages', copy: 'Homepage, five priority services, Norman’s expert profile and a project hub.' },
+  { value: '24+', label: 'search-led posts', copy: 'Useful guides, project stories and timely answers that lead to a relevant service.' },
+  { value: '4', label: 'project media packages', copy: 'Before-and-after photography or short video prepared for the website, Google and social.' },
+];
+
+const servicePages = [
   {
-    number: '01',
-    title: 'Connect Google and the dashboard',
-    owner: 'Danny + Norman',
-    copy: 'Connect Analytics, Search Console and the Google Business Profile so traffic, searches, calls and completed work appear in one client view.',
+    priority: '01',
+    status: 'Build first',
+    title: 'Landscape design',
+    url: '/landscape-design-raleigh/',
+    keyword: 'landscape design raleigh nc',
+    volume: '320 searches / month',
+    purpose: 'The flagship service page: process, expertise, project proof, cost factors and a consultation invitation.',
+    proof: 'Plans, credentials, before/after work',
   },
   {
-    number: '02',
-    title: 'Build the eight new pages',
-    owner: 'First 90 days',
-    copy: 'Publish focused service pages, Norman’s story and a before-and-after project hub so each important service has a clear place to be found.',
+    priority: '02',
+    status: 'Build first',
+    title: 'Drainage & rain gardens',
+    url: '/drainage-rain-gardens-raleigh/',
+    keyword: 'yard drainage raleigh nc',
+    volume: 'Problem-led opportunity',
+    purpose: 'Connect standing water, Raleigh clay soil and runoff problems to thoughtful, attractive solutions.',
+    proof: 'Water diagnosis, rain-garden project',
   },
   {
-    number: '03',
-    title: 'Start the weekly publishing system',
-    owner: 'At least 2 posts weekly',
-    copy: 'Publish keyword-based blog posts, cross-post them to Facebook, Instagram and Google, and support them with Danny’s project photography and video.',
+    priority: '03',
+    status: 'Build first',
+    title: 'Hardscaping',
+    url: '/hardscaping-raleigh/',
+    keyword: 'hardscaping raleigh nc',
+    volume: '90 searches / month',
+    purpose: 'Show patios, walls, paths and fire features as lasting parts of a complete living garden.',
+    proof: 'Materials, drainage, finished projects',
+  },
+  {
+    priority: '04',
+    status: 'Build next',
+    title: 'Native garden design',
+    url: '/native-garden-design-raleigh/',
+    keyword: 'native plant landscaping raleigh nc',
+    volume: 'Specialist opportunity',
+    purpose: 'Own the plant-focused position homeowners say is difficult to find in the Triangle.',
+    proof: 'Plant palettes, site conditions, results',
+  },
+  {
+    priority: '05',
+    status: 'Build next',
+    title: 'Landscape lighting',
+    url: '/landscape-lighting-raleigh/',
+    keyword: 'landscape lighting raleigh nc',
+    volume: '110 searches / month',
+    purpose: 'Capture measurable demand with a visual page about subtle, useful nighttime design.',
+    proof: 'Dusk photography, fixtures, process',
   },
 ];
 
-const resultCards = [
-  { label: 'Website traffic', value: 'Ready to connect', source: 'Google Analytics', copy: 'Visitors, popular pages and whether traffic is growing.' },
-  { label: 'Google searches', value: 'Ready to connect', source: 'Search Console', copy: 'The exact searches people use and which pages they find.' },
-  { label: 'Calls & inquiries', value: 'Tracking planned', source: 'Website actions', copy: 'Contact forms, phone taps and email clicks from the website.' },
-  { label: 'Work completed', value: 'Tracker ready', source: 'Weekly update', copy: 'Pages, blog posts, social posts, emails, photos and reviews.' },
+const calendar = [
+  {
+    month: 'Month 1',
+    focus: 'Build the foundation and flagship',
+    outcome: 'Measurement is live and the two most important customer journeys have dedicated pages.',
+    releases: ['Homepage search refresh', 'Landscape design service page', 'Drainage & rain gardens page', 'About Norman expert profile'],
+    posts: ['8 search-led posts', 'Woodland project story', 'Design-cost and hiring guides', 'Raleigh idea and FAQ content'],
+    systems: ['Search Console + sitemap', 'Analytics + inquiry tracking', 'Google profile + review workflow'],
+  },
+  {
+    month: 'Month 2',
+    focus: 'Capture high-intent demand',
+    outcome: 'The site covers valuable project work and begins answering late-stage buying questions.',
+    releases: ['Hardscaping service page', 'Native garden design page', 'Projects and before/after hub'],
+    posts: ['8 search-led posts', 'Standing-water and drainage guides', 'Clay-soil and native-shade guides', 'Drainage transformation story'],
+    systems: ['Contextual internal links', 'Service, article + breadcrumb schema', 'First evidence-led performance review'],
+  },
+  {
+    month: 'Month 3',
+    focus: 'Expand authority and improve',
+    outcome: 'A complete first content cluster is live, measured and ready for the next-quarter decision.',
+    releases: ['Landscape lighting service page'],
+    posts: ['8 search-led posts', 'Designer vs. architect guide', 'Rainwater Rewards and plant guides', 'Patio + native planting story'],
+    systems: ['Search Console query refresh', 'Title + opening improvements', '90-day results and next-quarter plan'],
+  },
 ];
 
-const programItems = [
-  { label: 'Website expansion', target: '8 new pages', status: 'Planned' },
-  { label: 'Keyword blog content', target: '2+ posts each week', status: 'Planned' },
-  { label: 'Facebook · Instagram · Google', target: 'Cross-post each strong idea', status: 'Planned' },
-  { label: 'Google Business Profile', target: 'Build and maintain', status: 'Danny coordinating' },
-  { label: 'Email list & review campaign', target: 'Set up, import and connect', status: 'Danny coordinating' },
-  { label: 'Before/after photos & video', target: 'Capture project proof', status: 'Schedule project' },
-  { label: 'Analytics & search reporting', target: 'Dashboard + weekly report', status: 'Danny coordinating' },
+const articleIdeas = [
+  { rank: '01', title: 'How to fix standing water in a Raleigh yard', search: '170 monthly searches', score: '8.8', route: 'Drainage inquiries' },
+  { rank: '02', title: 'What does landscape design cost in Raleigh?', search: 'High buying intent', score: '8.6', route: 'Design consultations' },
+  { rank: '03', title: 'Landscape designer vs. landscape architect', search: '260 monthly searches', score: '8.3', route: 'Design consultations' },
+  { rank: '04', title: 'Best plants for Raleigh clay soil', search: '320-topic opportunity', score: '8.2', route: 'Garden design' },
+  { rank: '05', title: 'Raleigh Rainwater Rewards: a homeowner guide', search: '40 local searches', score: '8.1', route: 'Rain gardens' },
+  { rank: '06', title: 'Low-maintenance landscaping ideas for Raleigh', search: '2,400 broad searches', score: '7.9', route: 'Landscape design' },
+];
+
+const ownerInputs = [
+  'The three project types Garden & Art most wants to sell',
+  'A realistic minimum project size and profitable service radius',
+  'Before-and-after photos with the city, problem and result',
+  'The questions and concerns homeowners ask most often',
+  'Permissioned reviews and short customer quotations',
+  'Confirmed credentials, business hours and service-area policy',
+];
+
+const scorecard = [
+  { metric: 'Relevant top-30 keywords', baseline: '0', day90: '5+', note: 'Third-party visibility signal' },
+  { metric: 'Useful indexable pages', baseline: '2', day90: '32+', note: 'Eight anchors plus 24+ useful posts' },
+  { metric: 'Priority service pages', baseline: '0', day90: '5', note: 'All Tier 1 commercial opportunities' },
+  { metric: 'Detailed project stories', baseline: '0', day90: '3', note: 'Dependent on photos and owner detail' },
+  { metric: 'Organic inquiry tracking', baseline: 'Not confirmed', day90: 'Live', note: 'Forms, phone taps and email clicks' },
 ];
 ---
 
 <BaseLayout
-  title="SEO Progress Dashboard | Garden & Art Landscapes"
-  description="A client progress dashboard for the Garden & Art Landscapes growth program."
+  title="90-Day SEO Growth Plan | Garden & Art Landscapes"
+  description="The evidence-led 90-day SEO growth plan and client scorecard for Garden & Art Landscapes."
   noindex
 >
-  <main class="seo-report">
+  <a class="skip-link" href="#roadmap">Skip to the roadmap</a>
+  <main class="roadmap" id="roadmap">
     <header class="report-header">
       <a class="report-brand" href="/" aria-label="Garden and Art Landscapes home">
         <LeafMark />
         <span>Garden <i>&</i> Art Landscapes</span>
       </a>
-      <div><span>SEO field report</span><strong>Updated July 14, 2026</strong></div>
+      <nav aria-label="Roadmap sections">
+        <a href="#opportunity">Opportunity</a>
+        <a href="#pages">Pages</a>
+        <a href="#calendar">90 days</a>
+        <a href="#scorecard">Scorecard</a>
+        <a href="#owner">Your part</a>
+      </nav>
+      <div class="report-date"><span>90-day SEO growth plan</span><strong>July 2026</strong></div>
     </header>
 
     <section class="report-hero">
-      <div class="hero-message">
-        <p class="eyebrow">Current position</p>
-        <h1>The groundwork is ready.<br /><em>Now we build visibility.</em></h1>
-        <p>The website’s core SEO foundation is in place. The next gains come from connecting Google, confirming the business information and consistently publishing proof of the work.</p>
+      <div class="hero-copy">
+        <p class="eyebrow light">The first 90 days</p>
+        <h1>Build the local<br /><em>search engine.</em></h1>
+        <p>Garden & Art already has the expertise and finished work. In three focused months, we turn it into a connected system of service pages, project proof, useful local guidance and measurable inquiry paths.</p>
+        <a class="hero-link" href="#calendar">See the 90-day build <ArrowIcon /></a>
       </div>
-      <div class="growth-score" aria-label="SEO health score 73 out of 100">
-        <div class="ring ring-one"></div><div class="ring ring-two"></div><div class="ring ring-three"></div>
-        <div class="score-copy"><strong>73</strong><span>out of 100</span><small>Live production</small></div>
-      </div>
+      <aside class="north-star">
+        <span>North star</span>
+        <strong>More qualified Raleigh homeowners—not simply more website traffic.</strong>
+        <p>Every release must help the right person understand the work, trust Norman’s expertise and start a useful conversation.</p>
+      </aside>
+      <div class="contour contour-one"></div>
+      <div class="contour contour-two"></div>
     </section>
 
-    <section class="growth-path" aria-label="SEO growth stages">
-      <article class="complete"><span>01</span><div><strong>Groundwork</strong><small>Technical foundation</small></div><b>Complete</b></article>
-      <article class="active"><span>02</span><div><strong>Visibility</strong><small>Google + local proof</small></div><b>Next</b></article>
-      <article><span>03</span><div><strong>Growth</strong><small>Content + measurement</small></div><b>Planned</b></article>
+    <section class="position-strip" aria-label="SEO strategy summary">
+      <span>Position the business as</span>
+      <strong>A horticulture-led landscape design & build specialist</strong>
+      <small>Not a generic mowing company</small>
     </section>
 
-    <section class="live-results" aria-labelledby="results-title">
-      <div class="section-title">
-        <div><p class="eyebrow">Live business results</p><h2 id="results-title">One place to see if the work is working.</h2></div>
-        <span>Data appears after Google access is connected</span>
-      </div>
-      <div class="result-card-grid">
-        {resultCards.map((card) => (
-          <article>
-            <span>{card.label}</span>
-            <strong>{card.value}</strong>
-            <p>{card.copy}</p>
-            <small>{card.source}</small>
-          </article>
-        ))}
-      </div>
+    <section class="launch-strip" aria-label="90-day production targets">
+      {launchTargets.map((target) => (
+        <article><strong>{target.value}</strong><div><h2>{target.label}</h2><p>{target.copy}</p></div></article>
+      ))}
     </section>
 
-    <section class="program-tracker" aria-labelledby="tracker-title">
-      <header>
-        <p class="eyebrow light">90-day work tracker</p>
-        <h2 id="tracker-title">The plan, the target<br /><em>and the current status.</em></h2>
-        <p>Once the program begins, this section will show completed pages, weekly posts, photo and video work, review outreach and the next action.</p>
+    <section class="opportunity" id="opportunity">
+      <header class="section-heading">
+        <div><p class="eyebrow">What people search for</p><h2>Demand points to a<br /><em>clear starting place.</em></h2></div>
+        <p>Search volume shows the homepage and landscape-design page carry the broadest local opportunities. Specialty pages make the company more relevant when homeowners have a specific need.</p>
       </header>
-      <div class="tracker-list">
-        {programItems.map((item, index) => (
+
+      <div class="opportunity-grid">
+        <div class="keyword-chart" aria-label="Monthly keyword search volume comparison">
+          <div class="chart-note"><span>Approximate monthly U.S. searches</span><small>Keywords Everywhere · July 2026</small></div>
+          {headlineKeywords.map((item) => (
+            <article>
+              <div class="keyword-meta"><strong>{item.keyword}</strong><span>{item.role}</span></div>
+              <div class="bar-line"><i style={`--bar-width:${item.width}%`}></i><b>{item.volume}</b></div>
+            </article>
+          ))}
+          <p class="chart-caveat">Search volume is directional. Low-volume local phrases can still create valuable projects; paid competition is not the same as organic difficulty.</p>
+        </div>
+
+        <aside class="baseline-card">
+          <span>Today’s search baseline</span>
+          <strong>0</strong>
+          <h3>relevant top-30 keywords detected</h3>
+          <p>This is an early-site baseline, not a verdict. The redesigned site has the technical groundwork; it now needs focused pages and time to earn visibility.</p>
+        </aside>
+      </div>
+
+      <div class="opportunity-notes">
+        {opportunityNotes.map((note) => (
+          <article><span>{note.number}</span><h3>{note.label}</h3><p>{note.copy}</p></article>
+        ))}
+      </div>
+    </section>
+
+    <section class="page-plan" id="pages">
+      <header class="section-heading inverse">
+        <div><p class="eyebrow light">The commercial foundation</p><h2>Five focused pages.<br /><em>One clear job each.</em></h2></div>
+        <p>Instead of asking one homepage to rank for every service, each valuable offer gets enough room to explain the problem, process, proof and next step.</p>
+      </header>
+
+      <div class="page-list">
+        {servicePages.map((page) => (
           <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <div><strong>{item.label}</strong><small>{item.target}</small></div>
-            <b>{item.status}</b>
+            <span class="page-number">{page.priority}</span>
+            <div class="page-main">
+              <div class="page-label"><b>{page.status}</b><small>{page.url}</small></div>
+              <h3>{page.title}</h3>
+              <p>{page.purpose}</p>
+            </div>
+            <div class="page-data">
+              <small>Target search</small><strong>{page.keyword}</strong><span>{page.volume}</span>
+            </div>
+            <div class="page-proof"><small>Proof needed</small><span>{page.proof}</span></div>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="report-grid">
-      <div class="score-panel">
-        <div class="section-title"><p class="eyebrow">Health by area</p><span>Directional until Google data is connected</span></div>
-        <div class="score-list">
-          {scores.map((score) => (
-            <div class="score-row">
-              <span>{score.label}</span>
-              <div class="score-track" aria-hidden="true"><i style={`width:${score.value}%`}></i></div>
-              <strong>{score.value}</strong>
-            </div>
-          ))}
-        </div>
-      </div>
+    <section class="calendar-section" id="calendar">
+      <header class="section-heading">
+        <div><p class="eyebrow">The 90-day production plan</p><h2>Three focused sprints.<br /><em>Thirty-two useful releases.</em></h2></div>
+        <p>Eight anchor pages establish the commercial map. A two-posts-a-week publishing rhythm builds supporting depth. Owner detail, photography and approval remain the quality gates.</p>
+      </header>
 
-      <aside class="measurement-note">
-        <p class="eyebrow light">What the score means</p>
-        <strong>Strong foundation.<br />Limited real-world data.</strong>
-        <p>Search Console, Analytics and Business Profile insights will replace assumptions with actual searches, calls and inquiries after they are connected.</p>
+      <div class="calendar-grid">
+        {calendar.map((item, index) => (
+          <article>
+            <div class="month-marker"><span>{item.month}</span><i>{String(index + 1).padStart(2, '0')}</i></div>
+            <strong>{item.focus}</strong>
+            <p class="month-outcome">{item.outcome}</p>
+            <div class="month-list"><small>Anchor releases</small>{item.releases.map((release) => <span>{release}</span>)}</div>
+            <div class="month-list posts"><small>Weekly publishing</small>{item.posts.map((post) => <span>{post}</span>)}</div>
+            <div class="month-list systems"><small>Systems and optimization</small>{item.systems.map((system) => <span>{system}</span>)}</div>
+          </article>
+        ))}
+      </div>
+      <p class="pace-note"><strong>Production rule:</strong> if photos or expert input delay a project story, advance the next evidence-ready guide. Never replace missing proof with thin copy.</p>
+    </section>
+
+    <section class="content-queue">
+      <header class="queue-heading">
+        <div><p class="eyebrow light">The first editorial queue</p><h2>Helpful answers that<br /><em>lead somewhere useful.</em></h2></div>
+        <p>These guides attract homeowners before they choose a contractor. Each one answers a real question and points naturally toward a relevant service.</p>
+      </header>
+      <div class="queue-table" role="table" aria-label="Prioritized article ideas">
+        <div class="queue-row queue-head" role="row"><span>Rank</span><span>Topic</span><span>Search signal</span><span>Strategy score</span><span>Leads to</span></div>
+        {articleIdeas.map((idea) => (
+          <div class="queue-row" role="row">
+            <span>{idea.rank}</span><strong>{idea.title}</strong><span>{idea.search}</span><b>{idea.score}</b><span>{idea.route}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="quality-section">
+      <div class="quality-lead">
+        <p class="eyebrow">What makes this work</p>
+        <h2>Real experience is<br /><em>the content strategy.</em></h2>
+        <p>The website should feel like Norman walking a homeowner through a property: observant, specific, practical and visually alive.</p>
+      </div>
+      <div class="quality-list">
+        <article><span>01</span><div><strong>Show the work</strong><p>Before, process and after photographs with the actual problem and result.</p></div></article>
+        <article><span>02</span><div><strong>Explain the judgment</strong><p>Why a plant, material or drainage approach fit that particular Raleigh site.</p></div></article>
+        <article><span>03</span><div><strong>Use verified proof</strong><p>Credentials, license, customer words and firsthand project details.</p></div></article>
+        <article><span>04</span><div><strong>Make the next step clear</strong><p>Every page should lead to one appropriate conversation, not a maze of calls to action.</p></div></article>
+      </div>
+    </section>
+
+    <section class="scorecard-section" id="scorecard">
+      <header class="section-heading">
+        <div><p class="eyebrow">How the dashboard earns its name</p><h2>Measure shipped work<br />and <em>market response.</em></h2></div>
+        <p>The first 90 days need leading indicators because rankings and leads lag publication. Search Console becomes the primary source once enough first-party data exists.</p>
+      </header>
+      <div class="scorecard-table" role="table" aria-label="90-day SEO scorecard">
+        <div class="scorecard-row scorecard-head" role="row"><span>Metric</span><span>July baseline</span><span>Day-90 target</span><span>What it means</span></div>
+        {scorecard.map((item) => (
+          <div class="scorecard-row" role="row"><strong>{item.metric}</strong><span>{item.baseline}</span><b>{item.day90}</b><span>{item.note}</span></div>
+        ))}
+      </div>
+      <div class="measurement-grid">
+        <article><span>Visibility</span><strong>Queries, impressions, ranking page and position</strong></article>
+        <article><span>Engagement</span><strong>Organic entrances, useful visits and page depth</strong></article>
+        <article><span>Conversion</span><strong>Calls, email clicks and completed inquiry forms</strong></article>
+        <article><span>Business value</span><strong>Qualified leads, estimates and booked revenue</strong></article>
+      </div>
+    </section>
+
+    <section class="owner-section" id="owner">
+      <header>
+        <p class="eyebrow light">Norman’s part</p>
+        <h2>The raw material only<br /><em>the owner can provide.</em></h2>
+        <p>Danny can shape, design and publish the content. These inputs keep it accurate, personal and impossible for a generic competitor to imitate.</p>
+      </header>
+      <div class="owner-checklist">
+        {ownerInputs.map((input, index) => (
+          <label><input type="checkbox" /><span><i>{String(index + 1).padStart(2, '0')}</i>{input}</span></label>
+        ))}
+      </div>
+      <aside class="owner-callout">
+        <span>Best first handoff</span>
+        <strong>Choose one great landscape-design project.</strong>
+        <p>Gather 8–12 photos, the location, what was wrong, what changed and one customer quote. That single project can support the first service page, case study and social posts.</p>
       </aside>
     </section>
 
-    <section class="completed-work">
-      <div class="section-title"><p class="eyebrow">Fixed and live</p><span>{completed.length} improvements completed</span></div>
-      <div class="completed-list">
-        {completed.map((item, index) => <p><span>{String(index + 1).padStart(2, '0')}</span><i>✓</i>{item}</p>)}
-      </div>
-    </section>
-
-    <section class="next-section">
-      <div class="section-title"><p class="eyebrow">What comes next</p><span>Highest-value work, in order</span></div>
-      <div class="next-list">
-        {nextMoves.map((move) => (
-          <article>
-            <span>{move.number}</span>
-            <div><h2>{move.title}</h2><p>{move.copy}</p></div>
-            <small>{move.owner}</small>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="cadence-section">
-      <div class="section-title"><p class="eyebrow">Recommended rhythm</p><span>Consistent enough to compound, simple enough to sustain</span></div>
-      <div class="cadence-grid">
-        <p><strong>Twice weekly</strong><span>Keyword blog post and channel cross-posting</span></p>
-        <p><strong>Weekly</strong><span>Traffic, completed work and next-step report</span></p>
-        <p><strong>Monthly</strong><span>Website pages, project photos or video and review work</span></p>
-        <p><strong>Quarterly</strong><span>Seasonal email and strategy review</span></p>
+    <section class="guardrails">
+      <p class="eyebrow">What we will not do</p>
+      <div>
+        <p><span>×</span>Publish dozens of copy-and-paste city pages</p>
+        <p><span>×</span>Chase traffic unrelated to profitable work</p>
+        <p><span>×</span>Stuff “Raleigh” into every sentence</p>
+        <p><span>×</span>Present generic AI copy as local expertise</p>
       </div>
     </section>
 
     <footer class="report-footer">
+      <div><LeafMark /><p><strong>Garden & Art Landscapes</strong><span>90-day SEO growth plan · July 2026</span></p></div>
+      <nav aria-label="Report links"><a href="/">View website</a><a href="/proposal/">View growth proposal</a></nav>
       <p>Prepared by <a href="https://dannysullivan.ai" target="_blank" rel="noopener noreferrer">Danny Sullivan</a></p>
-      <nav aria-label="Report links"><a href="/proposal/">View proposal</a><a href="/">View website</a></nav>
     </footer>
   </main>
 
   <style>
-    :global(body) { background: var(--paper-deep); }
-    .seo-report { background: var(--paper); box-shadow: var(--shadow-lift); margin: 24px auto; max-width: 1240px; }
-    .report-header { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding: 24px 48px; }
-    .report-brand { align-items: center; display: flex; font-family: var(--serif); font-size: 20px; gap: 9px; text-decoration: none; }
-    .report-brand > span { white-space: nowrap; }
-    .report-brand svg { color: var(--forest); height: 30px; width: 30px; }
+    :global(body) { background: #dcd6c8; }
+    .roadmap { background: var(--paper); box-shadow: var(--shadow-lift); margin: 24px auto; max-width: 1280px; overflow: hidden; }
+    .report-header { align-items: center; background: rgba(245,241,232,.96); border-bottom: 1px solid var(--line); display: grid; gap: 28px; grid-template-columns: 1fr auto 1fr; min-height: 78px; padding: 0 48px; position: relative; z-index: 5; }
+    .report-brand { align-items: center; display: flex; font-family: var(--serif); font-size: 19px; text-decoration: none; }
+    .report-brand :global(svg) { color: var(--forest); height: 30px; margin-right: 9px; width: 30px; }
     .report-brand i { color: var(--clay); font-weight: 400; }
-    .report-header > div { align-items: end; display: flex; flex-direction: column; }
-    .report-header > div span, .report-header > div strong { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
-    .report-header > div span { color: var(--clay-dark); }
-    .report-header > div strong { color: var(--ink-muted); font-weight: 500; margin-top: 4px; }
-    .report-hero { align-items: center; display: grid; gap: 72px; grid-template-columns: 1fr 330px; padding: 64px 48px; }
-    .hero-message h1 { font-size: clamp(52px, 5.5vw, 76px); }
-    .hero-message > p:last-child { color: var(--ink-soft); font-size: 14px; line-height: 1.75; margin: 28px 0 0; max-width: 680px; }
-    .growth-score { aspect-ratio: 1; display: grid; place-items: center; position: relative; }
-    .ring { border: 1px solid var(--line); border-radius: 50%; position: absolute; }
-    .ring-one { inset: 0; }
-    .ring-two { border-color: rgba(201,111,74,.38); inset: 25px; }
-    .ring-three { background: var(--forest); border: 0; inset: 54px; }
-    .score-copy { color: var(--white); display: flex; flex-direction: column; position: relative; text-align: center; z-index: 1; }
-    .score-copy strong { color: var(--clay); font-family: var(--serif); font-size: 82px; font-weight: 400; letter-spacing: -.06em; line-height: .85; }
-    .score-copy span, .score-copy small { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
-    .score-copy span { color: rgba(255,253,247,.7); margin-top: 9px; }
-    .score-copy small { color: rgba(255,253,247,.4); margin-top: 20px; }
-    .growth-path { border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); }
-    .growth-path article { align-items: center; display: grid; gap: 16px; grid-template-columns: 28px 1fr auto; padding: 24px 32px; }
-    .growth-path article + article { border-left: 1px solid var(--line); }
-    .growth-path article > span { color: var(--ink-muted); font-size: 9px; }
-    .growth-path strong { display: block; font-family: var(--serif); font-size: 20px; font-weight: 400; }
-    .growth-path small { color: var(--ink-muted); display: block; font-size: 8px; letter-spacing: .08em; margin-top: 2px; text-transform: uppercase; }
-    .growth-path b { color: var(--ink-muted); font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
-    .growth-path .complete b { color: var(--leaf); }
-    .growth-path .active { background: var(--paper-deep); }
-    .growth-path .active b, .growth-path .active > span { color: var(--clay-dark); }
+    .report-header nav { display: flex; gap: 26px; }
+    .report-header nav a { font-size: 8px; font-weight: 700; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
+    .report-header nav a:hover { color: var(--clay-dark); }
+    .report-date { align-items: flex-end; display: flex; flex-direction: column; }
+    .report-date span, .report-date strong { font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+    .report-date span { color: var(--clay-dark); }
+    .report-date strong { color: var(--ink-muted); font-weight: 500; margin-top: 3px; }
 
-    .live-results { border-bottom: 1px solid var(--line); padding: 56px 48px; }
-    .live-results .section-title { align-items: end; }
-    .live-results .section-title h2 { font-size: 38px; margin-top: 10px; }
-    .result-card-grid { border-left: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 32px; }
-    .result-card-grid article { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); display: flex; flex-direction: column; min-height: 220px; padding: 22px; }
-    .result-card-grid article > span { color: var(--ink-muted); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .result-card-grid article > strong { color: var(--forest); font-family: var(--serif); font-size: 25px; font-weight: 400; line-height: 1.05; margin-top: 31px; }
-    .result-card-grid article > p { color: var(--ink-soft); font-size: 12px; line-height: 1.6; margin: 15px 0 24px; }
-    .result-card-grid article > small { color: var(--clay-dark); font-size: 9px; font-weight: 700; letter-spacing: .08em; margin-top: auto; text-transform: uppercase; }
+    .report-hero { background: var(--forest-deep); color: var(--white); display: grid; gap: 72px; grid-template-columns: 1.35fr .65fr; isolation: isolate; overflow: hidden; padding: 82px 64px 74px; position: relative; }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero-copy h1 { color: var(--white); font-size: clamp(60px, 7vw, 94px); }
+    .hero-copy > p:nth-of-type(2) { color: rgba(255,253,247,.72); font-size: 15px; line-height: 1.75; margin: 30px 0 34px; max-width: 720px; }
+    .hero-link { align-items: center; color: var(--white); display: inline-flex; font-size: 10px; font-weight: 700; gap: 26px; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
+    .hero-link :global(svg) { color: var(--clay); height: 24px; transition: transform .2s ease; width: 24px; }
+    .hero-link:hover :global(svg) { transform: translateX(5px); }
+    .north-star { align-self: end; border-left: 1px solid rgba(255,253,247,.2); padding: 8px 0 8px 28px; position: relative; z-index: 2; }
+    .north-star > span { color: var(--clay); font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .north-star > strong { display: block; font-family: var(--serif); font-size: 28px; font-weight: 400; line-height: 1.08; margin-top: 22px; }
+    .north-star p { color: rgba(255,253,247,.55); font-size: 11px; line-height: 1.65; margin: 20px 0 0; }
+    .contour { border: 1px solid rgba(194,203,183,.08); border-radius: 48% 52% 63% 37%; position: absolute; transform: rotate(-14deg); z-index: 0; }
+    .contour-one { height: 430px; right: -120px; top: -150px; width: 540px; }
+    .contour-two { border-color: rgba(201,111,74,.12); height: 500px; right: -150px; top: -185px; width: 620px; }
+    .position-strip { align-items: center; background: var(--clay); color: var(--white); display: grid; gap: 24px; grid-template-columns: 180px 1fr auto; padding: 18px 64px; }
+    .position-strip span, .position-strip small { font-size: 8px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .position-strip strong { font-family: var(--serif); font-size: 22px; font-weight: 400; }
+    .position-strip small { color: rgba(255,253,247,.7); }
+    .launch-strip { background: var(--paper-deep); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); }
+    .launch-strip article { align-items: start; border-right: 1px solid var(--line); display: grid; gap: 14px; grid-template-columns: auto 1fr; padding: 28px 24px; }
+    .launch-strip article:last-child { border-right: 0; }
+    .launch-strip article > strong { color: var(--clay-dark); font-family: var(--serif); font-size: 48px; font-weight: 400; letter-spacing: -.05em; line-height: .85; }
+    .launch-strip h2 { color: var(--forest); font-family: var(--serif); font-size: 18px; font-weight: 400; line-height: 1.05; margin: 0; }
+    .launch-strip p { color: var(--ink-muted); font-size: 8px; line-height: 1.55; margin: 7px 0 0; }
 
-    .program-tracker { background: var(--forest); color: var(--white); display: grid; gap: 70px; grid-template-columns: .68fr 1.32fr; padding: 58px 48px; }
-    .program-tracker header h2 { color: var(--white); font-size: 42px; }
-    .program-tracker header > p:last-child { color: rgba(255,253,247,.66); font-size: 12px; line-height: 1.65; margin: 24px 0 0; }
-    .tracker-list { border-top: 1px solid var(--line-light); }
-    .tracker-list article { align-items: center; border-bottom: 1px solid var(--line-light); display: grid; gap: 16px; grid-template-columns: 28px 1fr auto; min-height: 62px; }
-    .tracker-list article > span { color: var(--clay); font-size: 9px; }
-    .tracker-list strong { display: block; font-size: 12px; font-weight: 600; }
-    .tracker-list small { color: rgba(255,253,247,.58); display: block; font-size: 10px; margin-top: 2px; }
-    .tracker-list b { color: var(--clay); font-size: 9px; letter-spacing: .09em; text-transform: uppercase; }
+    .opportunity, .calendar-section { padding: 78px 64px; }
+    .section-heading { align-items: end; display: grid; gap: 72px; grid-template-columns: 1.2fr .8fr; }
+    .section-heading h2, .queue-heading h2, .quality-lead h2, .owner-section header h2 { font-size: clamp(44px, 5vw, 66px); }
+    .section-heading > p, .queue-heading > p { color: var(--ink-soft); font-size: 12px; line-height: 1.75; margin: 0; }
+    .opportunity-grid { display: grid; gap: 0; grid-template-columns: 1.5fr .5fr; margin-top: 52px; }
+    .keyword-chart { border: 1px solid var(--line); padding: 28px 32px 24px; }
+    .chart-note { border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding-bottom: 18px; }
+    .chart-note span { font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+    .chart-note small { color: var(--ink-muted); font-size: 8px; }
+    .keyword-chart article { border-bottom: 1px solid var(--line); padding: 16px 0; }
+    .keyword-meta { align-items: center; display: flex; justify-content: space-between; }
+    .keyword-meta strong { font-size: 11px; font-weight: 600; }
+    .keyword-meta span { color: var(--ink-muted); font-size: 8px; letter-spacing: .08em; text-transform: uppercase; }
+    .bar-line { align-items: center; display: grid; gap: 14px; grid-template-columns: 1fr 42px; margin-top: 9px; }
+    .bar-line::before { background: rgba(29,40,34,.07); content: ''; grid-column: 1; grid-row: 1; height: 4px; }
+    .bar-line i { background: var(--clay); grid-column: 1; grid-row: 1; height: 4px; width: var(--bar-width); }
+    .bar-line b { color: var(--forest); font-family: var(--serif); font-size: 17px; font-weight: 500; text-align: right; }
+    .chart-caveat { color: var(--ink-muted); font-size: 9px; line-height: 1.55; margin: 20px 0 0; }
+    .baseline-card { background: var(--paper-deep); border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); border-top: 1px solid var(--line); display: flex; flex-direction: column; padding: 28px; }
+    .baseline-card > span { color: var(--clay-dark); font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .baseline-card > strong { color: var(--forest); font-family: var(--serif); font-size: 112px; font-weight: 400; letter-spacing: -.08em; line-height: .85; margin-top: 58px; }
+    .baseline-card h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.05; margin: 14px 0 0; }
+    .baseline-card p { color: var(--ink-soft); font-size: 10px; line-height: 1.7; margin: auto 0 0; }
+    .opportunity-notes { border-left: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 32px; }
+    .opportunity-notes article { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding: 24px; }
+    .opportunity-notes article > span { color: var(--clay-dark); font-size: 9px; }
+    .opportunity-notes h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; margin: 22px 0 8px; }
+    .opportunity-notes p { color: var(--ink-soft); font-size: 10px; line-height: 1.65; margin: 0; }
 
-    .report-grid { display: grid; grid-template-columns: 1.45fr .55fr; }
-    .score-panel { padding: 52px 48px; }
-    .section-title { align-items: baseline; display: flex; justify-content: space-between; }
-    .section-title .eyebrow { margin: 0; }
-    .section-title > span { color: var(--ink-muted); font-size: 9px; }
-    .score-list { margin-top: 26px; }
-    .score-row { align-items: center; border-top: 1px solid var(--line); display: grid; gap: 18px; grid-template-columns: 150px 1fr 28px; min-height: 45px; }
-    .score-row > span { color: var(--ink-soft); font-size: 11px; }
-    .score-row > strong { color: var(--forest); font-size: 11px; font-variant-numeric: tabular-nums; text-align: right; }
-    .score-track { background: rgba(29,40,34,.08); height: 3px; }
-    .score-track i { background: var(--clay); display: block; height: 100%; }
-    .measurement-note { background: var(--forest-deep); color: var(--white); padding: 52px 38px; }
-    .measurement-note > strong { display: block; font-family: var(--serif); font-size: 29px; font-weight: 400; line-height: 1.1; margin-top: 54px; }
-    .measurement-note > p:last-child { color: rgba(255,253,247,.58); font-size: 11px; line-height: 1.7; margin: 24px 0 0; }
-    .completed-work, .next-section, .cadence-section { border-top: 1px solid var(--line); padding: 52px 48px; }
-    .completed-list { border-left: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 28px; }
-    .completed-list p { align-items: start; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); display: grid; font-size: 10px; gap: 10px; grid-template-columns: 22px 14px 1fr; line-height: 1.5; margin: 0; min-height: 72px; padding: 16px; }
-    .completed-list p span { color: var(--ink-muted); font-size: 8px; }
-    .completed-list p i { color: var(--clay-dark); font-style: normal; }
-    .next-list { border-top: 1px solid var(--line); margin-top: 28px; }
-    .next-list article { align-items: start; display: grid; gap: 24px; grid-template-columns: 36px 1fr 170px; padding: 24px 0; }
-    .next-list article + article { border-top: 1px solid var(--line); }
-    .next-list article > span { color: var(--clay-dark); font-size: 9px; padding-top: 5px; }
-    .next-list h2 { font-size: 27px; line-height: 1; }
-    .next-list p { color: var(--ink-soft); font-size: 11px; line-height: 1.65; margin: 8px 0 0; max-width: 650px; }
-    .next-list small { color: var(--ink-muted); font-size: 8px; letter-spacing: .1em; padding-top: 6px; text-align: right; text-transform: uppercase; }
-    .cadence-grid { border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 28px; }
-    .cadence-grid p { margin: 0; padding: 19px 20px 0 0; }
-    .cadence-grid p + p { border-left: 1px solid var(--line); padding-left: 20px; }
-    .cadence-grid strong { display: block; font-family: var(--serif); font-size: 20px; font-weight: 400; }
-    .cadence-grid span { color: var(--ink-muted); display: block; font-size: 9px; line-height: 1.5; margin-top: 5px; }
-    .report-footer { align-items: center; background: var(--forest-deep); color: rgba(255,253,247,.5); display: flex; font-size: 8px; justify-content: space-between; padding: 18px 48px; }
+    .page-plan { background: var(--forest); color: var(--white); padding: 78px 64px 54px; }
+    .section-heading.inverse h2 { color: var(--white); }
+    .section-heading.inverse > p { color: rgba(255,253,247,.62); }
+    .page-list { border-top: 1px solid var(--line-light); margin-top: 52px; }
+    .page-list article { align-items: start; border-bottom: 1px solid var(--line-light); display: grid; gap: 24px; grid-template-columns: 38px 1.25fr .75fr .55fr; padding: 28px 0; }
+    .page-number { color: var(--clay); font-size: 10px; padding-top: 5px; }
+    .page-label { align-items: center; display: flex; gap: 12px; }
+    .page-label b { background: var(--clay); border-radius: 2px; color: var(--white); font-size: 7px; letter-spacing: .1em; padding: 4px 6px; text-transform: uppercase; }
+    .page-label small { color: rgba(255,253,247,.35); font-size: 8px; }
+    .page-main h3 { color: var(--white); font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1; margin: 16px 0 8px; }
+    .page-main > p { color: rgba(255,253,247,.58); font-size: 10px; line-height: 1.65; margin: 0; max-width: 480px; }
+    .page-data, .page-proof { padding-top: 30px; }
+    .page-data small, .page-proof small { color: var(--clay); display: block; font-size: 7px; font-weight: 700; letter-spacing: .12em; margin-bottom: 8px; text-transform: uppercase; }
+    .page-data strong { display: block; font-size: 10px; font-weight: 600; }
+    .page-data span, .page-proof span { color: rgba(255,253,247,.52); display: block; font-size: 9px; line-height: 1.55; margin-top: 5px; }
+
+    .calendar-grid { border-left: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 50px; }
+    .calendar-grid article { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); min-height: 520px; padding: 26px; }
+    .month-marker { align-items: center; display: flex; justify-content: space-between; }
+    .month-marker span { color: var(--clay-dark); font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .month-marker i { color: rgba(29,40,34,.12); font-family: var(--serif); font-size: 32px; font-style: normal; }
+    .calendar-grid article > strong { display: block; font-family: var(--serif); font-size: 26px; font-weight: 400; line-height: 1.05; margin: 24px 0 14px; }
+    .calendar-grid .month-outcome { color: var(--ink-soft); font-size: 10px; line-height: 1.6; margin: 0 0 24px; min-height: 48px; }
+    .month-list { border-top: 1px solid var(--line); padding-top: 16px; }
+    .month-list + .month-list { margin-top: 18px; }
+    .month-list small { color: var(--clay-dark); display: block; font-size: 7px; font-weight: 700; letter-spacing: .12em; margin-bottom: 8px; text-transform: uppercase; }
+    .month-list span { color: var(--ink-soft); display: grid; font-size: 9px; gap: 7px; grid-template-columns: 10px 1fr; line-height: 1.45; margin-top: 7px; }
+    .month-list span::before { color: var(--clay-dark); content: '✓'; }
+    .month-list.systems span::before { content: '+'; }
+    .pace-note { background: var(--paper-deep); color: var(--ink-soft); font-size: 10px; margin: 24px 0 0; padding: 16px 20px; }
+    .pace-note strong { color: var(--forest); }
+
+    .content-queue { background: var(--forest-deep); color: var(--white); padding: 72px 64px; }
+    .queue-heading { align-items: end; display: grid; gap: 72px; grid-template-columns: 1.2fr .8fr; }
+    .queue-heading h2 { color: var(--white); }
+    .queue-heading > p { color: rgba(255,253,247,.58); }
+    .queue-table { border-top: 1px solid var(--line-light); margin-top: 48px; }
+    .queue-row { align-items: center; border-bottom: 1px solid var(--line-light); display: grid; gap: 18px; grid-template-columns: 44px 1.5fr .75fr 70px .65fr; min-height: 60px; }
+    .queue-row > span { color: rgba(255,253,247,.54); font-size: 9px; }
+    .queue-row > span:first-child, .queue-row > b { color: var(--clay); }
+    .queue-row > strong { font-family: var(--serif); font-size: 18px; font-weight: 400; }
+    .queue-row > b { font-family: var(--serif); font-size: 20px; font-weight: 400; }
+    .queue-head { min-height: 38px; }
+    .queue-head > span { color: rgba(255,253,247,.3) !important; font-size: 7px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+    .quality-section { display: grid; grid-template-columns: .8fr 1.2fr; }
+    .quality-lead { background: var(--clay); color: var(--white); padding: 68px 48px; }
+    .quality-lead .eyebrow { color: rgba(255,253,247,.65); }
+    .quality-lead h2 { color: var(--white); }
+    .quality-lead h2 em { color: var(--forest-deep); }
+    .quality-lead > p:last-child { color: rgba(255,253,247,.72); font-size: 11px; line-height: 1.7; margin: 28px 0 0; }
+    .quality-list { padding: 42px 48px; }
+    .quality-list article { align-items: start; border-bottom: 1px solid var(--line); display: grid; gap: 20px; grid-template-columns: 34px 1fr; padding: 20px 0; }
+    .quality-list article > span { color: var(--clay-dark); font-size: 9px; padding-top: 4px; }
+    .quality-list strong { font-family: var(--serif); font-size: 23px; font-weight: 400; }
+    .quality-list p { color: var(--ink-soft); font-size: 10px; margin: 4px 0 0; }
+
+    .scorecard-section { padding: 78px 64px; }
+    .scorecard-table { border-left: 1px solid var(--line); border-top: 1px solid var(--line); margin-top: 50px; }
+    .scorecard-row { align-items: center; border-bottom: 1px solid var(--line); display: grid; gap: 20px; grid-template-columns: 1.25fr .55fr .55fr 1fr; min-height: 62px; padding: 0 20px; }
+    .scorecard-row > * { font-size: 10px; }
+    .scorecard-row strong { font-family: var(--serif); font-size: 18px; font-weight: 400; }
+    .scorecard-row b { color: var(--clay-dark); font-family: var(--serif); font-size: 21px; font-weight: 400; }
+    .scorecard-row span { color: var(--ink-soft); }
+    .scorecard-head { background: var(--forest); }
+    .scorecard-head span { color: rgba(255,253,247,.58); font-size: 7px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+    .measurement-grid { border-left: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 28px; }
+    .measurement-grid article { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding: 20px; }
+    .measurement-grid span { color: var(--clay-dark); display: block; font-size: 7px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .measurement-grid strong { display: block; font-family: var(--serif); font-size: 18px; font-weight: 400; line-height: 1.2; margin-top: 14px; }
+
+    .owner-section { background: var(--paper-deep); display: grid; gap: 44px 60px; grid-template-columns: .9fr 1.1fr; padding: 78px 64px; }
+    .owner-section header h2 { color: var(--forest); }
+    .owner-section header > p:last-child { color: var(--ink-soft); font-size: 11px; line-height: 1.75; margin: 28px 0 0; max-width: 500px; }
+    .owner-checklist { border-top: 1px solid var(--line); }
+    .owner-checklist label { border-bottom: 1px solid var(--line); cursor: pointer; display: block; }
+    .owner-checklist input { position: absolute; opacity: 0; pointer-events: none; }
+    .owner-checklist label > span { align-items: center; display: grid; font-size: 10px; gap: 14px; grid-template-columns: 22px 1fr; min-height: 54px; padding: 0 10px; transition: background .15s ease, color .15s ease; }
+    .owner-checklist label > span::after { border: 1px solid var(--ink-muted); content: ''; height: 14px; justify-self: end; width: 14px; }
+    .owner-checklist i { color: var(--clay-dark); font-size: 8px; font-style: normal; }
+    .owner-checklist input:checked + span { background: var(--forest); color: var(--white); text-decoration: line-through; text-decoration-color: rgba(255,255,255,.35); }
+    .owner-checklist input:checked + span::after { background: var(--clay); border-color: var(--clay); box-shadow: inset 0 0 0 3px var(--forest); }
+    .owner-checklist input:focus-visible + span { outline: 2px solid var(--clay); outline-offset: -2px; }
+    .owner-callout { background: var(--forest); color: var(--white); grid-column: 1 / -1; padding: 28px 34px; }
+    .owner-callout > span { color: var(--clay); font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .owner-callout > strong { display: block; font-family: var(--serif); font-size: 28px; font-weight: 400; margin-top: 8px; }
+    .owner-callout p { color: rgba(255,253,247,.58); font-size: 10px; line-height: 1.65; margin: 8px 0 0; max-width: 820px; }
+
+    .guardrails { border-top: 1px solid var(--line); padding: 48px 64px; }
+    .guardrails > div { display: grid; gap: 0; grid-template-columns: repeat(4, 1fr); }
+    .guardrails > div p { border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 10px; margin: 0; padding: 16px 18px 0 0; }
+    .guardrails > div p + p { border-left: 1px solid var(--line); padding-left: 18px; }
+    .guardrails > div span { color: var(--clay-dark); font-family: var(--serif); font-size: 22px; margin-right: 8px; vertical-align: -2px; }
+    .report-footer { align-items: center; background: var(--forest-deep); color: rgba(255,253,247,.5); display: grid; font-size: 8px; grid-template-columns: 1fr auto 1fr; padding: 22px 48px; }
+    .report-footer > div { align-items: center; display: flex; }
+    .report-footer :global(svg) { color: var(--clay); height: 26px; margin-right: 9px; width: 26px; }
     .report-footer p { margin: 0; }
+    .report-footer strong, .report-footer span { display: block; }
+    .report-footer strong { color: var(--white); font-family: var(--serif); font-size: 14px; font-weight: 400; }
+    .report-footer nav { display: flex; gap: 22px; }
+    .report-footer > p { justify-self: end; }
     .report-footer a { text-underline-offset: 3px; }
-    .report-footer nav { display: flex; gap: 24px; }
-    @media (max-width: 760px) {
-      .seo-report { box-shadow: none; margin: 0; }
-      .report-header { align-items: flex-start; padding: 20px; }
-      .report-brand { font-size: 16px; }
-      .report-header > div { max-width: 105px; text-align: right; }
-      .report-hero { gap: 42px; grid-template-columns: 1fr; padding: 56px 20px 48px; }
-      .hero-message h1 { font-size: 48px; }
-      .growth-score { justify-self: center; width: 260px; }
-      .growth-path, .result-card-grid, .program-tracker, .report-grid, .completed-list, .cadence-grid { grid-template-columns: 1fr; }
-      .growth-path article + article { border-left: 0; border-top: 1px solid var(--line); }
-      .live-results, .score-panel, .completed-work, .next-section, .cadence-section { padding: 42px 20px; }
-      .section-title { align-items: flex-start; flex-direction: column; gap: 8px; }
-      .live-results .section-title h2 { font-size: 34px; }
-      .result-card-grid article { min-height: 0; }
-      .program-tracker { gap: 38px; padding: 48px 20px; }
-      .tracker-list article { grid-template-columns: 28px 1fr; padding: 10px 0; }
-      .tracker-list b { grid-column: 2; }
-      .score-row { grid-template-columns: 120px 1fr 26px; }
-      .completed-list p { min-height: 0; }
-      .next-list article { grid-template-columns: 28px 1fr; }
-      .next-list small { grid-column: 2; text-align: left; }
-      .cadence-grid p, .cadence-grid p + p { border-left: 0; border-top: 1px solid var(--line); padding: 16px 0; }
-      .report-footer { align-items: flex-start; flex-direction: column; gap: 10px; padding: 18px 20px; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-copy, .north-star { animation: rise-in .7s both cubic-bezier(.22,1,.36,1); }
+      .north-star { animation-delay: .12s; }
+      @keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     }
+
+    @media (max-width: 820px) {
+      .roadmap { box-shadow: none; margin: 0; }
+      .report-header { gap: 12px; grid-template-columns: 1fr auto; min-height: 68px; padding: 0 20px; }
+      .report-header nav { display: none; }
+      .report-brand { font-size: 16px; }
+      .report-date { text-align: right; }
+      .report-hero { gap: 48px; grid-template-columns: 1fr; padding: 64px 20px 52px; }
+      .hero-copy h1 { font-size: 54px; }
+      .north-star { max-width: 420px; }
+      .position-strip { align-items: start; grid-template-columns: 1fr; padding: 20px; }
+      .position-strip strong { font-size: 20px; }
+      .launch-strip { grid-template-columns: repeat(2, 1fr); }
+      .launch-strip article:nth-child(2) { border-right: 0; }
+      .launch-strip article { border-bottom: 1px solid var(--line); padding: 22px 20px; }
+      .opportunity, .calendar-section, .page-plan, .content-queue, .owner-section, .scorecard-section { padding: 56px 20px; }
+      .section-heading, .queue-heading, .opportunity-grid, .quality-section, .owner-section { grid-template-columns: 1fr; }
+      .section-heading, .queue-heading { align-items: start; gap: 24px; }
+      .section-heading h2, .queue-heading h2, .quality-lead h2, .owner-section header h2 { font-size: 44px; }
+      .baseline-card { border-left: 1px solid var(--line); min-height: 310px; }
+      .opportunity-notes, .calendar-grid { grid-template-columns: 1fr; }
+      .calendar-grid article { min-height: 0; }
+      .page-list article { grid-template-columns: 30px 1fr; }
+      .page-data, .page-proof { grid-column: 2; padding-top: 0; }
+      .queue-table { overflow-x: auto; }
+      .queue-row { grid-template-columns: 38px minmax(220px,1.5fr) 130px 70px 120px; min-width: 650px; }
+      .quality-lead { padding: 54px 20px; }
+      .quality-list { padding: 28px 20px; }
+      .scorecard-table { overflow-x: auto; }
+      .scorecard-row { grid-template-columns: 190px 100px 100px 180px; min-width: 610px; }
+      .measurement-grid { grid-template-columns: repeat(2, 1fr); }
+      .owner-callout { grid-column: auto; }
+      .guardrails { padding: 44px 20px; }
+      .guardrails > div { grid-template-columns: 1fr; }
+      .guardrails > div p, .guardrails > div p + p { border-left: 0; padding: 14px 0; }
+      .report-footer { gap: 18px; grid-template-columns: 1fr; padding: 24px 20px; }
+      .report-footer > p { justify-self: start; }
+    }
+
     @media print {
       :global(body) { background: var(--paper); }
-      .seo-report { box-shadow: none; margin: 0; max-width: none; print-color-adjust: exact; }
+      .roadmap { box-shadow: none; margin: 0; max-width: none; }
+      .report-header nav, .hero-link { display: none; }
+      .report-hero, .page-plan, .content-queue, .owner-callout, .report-footer { print-color-adjust: exact; }
     }
   </style>
 </BaseLayout>

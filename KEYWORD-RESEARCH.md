@@ -12,7 +12,7 @@ The initial SEO program should target one broad local homepage cluster and four 
 
 ## Research limitations
 
-The paid keyword-volume provider is not connected, and Search Console has not yet collected data for the redesigned site. Search demand figures are therefore not fabricated in this report. Priorities are based on current Raleigh search results, recurring language used by ranking competitors, local homeowner discussions, existing services and commercial intent. Validate exact monthly volume and current positions in Google Keyword Planner and Search Console after those accounts are connected.
+This document records the initial qualitative research from July 14, 2026. Live Keywords Everywhere volume, CPC, competition and ranking data was subsequently collected on July 16, 2026. Use `SEO-CONTENT-PLAN.md` as the current quantitative prioritization. Search Console has not yet collected data for the redesigned site, so its eventual first-party query and conversion data should supersede third-party estimates.
 
 ## Priority keyword map
 
@@ -195,23 +195,40 @@ The homepage should link directly to all four primary service pages. Each articl
 
 ## 90-day publishing order
 
-### Month 1: commercial foundation
+This order supports the full production roadmap in `SEO-CONTENT-PLAN.md`. The target is eight anchor pages plus at least two search-led posts each week, or 32+ useful releases. The 16 cornerstone assets receive the deepest research and proof; project stories remain gated by real photos and owner detail.
 
-1. Landscape Design Raleigh service page
-2. Drainage and Rain Gardens Raleigh service page
-3. First before-and-after project case study
+### Month 1: measurement and commercial foundation
 
-### Month 2: profitable project work
+1. Homepage search-intent refresh
+2. Landscape Design Raleigh service page
+3. Drainage and Rain Gardens Raleigh service page
+4. About Norman expert profile
+
+Publish eight supporting posts during the month, beginning with the North Raleigh woodland-garden story, landscape-design cost, choosing a Raleigh landscaper and front-yard ideas.
+
+### Month 2: profitable project work and buying questions
 
 1. Hardscaping Raleigh service page
-2. Raleigh landscape-design cost guide
-3. Second before-and-after case study
+2. Native and Natural Garden Design Raleigh service page
+3. How to fix standing water in a Raleigh yard
+4. Raleigh landscape-design cost guide
+5. Raleigh drainage and rain-garden project story
+6. Projects and before/after hub
 
-### Month 3: differentiation
+The service pages and project hub are the three anchor releases. Publish eight supporting posts across standing water, patio drainage, clay soil, shade, low-maintenance design and project proof.
 
-1. Native and Natural Garden Design Raleigh service page
-2. Raleigh Rainwater Rewards guide
+### Month 3: differentiation and optimization
+
+1. Landscape Lighting Raleigh service page
+2. Landscape designer vs. landscape architect guide
 3. Best plants for Raleigh clay soil
+4. Raleigh Rainwater Rewards guide
+5. Low-maintenance landscaping ideas for Raleigh
+6. Raleigh patio and native-planting project story
+
+Landscape lighting is the final anchor release. Publish eight supporting posts across the listed buyer, plant, local-program, seasonal and project topics.
+
+At the end of Month 3, use Search Console query and conversion data to improve the first releases and choose the next-quarter roadmap.
 
 ## Measurement plan
 
@@ -234,4 +251,3 @@ Revisit this plan after 60–90 days of Search Console data. Keep pages that att
 - Local homeowner discussions repeatedly ask for plant-focused designers, native landscaping, drainage help and one company that can design and build the complete space.
 - The City of Raleigh explains rain gardens and the Raleigh Rainwater Rewards opportunity: https://raleighnc.gov/stormwater/services/apply-raleigh-rainwater-rewards/rain-gardens
 - Current search results for Garden & Art show only the homepage plus third-party profiles, reinforcing the need for dedicated service and project pages.
-
