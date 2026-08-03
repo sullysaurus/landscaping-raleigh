@@ -1,0 +1,84 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const hero = { src: '/img/portfolio/1.jpg', alt: 'Freshly finished Raleigh lawn beside a curved retaining wall and mulched planting bed', caption: 'A new lawn works best when grade, edges and beds are resolved together', width: 1350, height: 1800 };
+const process = [
+  { title: 'Understand the failure', copy: 'We look at light, drainage, traffic, irrigation and the previous lawn. New sod should not be placed over an unresolved condition that caused the old turf to decline.' },
+  { title: 'Choose the turf', copy: 'The grass type is selected for available sun, intended use, appearance and the maintenance you can provide. No turf performs equally in every Raleigh yard.' },
+  { title: 'Prepare the ground', copy: 'Removal, grading, soil preparation and smooth transitions create the base. This is where drainage and final surface quality are largely decided.' },
+  { title: 'Install and establish', copy: 'Sod is laid with tight joints, rolled and watered promptly. Clear early watering and traffic guidance helps roots connect with the prepared soil.' },
+];
+const faqs = [
+  { question: 'Is sod better than seeding a lawn?', answer: 'Sod provides an immediate surface and faster erosion protection, while seed can cost less and may offer different variety choices. Site, season, budget and how quickly the area must be usable determine which approach makes more sense.' },
+  { question: 'Can sod grow in a shady Raleigh yard?', answer: 'Turf needs enough light for the selected grass type. Some tolerate partial shade better than others, but deep shade, heavy root competition and poor airflow can make any lawn struggle. In those areas, a planted bed or another surface may be the better long-term design.' },
+  { question: 'Why does old grass need to be removed?', answer: 'Laying new sod over failing turf, weeds or an uneven compacted surface prevents good soil contact and preserves existing grade problems. Proper removal and preparation help the new roots enter the soil evenly.' },
+  { question: 'How much water does new sod need?', answer: 'New sod must remain consistently moist during establishment without sitting in prolonged saturation. Exact timing changes with weather, soil, turf type and irrigation coverage. Garden & Art provides project-specific guidance rather than a fixed schedule that ignores conditions.' },
+  { question: 'When can people walk on new sod?', answer: 'Traffic should be limited while roots are beginning to connect with the soil. The timeline depends on season and growth. Essential access may be possible sooner, but play, pets and repeated foot traffic should wait until the surface is stable.' },
+  { question: 'Can you fix drainage before installing sod?', answer: 'Visible surface grading and residential landscape drainage can be assessed as part of the project. If the problem involves a foundation, engineered system, public infrastructure or another scope outside landscape contracting, that work needs the appropriate professional.' },
+];
+const related = [
+  { href: '/lawn-bed-care-raleigh/', title: 'Lawn & bed care', copy: 'Protect the new lawn and keep surrounding garden beds working with it.' },
+  { href: '/drainage-rain-gardens-raleigh/', title: 'Drainage & rain gardens', copy: 'Address persistent wet areas before covering the symptoms with new turf.' },
+  { href: '/seasonal-cleanups-mulching-raleigh/', title: 'Cleanups & mulching', copy: 'Reset adjacent beds and edges while the lawn area is being renewed.' },
+];
+---
+
+<ServiceLayout
+  path="/sod-installation-raleigh/"
+  title="Sod Installation Raleigh NC | Garden & Art Landscapes"
+  description="Residential sod installation in Raleigh, NC, with careful turf selection, grading, soil preparation and establishment guidance for healthier new lawns."
+  serviceName="Sod Installation in Raleigh, NC"
+  serviceType="Residential sod and new lawn installation"
+  schemaDescription="Residential sod installation for Raleigh properties, including site assessment, turf selection, removal, grading, preparation and establishment guidance."
+  hero={hero}
+  heroEyebrow="Residential sod installation · Raleigh, NC"
+  heroTitle="Give a new lawn"
+  heroEmphasis="a better beginning."
+  heroLead="Garden & Art installs residential sod in Raleigh with attention to light, drainage, soil preparation and use—because the work beneath the grass determines how the new lawn begins."
+  ctaLabel="Discuss your new lawn"
+  introEyebrow="Preparation before instant green"
+  introTitle="Sod is the finish."
+  introEmphasis="The site is the foundation."
+  introLede="A successful sod project starts by asking why the existing lawn failed and whether turf is still the right answer for that part of the property."
+  introParagraphs={[
+    'Fresh sod can transform a bare, muddy or damaged area quickly, but the visible roll is only the final layer. Poor drainage, compacted soil, deep shade, construction debris or heavy traffic can follow the new lawn unless those conditions are identified first.',
+    'Garden & Art evaluates the lawn as part of the property. Grade needs to connect cleanly to walks, patios and beds. Turf choice needs to fit the available sun and intended use. Irrigation coverage and establishment care need to be realistic. That wider view helps avoid paying for an immediate green surface that is poorly matched to the site.',
+  ]}
+  checklist={[
+    'Replacement of failed, patchy or construction-damaged lawn areas',
+    'New lawn installation around completed landscape projects',
+    'Removal of existing turf and surface preparation',
+    'Minor finish grading and transitions to paths, patios and beds',
+    'Project-specific watering and early-care guidance',
+  ]}
+  processEyebrow="A lawn built from the ground up"
+  processTitle="Correct the conditions."
+  processEmphasis="Then install the sod."
+  process={process}
+  localEyebrow="Turf matched to the property"
+  localTitle="Sun, use and water"
+  localEmphasis="all matter."
+  localLede="The best lawn is not the same grass in every yard. It is the turf type and lawn area that fit the property you actually have."
+  localParagraphs={[
+    'A sunny play area has different demands from a narrow side yard or a lawn beneath mature trees. Heat, shade duration, root competition and normal foot traffic should guide turf choice and the amount of lawn retained. Where conditions are fundamentally poor for grass, expanding a bed or changing the surface can be more responsible than repeated replacement.',
+    'Water is most important during establishment, but more is not always better. The soil needs consistent moisture and good contact with the sod while still allowing air around developing roots. Even coverage, observation and adjustment to rainfall matter more than following the same clock schedule every day.',
+  ]}
+  gallery={[
+    { src: '/img/portfolio/1.jpg', alt: 'Finished lawn meeting a curved retaining wall and mulched bed', caption: 'Clean transitions connect lawn, structure and planting', width: 1350, height: 1800 },
+    { src: '/img/services/sod.jpg', alt: 'Fresh sod roll being installed over prepared soil', caption: 'Tight joints and prepared soil support even establishment', width: 400, height: 396 },
+  ]}
+  factorsEyebrow="Scope, timing and investment"
+  factorsTitle="What shapes a sod"
+  factorsEmphasis="project."
+  factorsIntro="Square footage is only the starting point. Removal, access, grade, soil condition and irrigation can materially change the work required."
+  factors={[
+    { title: 'Removal and disposal', copy: 'Existing turf, weeds, roots, debris and unsuitable surface material may need to be removed before preparation can begin.' },
+    { title: 'Grade and soil condition', copy: 'Low spots, settlement, compaction and transitions affect preparation. Major drainage or structural concerns remain separate scopes.' },
+    { title: 'Turf and access', copy: 'Grass type, delivery size, carrying distance, gates, slopes and protection of finished areas influence labor and scheduling.' },
+    { title: 'Establishment support', copy: 'Reliable water coverage and a realistic early-care plan are essential. Installation cannot compensate for sod that dries before roots establish.' },
+  ]}
+  faqs={faqs}
+  related={related}
+  finalTitle="Ready to replace a struggling lawn"
+  finalEmphasis="the right way?"
+/>

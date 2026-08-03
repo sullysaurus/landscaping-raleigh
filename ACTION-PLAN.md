@@ -17,6 +17,7 @@
 - [x] Direct apex-domain redirects
 - [x] Clear license wording
 - [x] Five priority Raleigh service pages, with schema and internal links, ready for deployment
+- [x] Four supporting Raleigh lawn, sod, cleanup and pruning pages, ready for deployment
 
 ## Deployment verification
 

@@ -1,0 +1,84 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const hero = { src: '/img/portfolio/12.jpg', alt: 'Mature oak tree rising above carefully maintained terraced garden beds', caption: 'Mature woody plants give the garden scale and deserve deliberate care', width: 1200, height: 1600 };
+const process = [
+  { title: 'Identify the plant', copy: 'Species, growth habit, age, condition and flowering pattern shape the pruning approach. The same cut and calendar do not belong on every tree or shrub.' },
+  { title: 'Define the objective', copy: 'Clearance, deadwood, structure, size, flowering or rejuvenation are different goals. We agree on the reason for pruning before making cuts.' },
+  { title: 'Prune selectively', copy: 'Work proceeds with attention to branch collars, natural form and the amount of live growth removed. Shearing and topping are not substitutes for thoughtful pruning.' },
+  { title: 'Review the result', copy: 'Debris is cleared and future needs are noted. Conditions requiring climbing, large removals, utility clearance or advanced risk assessment are referred out.' },
+];
+const faqs = [
+  { question: 'What kinds of trees and shrubs do you prune?', answer: 'Garden & Art focuses on ornamental trees and shrubs that can be pruned safely from the ground or within the clearly agreed landscape scope. Large-tree climbing, hazardous removals, storm-damaged trees and work near utilities belong with a qualified tree-care company or certified arborist.' },
+  { question: 'When is the best time to prune flowering shrubs?', answer: 'Timing depends on whether the plant flowers on growth produced this year or on older wood, as well as its health and the pruning goal. Pruning at the wrong time may remove flower buds even when the cuts themselves are sound.' },
+  { question: 'Can an overgrown shrub be made small again?', answer: 'Sometimes, but not every species responds well to severe reduction, and forcing a large mature plant into a space that is too small can create repeated stress and unattractive regrowth. Selective renovation or replacement may be the better answer.' },
+  { question: 'Do you top trees?', answer: 'No. Removing large portions of a tree’s crown through indiscriminate heading cuts can create weak regrowth and lasting structural problems. Trees that have outgrown the available space need a qualified assessment, not topping.' },
+  { question: 'Can you prune branches touching the roof or near power lines?', answer: 'Small ornamental clearance may fit the service after inspection. Work near energized lines, large elevated limbs or conditions requiring climbing or rigging does not. Contact the utility or an appropriately qualified tree-care professional for those hazards.' },
+  { question: 'How much can be removed at one time?', answer: 'That depends on species, age, health, season and the type of growth being removed. More cutting does not mean better value. Mature or stressed plants often benefit from conservative work or pruning spread across more than one season.' },
+];
+const related = [
+  { href: '/seasonal-cleanups-mulching-raleigh/', title: 'Cleanups & mulching', copy: 'Finish beds and remove seasonal debris around ornamental plants.' },
+  { href: '/native-garden-design-raleigh/', title: 'Native garden design', copy: 'Replace poorly placed plants with a palette better suited to the space.' },
+  { href: '/landscape-design-raleigh/', title: 'Landscape design', copy: 'Plan mature plant size and structure as part of the whole property.' },
+];
+---
+
+<ServiceLayout
+  path="/tree-shrub-pruning-raleigh/"
+  title="Tree & Shrub Pruning Raleigh NC | Garden & Art"
+  description="Selective ornamental tree and shrub pruning in Raleigh, NC, focused on natural form, plant health, flowering and clearly defined residential scope."
+  serviceName="Ornamental Tree and Shrub Pruning in Raleigh, NC"
+  serviceType="Residential ornamental tree and shrub pruning"
+  schemaDescription="Selective ornamental tree and shrub pruning for Raleigh gardens, with attention to natural form, flowering, plant health and safe scope boundaries."
+  hero={hero}
+  heroEyebrow="Ornamental tree & shrub pruning · Raleigh, NC"
+  heroTitle="Prune for the plant"
+  heroEmphasis="it can become."
+  heroLead="Garden & Art provides selective ornamental tree and shrub pruning in Raleigh, guided by growth habit, flowering, long-term form and a clear distinction between garden pruning and hazardous tree work."
+  ctaLabel="Discuss your pruning needs"
+  introEyebrow="Purpose before cuts"
+  introTitle="Good pruning is"
+  introEmphasis="selective, not automatic."
+  introLede="Every cut changes how a woody plant grows. The goal is to solve a defined problem while preserving as much healthy structure and natural character as possible."
+  introParagraphs={[
+    'Shrubs are often sheared because the task is quick and the immediate outline looks tidy. Repeated shearing can hide dead interior growth, reduce flowering and turn different species into the same dense shell. Selective pruning works with branch structure and growth habit instead of treating every plant like a hedge.',
+    'Norman Rabins brings horticultural training and long experience with ornamental collections to Raleigh gardens. Garden & Art focuses on plant-scale work that fits residential landscape care. When a tree requires climbing, rigging, removal, utility clearance or formal risk assessment, the responsible next step is a qualified tree-care professional.',
+  ]}
+  checklist={[
+    'Selective pruning of ornamental shrubs and small garden trees',
+    'Removal of dead, damaged, crossing or poorly directed growth',
+    'Clearance around paths, entries and garden features where safely accessible',
+    'Flowering-shrub pruning timed to growth and bloom habit',
+    'Staged renovation of suitable overgrown shrubs',
+  ]}
+  processEyebrow="A plant-specific approach"
+  processTitle="Know why you are cutting."
+  processEmphasis="Then cut less, better."
+  process={process}
+  localEyebrow="Form, flowers and mature size"
+  localTitle="The calendar alone"
+  localEmphasis="does not decide."
+  localLede="Season is important, but pruning timing also depends on the plant’s flowering cycle, health and the kind of response the work is intended to produce."
+  localParagraphs={[
+    'Some flowering shrubs carry next season’s buds on older stems; others bloom on growth produced in the current year. Evergreen screens, deciduous shrubs and small ornamental trees respond differently to reduction and thinning. Correct identification helps avoid sacrificing flowers or creating a flush of weak growth.',
+    'Plant placement matters too. A shrub repeatedly cut back from a window or path may simply be too large for the space. Pruning can manage growth, but it cannot permanently change a plant’s genetic size. In those cases, redesign or replacement may provide a better garden and less recurring work.',
+  ]}
+  gallery={[
+    { src: '/img/about/norman2.jpg', alt: 'Norman Rabins, horticulturist and founder of Garden and Art Landscapes', caption: 'Pruning decisions guided by horticultural training and field experience', width: 1200, height: 846 },
+    { src: '/img/services/pruning.jpg', alt: 'Hands making a selective pruning cut on a small deciduous branch', caption: 'Selective cuts follow branch structure rather than an arbitrary outline', width: 396, height: 399 },
+  ]}
+  factorsEyebrow="Scope, timing and investment"
+  factorsTitle="What shapes a pruning"
+  factorsEmphasis="project."
+  factorsIntro="Plant count is only one factor. Size, density, access, condition, debris and whether the work must be staged all influence the scope."
+  factors={[
+    { title: 'Plant size and structure', copy: 'Dense mature shrubs and small trees with complex branching take more selective work than young, open plants.' },
+    { title: 'Objective and condition', copy: 'Removing deadwood, restoring a suitable shrub and routine clearance are different tasks. Decline or defects may require another specialist.' },
+    { title: 'Access and safety', copy: 'Slope, obstacles, height, utilities and required equipment determine whether the work fits Garden & Art’s scope.' },
+    { title: 'Timing and staging', copy: 'Flowering cycles, plant stress and the amount of live growth involved may make a later date or multi-season approach more responsible.' },
+  ]}
+  faqs={faqs}
+  related={related}
+  finalTitle="Ready to give your plants"
+  finalEmphasis="more thoughtful care?"
+/>

@@ -1,0 +1,84 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const hero = { src: '/img/hero-garden.jpg', alt: 'Well-kept Raleigh garden with lawn, layered beds and mature trees', caption: 'Lawn and garden care considered as one living system', width: 1774, height: 887 };
+const process = [
+  { title: 'Walk the property', copy: 'We review lawn condition, bed edges, weeds, plant health, irrigation and the amount of care the garden realistically needs. Priorities come before a task list.' },
+  { title: 'Define the scope', copy: 'The care plan identifies recurring work, seasonal work and items that need correction first. Frequency is matched to the property rather than assumed.' },
+  { title: 'Care with context', copy: 'Mowing, edging, bed care and plant attention are coordinated so one task does not undermine another. Observed changes can be addressed while they are still manageable.' },
+  { title: 'Adjust by season', copy: 'Growth, heat, rainfall and dormancy change the work through the year. The plan should respond to the garden instead of repeating the same visit every month.' },
+];
+const faqs = [
+  { question: 'What is included in lawn and bed care?', answer: 'Scope can include lawn cutting, edging, bed cleanup, weeding, mulch attention, light ornamental pruning and seasonal garden tasks. Every property is different, so Garden & Art confirms the included work and visit pattern before service begins.' },
+  { question: 'Do you provide basic mowing-only service?', answer: 'Garden & Art is best suited to properties where the lawn is part of a designed garden and the homeowner values attentive bed and plant care. A high-volume mowing route may be better served by a company organized specifically for that model.' },
+  { question: 'How often does a Raleigh garden need service?', answer: 'Frequency depends on growth rate, season, lawn area, bed style and the level of finish you expect. Warm, wet periods may require more attention than dormant months. We recommend a schedule after seeing the property.' },
+  { question: 'Can you care for an established perennial garden?', answer: 'Yes, when the plant palette and scope are a good fit. Perennial beds need observation: knowing what should be cut, divided, supported, left for winter structure or allowed to reseed is different from treating every plant the same way.' },
+  { question: 'Do you diagnose lawn diseases or insect problems?', answer: 'We can identify visible symptoms and discuss appropriate next steps within the landscape-care scope. Some problems require laboratory diagnosis, specialized treatment or another licensed professional. We avoid promising a treatment before the cause is reasonably understood.' },
+  { question: 'Can maintenance improve a neglected garden?', answer: 'Often, but a neglected property may need an initial cleanup or renovation before recurring care makes sense. Removing accumulated debris, redefining beds and correcting a few problem areas gives ongoing visits a useful baseline.' },
+];
+const related = [
+  { href: '/seasonal-cleanups-mulching-raleigh/', title: 'Cleanups & mulching', copy: 'Reset overgrown beds, restore edges and prepare the garden for recurring care.' },
+  { href: '/sod-installation-raleigh/', title: 'Sod installation', copy: 'Replace failed or damaged lawn after the cause and site conditions are understood.' },
+  { href: '/tree-shrub-pruning-raleigh/', title: 'Tree & shrub pruning', copy: 'Maintain the form and health of ornamental plants within a clearly defined scope.' },
+];
+---
+
+<ServiceLayout
+  path="/lawn-bed-care-raleigh/"
+  title="Lawn & Garden Bed Care Raleigh NC | Garden & Art"
+  description="Attentive lawn and garden bed care in Raleigh, NC, including mowing, edging, weeding and seasonal plant care for designed residential gardens."
+  serviceName="Lawn and Garden Bed Care in Raleigh, NC"
+  serviceType="Residential lawn and garden bed maintenance"
+  schemaDescription="Attentive residential lawn and garden bed care for Raleigh properties, with mowing, edging, weeding and seasonal horticultural maintenance."
+  hero={hero}
+  heroEyebrow="Lawn & garden bed care · Raleigh, NC"
+  heroTitle="Keep the whole garden"
+  heroEmphasis="moving in the right direction."
+  heroLead="Garden & Art provides attentive lawn and bed care for Raleigh properties where turf, ornamental plants and seasonal change need to be managed as one garden—not as unrelated chores."
+  ctaLabel="Discuss a care plan"
+  introEyebrow="Care with a horticulturist’s eye"
+  introTitle="Maintenance should preserve"
+  introEmphasis="the design."
+  introLede="A cared-for garden is not simply shorter grass and fewer weeds. Its edges stay legible, plants have room to develop and small problems are noticed before they reshape the property."
+  introParagraphs={[
+    'Routine work determines how a garden ages. Cutting turf too low, shearing every shrub into the same shape or piling mulch against trunks can create avoidable stress. Thoughtful maintenance respects the growth habit of each plant and the purpose of each area while keeping the property comfortable to use.',
+    'Garden & Art is a strong fit for homeowners who want one knowledgeable set of eyes on both lawn and beds. Norman Rabins brings horticultural training and decades of design and field experience to the work. The care plan is defined around the actual property, seasonal demands and the level of finish you expect.',
+  ]}
+  checklist={[
+    'Lawn cutting and edging coordinated with surrounding beds',
+    'Weeding, bed definition and light seasonal cleanup',
+    'Perennial and ornamental plant care through the seasons',
+    'Mulch monitoring and correction of common over-mulching problems',
+    'Observation of visible irrigation, drainage and plant-health concerns',
+  ]}
+  processEyebrow="A property-specific care plan"
+  processTitle="See what the garden needs."
+  processEmphasis="Then do that work well."
+  process={process}
+  localEyebrow="Raleigh seasons shape the work"
+  localTitle="Care changes as"
+  localEmphasis="the garden changes."
+  localLede="Spring growth, summer heat, storm debris and winter structure each call for a different balance of attention."
+  localParagraphs={[
+    'During active growth, the focus may be turf height, edges, weeds and plants that are crowding paths. Hot or dry periods call for restraint and observation rather than unnecessary cutting. Fall and winter can reveal structure, expose drainage concerns and create opportunities to edit beds without the pressure of rapid growth.',
+    'The goal is not a garden frozen in one moment. Perennials expand, shrubs mature and shade patterns change. Good care makes deliberate adjustments while preserving the original composition. When a property needs redesign, drainage correction or substantial renovation rather than maintenance, we say so and define that work separately.',
+  ]}
+  gallery={[
+    { src: '/img/portfolio/10.jpg', alt: 'Maintained brick patio garden with fountain and layered beds', caption: 'Defined beds and healthy layers keep an outdoor room composed', width: 1200, height: 1600 },
+    { src: '/img/services/lawn.jpg', alt: 'Lawn mower moving through healthy residential turf', caption: 'Routine lawn work supports the garden around it', width: 250, height: 250 },
+  ]}
+  factorsEyebrow="Scope, frequency and investment"
+  factorsTitle="What shapes a garden care"
+  factorsEmphasis="plan."
+  factorsIntro="A useful proposal defines the recurring baseline and separates renovation or corrective work, so expectations remain clear on both sides."
+  factors={[
+    { title: 'Property and bed area', copy: 'Lawn size matters, but planted-bed area, edges, slopes, access and the number of distinct garden spaces can matter just as much.' },
+    { title: 'Garden complexity', copy: 'Mixed perennial beds and specimen plants require more observation than simple foundation planting. Care should match that complexity.' },
+    { title: 'Current condition', copy: 'Deferred work, invasive weeds, damaged edges or heavy debris may require an initial cleanup before a recurring schedule begins.' },
+    { title: 'Season and frequency', copy: 'Growth and weather change the workload. The visit pattern should reflect the property’s real needs and the agreed standard of care.' },
+  ]}
+  faqs={faqs}
+  related={related}
+  finalTitle="Ready for care that understands"
+  finalEmphasis="the whole garden?"
+/>

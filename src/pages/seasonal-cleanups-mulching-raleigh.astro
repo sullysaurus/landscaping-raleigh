@@ -1,0 +1,84 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const hero = { src: '/img/portfolio/10.jpg', alt: 'Freshly edged and mulched beds surrounding a brick patio garden and fountain', caption: 'Clean edges and measured mulch restore clarity without flattening the garden', width: 1200, height: 1600 };
+const process = [
+  { title: 'Set the priorities', copy: 'We walk the beds and identify what should be removed, cut back, preserved or addressed separately. A cleanup should not erase plants that are dormant or intentionally reseeding.' },
+  { title: 'Clear and edit', copy: 'Leaves, fallen branches, spent growth and unwanted seedlings are handled with attention to the plants underneath. Bed lines and path access are restored where needed.' },
+  { title: 'Prepare the surface', copy: 'Weeds are addressed and old mulch is evaluated before new material is added. Soil and trunk flares should not disappear beneath repeated layers.' },
+  { title: 'Finish and review', copy: 'Mulch is applied to an appropriate depth, edges are refined and debris is removed. Larger pruning, drainage or renovation needs are identified rather than hidden.' },
+];
+const faqs = [
+  { question: 'What is included in a seasonal garden cleanup?', answer: 'A cleanup may include leaf and branch removal, perennial cutback, light ornamental pruning, weeding, bed-edge restoration and debris hauling. The exact scope depends on season, plantings and current condition, and is confirmed before work begins.' },
+  { question: 'Do all perennials need to be cut back in fall?', answer: 'No. Some dried stems and seed heads provide winter structure or habitat and can remain until later. Diseased, collapsed or unwanted material may need earlier removal. The right timing depends on the plant and the goals for the garden.' },
+  { question: 'How much mulch should be added?', answer: 'Enough to provide an even protective layer without repeatedly burying the soil surface, plant crowns or tree trunks. Existing mulch depth matters. Adding the same amount every year without checking can create excessive buildup.' },
+  { question: 'Why should mulch stay away from tree trunks?', answer: 'Piling mulch against bark can hold moisture where the trunk should remain exposed and can conceal defects or roots. Mulch should cover the root zone while leaving the trunk flare visible rather than forming a volcano around it.' },
+  { question: 'Can you clean up a severely overgrown property?', answer: 'Often, but heavily overgrown spaces may require a staged renovation rather than a single routine visit. We separate removal, pruning, invasive-plant work, design decisions and recurring care so the scope is realistic.' },
+  { question: 'What happens to the garden debris?', answer: 'Debris handling and hauling are defined in the proposal. Some clean plant material may be suitable for on-site composting where the property and homeowner’s goals support it; diseased or unsuitable material should be handled differently.' },
+];
+const related = [
+  { href: '/lawn-bed-care-raleigh/', title: 'Lawn & bed care', copy: 'Maintain the clearer baseline after a larger seasonal reset.' },
+  { href: '/tree-shrub-pruning-raleigh/', title: 'Tree & shrub pruning', copy: 'Address ornamental plants that need work beyond light cleanup pruning.' },
+  { href: '/native-garden-design-raleigh/', title: 'Native garden design', copy: 'Renovate beds that need a new planting direction rather than another cleanup.' },
+];
+---
+
+<ServiceLayout
+  path="/seasonal-cleanups-mulching-raleigh/"
+  title="Garden Cleanups & Mulching Raleigh NC | Garden & Art"
+  description="Seasonal garden cleanups and mulching in Raleigh, NC, including bed clearing, weeding, edging, perennial care and properly placed mulch."
+  serviceName="Seasonal Garden Cleanups and Mulching in Raleigh, NC"
+  serviceType="Residential garden cleanup and mulching"
+  schemaDescription="Seasonal residential garden cleanup and mulching for Raleigh properties, including clearing, weeding, edging and horticulturally informed bed care."
+  hero={hero}
+  heroEyebrow="Garden cleanups & mulching · Raleigh, NC"
+  heroTitle="Bring order back"
+  heroEmphasis="without erasing the garden."
+  heroLead="Garden & Art provides seasonal cleanups and mulching for Raleigh gardens with attention to plant cycles, healthy bed practices and the details that make a property feel intentional again."
+  ctaLabel="Plan a seasonal cleanup"
+  introEyebrow="A reset with judgment"
+  introTitle="Clear what is finished."
+  introEmphasis="Protect what is growing."
+  introLede="A good cleanup makes the design visible again while respecting dormant plants, emerging growth, tree roots and the life already present in the beds."
+  introParagraphs={[
+    'Raleigh gardens accumulate leaves, fallen branches, weeds, spent stems and blurred edges through the seasons. Removing everything indiscriminately can damage emerging plants or strip away useful winter structure. Leaving everything can smother smaller plants and make paths or drainage routes disappear. The work is deciding what belongs and what does not.',
+    'Norman Rabins brings horticultural knowledge to that decision. Garden & Art can reset beds, refine edges and apply mulch as part of a seasonal visit or as the first phase before recurring care. If the real need is renovation, significant pruning or drainage work, we identify that rather than pretending another layer of mulch will solve it.',
+  ]}
+  checklist={[
+    'Leaf, branch and seasonal garden-debris removal',
+    'Selective perennial cutback and light ornamental cleanup',
+    'Weeding and restoration of clear bed edges',
+    'Evaluation of existing mulch before new material is added',
+    'Mulch placement that keeps trunks and plant crowns visible',
+  ]}
+  processEyebrow="A careful seasonal reset"
+  processTitle="Reveal the structure."
+  processEmphasis="Leave the garden healthier."
+  process={process}
+  localEyebrow="Timing follows the plants"
+  localTitle="Spring and fall are"
+  localEmphasis="different jobs."
+  localLede="The calendar matters, but current weather and plant development matter more than performing every task on the same date each year."
+  localParagraphs={[
+    'A spring cleanup may focus on removing winter debris, cutting back remaining perennial stems and making space for emerging growth. Fall work may prioritize leaves, storm debris, access and selected cutback while preserving plants that hold structure or support wildlife. Mulch timing should fit bed condition and other planned work.',
+    'Repeated mulch layers deserve particular attention. Mulch can moderate soil temperature, reduce evaporation and suppress some weeds, but excessive depth can bury plant crowns and tree trunks. We check what is already present, loosen or redistribute where appropriate and avoid using fresh material to conceal unresolved weeds or drainage symptoms.',
+  ]}
+  gallery={[
+    { src: '/img/portfolio/1.jpg', alt: 'Crisply edged mulched bed beside a curved retaining wall and lawn', caption: 'A clean edge defines the relationship between lawn and bed', width: 1350, height: 1800 },
+    { src: '/img/services/cleanup.jpg', alt: 'Wheelbarrow filled with seasonal garden debris', caption: 'Selective clearing makes the next stage of care possible', width: 418, height: 420 },
+  ]}
+  factorsEyebrow="Scope, season and investment"
+  factorsTitle="What shapes a cleanup and"
+  factorsEmphasis="mulching project."
+  factorsIntro="Bed area matters, but density, accumulated material, weeds, access and disposal can change the effort far more than a simple square-foot estimate suggests."
+  factors={[
+    { title: 'Current condition', copy: 'A maintained garden needing seasonal attention differs from a property with years of debris, invasive growth or lost bed lines.' },
+    { title: 'Planting complexity', copy: 'Mixed perennial beds require more identification and selective work than empty or simply planted foundation beds.' },
+    { title: 'Mulch and edges', copy: 'Material choice, existing depth, bed area and the amount of edge restoration influence both appearance and labor.' },
+    { title: 'Access and hauling', copy: 'Stairs, gates, slopes, carrying distance and the amount and type of debris affect how the work can be completed.' },
+  ]}
+  faqs={faqs}
+  related={related}
+  finalTitle="Ready to see the garden"
+  finalEmphasis="clearly again?"
+/>
