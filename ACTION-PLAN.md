@@ -47,13 +47,13 @@
 - [ ] Claim or complete the Google Business Profile
 - [ ] Correct conflicting directory listings
 - [ ] Create the direct review link and request template
-- [ ] Publish the first Raleigh service page (landscape design page built and ready for deployment)
+- [x] Publish the first Raleigh service page
 - [ ] Publish the first before-and-after project case study
 - [ ] Add verified testimonials or Google reviews to the website
 
 ## Next 60–90 days
 
-- [ ] Deploy the remaining priority service pages (all five are built and ready)
+- [x] Deploy the remaining priority service pages
 - [ ] Publish two strong local guides or project stories per month
 - [ ] Add authentic project photos to Google at least monthly
 - [ ] Post one useful Google update every two weeks

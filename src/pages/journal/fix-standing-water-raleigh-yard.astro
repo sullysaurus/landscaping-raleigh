@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LeafMark from '../../components/LeafMark.astro';
+import ArrowIcon from '../../components/ArrowIcon.astro';
+
+const url = 'https://www.landscapingraleigh.com/journal/fix-standing-water-raleigh-yard/';
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: 'How to Fix Standing Water in a Raleigh Yard',
+      description: 'A Raleigh homeowner’s guide to diagnosing standing water, matching the cause to the right drainage approach and knowing when to call a professional.',
+      image: 'https://www.landscapingraleigh.com/img/portfolio/6.jpg',
+      datePublished: '2026-08-03',
+      dateModified: '2026-08-03',
+      author: { '@type': 'Person', '@id': 'https://www.landscapingraleigh.com/#norman-rabins', name: 'Norman Rabins' },
+      publisher: { '@type': 'Organization', '@id': 'https://www.landscapingraleigh.com/#organization', name: 'Garden & Art Landscapes' },
+      mainEntityOfPage: url,
+      about: ['Standing water', 'Yard drainage', 'Rain gardens', 'Raleigh clay soil'],
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.landscapingraleigh.com/' },
+        { '@type': 'ListItem', position: 2, name: 'How to Fix Standing Water in a Raleigh Yard', item: url },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="How to Fix Standing Water in a Raleigh Yard"
+  description="Learn what causes standing water in Raleigh yards, which drainage solutions fit each cause and when to call a landscape drainage professional."
+  image="/img/portfolio/6.jpg"
+  imageWidth={1800}
+  imageHeight={1350}
+  imageAlt="Natural stone water garden with a small waterfall surrounded by Raleigh plantings"
+  schema={schema}
+>
+  <div class="journal-page">
+    <a class="skip-link" href="#article">Skip to article</a>
+    <header class="site-header is-scrolled">
+      <a class="brand" href="/" aria-label="Garden and Art Landscapes home"><LeafMark class="brand-mark" /><span>Garden <i>&</i> Art</span></a>
+      <nav class="site-nav journal-nav" aria-label="Main navigation"><a href="/#work">Work</a><a href="/#services">Services</a><a href="/#about">About</a><a href="/#contact">Contact</a></nav>
+      <a class="header-call" href="tel:+19192352245">919 235 2245</a>
+    </header>
+
+    <main id="article">
+      <article>
+        <header class="article-header">
+          <p class="eyebrow">Raleigh homeowner guide · Drainage</p>
+          <h1>How to fix standing water<br />in a <em>Raleigh yard.</em></h1>
+          <p class="article-deck">Start by finding where the water comes from and why it cannot leave. The right fix may be as small as correcting a downspout—or as involved as regrading, adding a drainage route or designing a rain garden.</p>
+          <div class="article-byline"><span>By Norman Rabins</span><span>Horticulturist · NC Landscape Contractor #1901</span><time datetime="2026-08-03">August 3, 2026</time></div>
+        </header>
+
+        <figure class="article-hero">
+          <img src="/img/portfolio/6.jpg" alt="Natural stone water garden with a small waterfall and moisture-loving plants" width="1800" height="1350" fetchpriority="high" decoding="async" />
+          <figcaption>Water can become part of the garden, but only after its source, volume and safe overflow route are understood.</figcaption>
+        </figure>
+
+        <div class="article-layout">
+          <aside class="article-toc" aria-label="Article contents">
+            <p>In this guide</p>
+            <a href="#first">What to do first</a><a href="#causes">Common causes</a><a href="#solutions">Match the solution</a><a href="#rain-gardens">Rain gardens</a><a href="#professional">When to call</a>
+          </aside>
+
+          <div class="article-body">
+            <p class="article-answer"><strong>The short answer:</strong> photograph the yard during a substantial rain, trace the water uphill, check gutters and downspouts, and note how long the area stays wet. Do not choose a French drain, rain garden or load of topsoil until you know whether the problem is concentrated roof runoff, a low grade, compacted soil, off-site flow or a blocked drainage path.</p>
+
+            <h2 id="first">What to do before changing the yard</h2>
+            <p>Standing water is evidence. If you cover it, pump it away or start digging before observing it, you can lose the clues that point to the cause. The best time to investigate is during rain and again a few hours later.</p>
+            <ol>
+              <li><strong>Take photos from several angles.</strong> Show where water enters, its deepest point and where it appears to stop.</li>
+              <li><strong>Walk uphill.</strong> Look for downspouts, patios, driveways, neighboring grades and narrow side yards that concentrate flow.</li>
+              <li><strong>Check simple failures.</strong> Clean visible gutter outlets and look for disconnected extensions, crushed pipes, buried outlets or mulch blocking a surface route.</li>
+              <li><strong>Record the timing.</strong> Water that disappears within hours behaves differently from an area that stays saturated for days.</li>
+              <li><strong>Mark utilities before excavation.</strong> Never assume a quiet part of the yard is free of buried lines.</li>
+            </ol>
+
+            <aside class="article-note"><strong>Safety boundary</strong><p>Water entering a building, undermining a structure, crossing an electrical system or creating severe erosion needs prompt attention from the appropriate qualified professional. A planting plan is not a substitute for foundation waterproofing, civil engineering or structural repair.</p></aside>
+
+            <h2 id="causes">Five common causes of standing water</h2>
+            <h3>1. A low spot with no useful outlet</h3>
+            <p>Settlement, construction grading or years of small additions can leave a bowl in the lawn. Water follows gravity into the depression and remains until it evaporates or slowly enters the soil. Adding soil to the center may move the puddle, but it will not help if the new grade sends water toward the house or a neighbor.</p>
+
+            <h3>2. Roof runoff concentrated in one place</h3>
+            <p>A single inch of rain across a large roof represents a substantial volume of water. Downspouts turn that broad rainfall into a concentrated discharge. If an extension ends in a flat clay area, the yard can remain wet even when the rest of the property drains normally.</p>
+
+            <h3>3. Compacted or slow-draining soil</h3>
+            <p>Raleigh’s Piedmont soils often contain considerable clay, but “clay soil” is not a complete diagnosis. Construction traffic, buried debris, loss of topsoil and repeated foot or equipment traffic can create a dense layer that accepts water slowly. Digging a small hole and replacing only that soil can create a bathtub rather than solving the larger condition.</p>
+
+            <h3>4. Runoff from hard surfaces</h3>
+            <p>Roofs, driveways, sidewalks and patios do not absorb rain like planted soil. The <a href="https://raleighnc.gov/stormwater/services/stormwater-utility-fee/impervious-surface">City of Raleigh describes these as impervious surfaces</a> and emphasizes that their runoff must be managed. A newer patio, shed or widened drive can change where water collects even if the yard drained acceptably before.</p>
+
+            <h3>5. Off-site flow or a blocked public system</h3>
+            <p>Water may arrive from a street, adjoining property, drainage easement or clogged public inlet. Responsibility matters. Raleigh says homeowners maintain pipes and streams on private property, while residents can report clogged public storm drains and catch basins through the city’s <a href="https://raleighnc.gov/stormwater/services/stormwater-maintenance-and-inspections/stormwater-maintenance-private-property">stormwater maintenance guidance</a>.</p>
+
+            <h2 id="solutions">Match the solution to the cause</h2>
+            <p>Drainage work is not a menu where every wet yard receives the same product. A solution should address the source, provide a safe destination or storage area, and avoid creating a new problem downstream.</p>
+            <div class="article-table-wrap"><table><thead><tr><th>Observed problem</th><th>Possible approach</th><th>Important question</th></tr></thead><tbody>
+              <tr><td>Downspout empties beside a wet bed</td><td>Extend, redirect, disconnect to an approved feature, or capture runoff</td><td>Where can overflow go during a large storm?</td></tr>
+              <tr><td>Shallow low area in open lawn</td><td>Careful regrading, a surface swale, or a planted basin</td><td>Will the new grade protect buildings and neighboring property?</td></tr>
+              <tr><td>Water follows a patio or wall</td><td>Correct surface pitch, edge conditions, base drainage or collection</td><td>Is the visible puddle caused by the hardscape or by water arriving uphill?</td></tr>
+              <tr><td>Seasonally wet planting area</td><td>Site-right planting, soil work, or a designed rain garden</td><td>Does the soil infiltrate quickly enough, and is there a safe overflow?</td></tr>
+              <tr><td>Subsurface seep or persistent saturation</td><td>Professional diagnosis; a subsurface drain may or may not fit</td><td>Is there a legal and practical outlet?</td></tr>
+            </tbody></table></div>
+
+            <p>A French drain can intercept or move certain subsurface water, but it is not automatically the best fix for surface runoff. It needs an appropriate outlet and correct construction. A pipe that has nowhere to discharge is only buried storage, and a system that exports water to the wrong place can create liability.</p>
+
+            <h2 id="rain-gardens">When a rain garden fits</h2>
+            <p>A rain garden is a shallow planted basin that receives runoff, slows it and lets it soak into prepared soil. It should drain between storms rather than remain a permanent pond. Raleigh’s current <a href="https://raleighnc.gov/stormwater/services/apply-raleigh-rainwater-rewards/rain-gardens">rain-garden guidance</a> recommends a suitable downhill location, adequate infiltration and separation from buildings, utilities, roots, easements and steep slopes.</p>
+            <p>Rain gardens work best when the contributing area, soil infiltration, basin depth, overflow and plant community are designed together. A wet spot is not automatically a rain-garden location. Some low areas receive too much water, drain too slowly or sit too close to a structure.</p>
+            <p>Eligible Raleigh property owners may also investigate <a href="https://raleighnc.gov/stormwater/services/apply-raleigh-rainwater-rewards">Raleigh Rainwater Rewards</a>. As of August 2026, the city describes cost sharing for approved water-quality projects and requires approval before installation, along with ongoing maintenance commitments. Confirm current eligibility and terms directly with the city before planning around an incentive.</p>
+
+            <h2 id="professional">When to call a drainage professional</h2>
+            <p>Call when the source is unclear, water remains for days, erosion is active, the site has substantial grade change, hardscape or retaining walls are involved, or the proposed route approaches a building, property line, easement or public system. Bring the rain photos and timing notes. They can make the first site visit far more useful.</p>
+            <p>A good assessment should explain the likely source, the intended route or storage area, the limits of the proposed work and what happens during overflow. It should also identify when another discipline is needed. Garden & Art’s role is residential landscape drainage, grading, planted water management and integration with the garden—not foundation repair or civil engineering.</p>
+
+            <section class="article-cta">
+              <p class="eyebrow light">Raleigh drainage help</p>
+              <h2>Turn the evidence into a site-specific plan.</h2>
+              <p>If standing water is keeping you from using the yard, Garden & Art can assess the visible landscape conditions and develop an appropriate drainage or rain-garden direction.</p>
+              <a class="button button-clay" href="/drainage-rain-gardens-raleigh/">Explore drainage services <ArrowIcon /></a>
+            </section>
+
+            <section class="article-sources">
+              <h2>Sources and further reading</h2>
+              <ul>
+                <li><a href="https://raleighnc.gov/stormwater/services/apply-raleigh-rainwater-rewards/rain-gardens">City of Raleigh: Rain Gardens</a></li>
+                <li><a href="https://raleighnc.gov/stormwater/services/apply-raleigh-rainwater-rewards">City of Raleigh: Rainwater Rewards</a></li>
+                <li><a href="https://raleighnc.gov/stormwater/services/stormwater-maintenance-and-inspections/stormwater-maintenance-private-property">City of Raleigh: Stormwater Maintenance on Private Property</a></li>
+                <li><a href="https://raleighnc.gov/stormwater/services/stormwater-utility-fee/impervious-surface">City of Raleigh: Impervious Surface</a></li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><LeafMark /><span>Garden <i>&</i> Art Landscapes</span></div>
+      <p>Serving Raleigh, Durham, Chapel Hill, Cary, Holly Springs and surrounding communities.</p>
+      <div class="footer-meta"><span>© {new Date().getFullYear()} Garden & Art Landscapes</span><span>NC Landscape Contractor #1901 · Bonded & insured</span><a href="/privacy/">Privacy</a><a href="/#contact">Contact</a></div>
+    </footer>
+  </div>
+</BaseLayout>
