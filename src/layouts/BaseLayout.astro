@@ -27,6 +27,7 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const googleAnalyticsId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID || 'G-Q54C9928LJ';
 ---
 
 <!doctype html>
@@ -64,9 +65,44 @@ const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+    <script is:inline define:vars={{ googleAnalyticsId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', googleAnalyticsId);
+    </script>
     <title>{title}</title>
   </head>
   <body>
     <slot />
+    <script is:inline>
+      document.addEventListener('click', (event) => {
+        const link = event.target.closest('a');
+        if (!link || typeof window.gtag !== 'function') return;
+
+        const location = link.closest('header')
+          ? 'header'
+          : link.closest('footer')
+            ? 'footer'
+            : link.closest('#contact')
+              ? 'contact'
+              : 'content';
+
+        if (link.href.startsWith('tel:')) {
+          window.gtag('event', 'phone_click', { link_location: location });
+        } else if (link.href.startsWith('mailto:')) {
+          window.gtag('event', 'email_click', { link_location: location });
+        }
+      });
+
+      document.addEventListener('submit', (event) => {
+        const form = event.target;
+        if (form instanceof HTMLFormElement && form.name === 'contact') {
+          sessionStorage.setItem('garden_art_pending_lead', 'true');
+        }
+      });
+    </script>
   </body>
 </html>

@@ -27,4 +27,13 @@ import ArrowIcon from '../components/ArrowIcon.astro';
 
     <LeafMark class="thanks-leaf" />
   </main>
+
+  <script is:inline>
+    if (sessionStorage.getItem('garden_art_pending_lead') === 'true') {
+      sessionStorage.removeItem('garden_art_pending_lead');
+      window.gtag?.('event', 'generate_lead', {
+        method: 'contact_form',
+      });
+    }
+  </script>
 </BaseLayout>
