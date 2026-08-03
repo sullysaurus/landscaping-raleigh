@@ -369,6 +369,22 @@ h1 em, h2 em { color: var(--clay); font-weight: 400; }
 .service-item h3 a:hover { text-decoration-color: var(--clay); }
 .service-item p { color: rgba(255, 253, 247, 0.58); font-size: 13px; line-height: 1.7; margin: 14px 0 0; max-width: 510px; }
 
+.home-guides { background: var(--paper); }
+.home-guides-heading { align-items: end; display: grid; gap: 72px; grid-template-columns: 1.25fr .75fr; }
+.home-guides-heading h2 { font-size: clamp(52px, 6vw, 86px); }
+.home-guides-heading > div:last-child > p { color: var(--ink-soft); line-height: 1.8; margin: 0 0 28px; max-width: 430px; }
+.home-guide-grid { display: grid; gap: 24px; grid-template-columns: 1.3fr .85fr .85fr; margin-top: 72px; }
+.home-guide-card { border-top: 1px solid var(--line); padding-top: 18px; }
+.home-guide-image { display: block; margin-bottom: 24px; overflow: hidden; }
+.home-guide-image img { aspect-ratio: 4 / 3; height: auto; object-fit: cover; transition: transform 300ms cubic-bezier(.23,1,.32,1); width: 100%; }
+.home-guide-card.featured .home-guide-image img { aspect-ratio: 16 / 11; }
+.home-guide-card:hover .home-guide-image img { transform: scale(1.025); }
+.home-guide-card .eyebrow { margin-bottom: 14px; }
+.home-guide-card h3 { font-family: var(--serif); font-size: clamp(27px, 2.5vw, 38px); font-weight: 500; letter-spacing: -.025em; line-height: 1.08; margin: 0; }
+.home-guide-card h3 a { text-decoration: none; }
+.home-guide-card > p:not(.eyebrow) { color: var(--ink-soft); font-size: 13px; line-height: 1.75; }
+.home-guide-link { color: var(--clay-dark); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; }
+
 .about {
   align-items: center;
   display: grid;
@@ -607,7 +623,26 @@ details[open] summary span { transform: rotate(45deg); }
 .related-grid p { font-size: 13px; margin: 12px 0 24px; }
 .related-grid span { color: var(--clay-dark); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 
-/* Journal articles */
+/* Journal index and articles */
+.journal-index-page { padding-top: 88px; }
+.journal-index-hero { padding: 120px max(48px, calc((100vw - 1120px) / 2)) 96px; }
+.journal-index-hero h1 { font-size: clamp(64px, 7.5vw, 104px); }
+.journal-index-hero > p:not(.eyebrow) { color: var(--ink-soft); font-family: var(--serif); font-size: 23px; line-height: 1.6; margin: 36px 0 0; max-width: 760px; }
+.journal-index-grid { background: var(--paper-deep); display: grid; gap: 64px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.guide-card { min-width: 0; }
+.guide-card.featured { align-items: center; display: grid; gap: 64px; grid-column: 1 / -1; grid-template-columns: 1.15fr .85fr; }
+.guide-card-image { display: block; overflow: hidden; }
+.guide-card-image img { aspect-ratio: 16 / 10; height: auto; object-fit: cover; transition: transform 300ms cubic-bezier(.23,1,.32,1); width: 100%; }
+.guide-card:hover .guide-card-image img { transform: scale(1.025); }
+.guide-card-copy { padding-top: 24px; }
+.guide-card-copy h2 { font-size: clamp(34px, 4vw, 52px); }
+.guide-card-copy h2 a { text-decoration: none; }
+.guide-card-copy > p:not(.eyebrow) { color: var(--ink-soft); line-height: 1.8; }
+.guide-card-copy .text-link { color: var(--clay-dark); margin-top: 24px; }
+.guide-card-copy .text-link svg, .home-guides-heading .text-link svg { height: 13px; width: 13px; }
+.journal-index-cta { align-items: center; background: var(--forest); color: var(--white); display: flex; justify-content: space-between; padding: 88px max(48px, calc((100vw - 1120px) / 2)); }
+.journal-index-cta h2 { font-size: clamp(44px, 5vw, 70px); }
+
 .journal-page { padding-top: 88px; }
 .article-header { padding: 112px max(48px, calc((100vw - 1120px) / 2)) 72px; }
 .article-header h1 { font-size: clamp(60px, 7.5vw, 104px); max-width: 1040px; }
@@ -633,6 +668,10 @@ details[open] summary span { transform: rotate(45deg); }
 .article-note { background: var(--limestone); margin: 44px 0; padding: 28px 32px; }
 .article-note strong { color: var(--clay-dark); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
 .article-note p { color: var(--ink-soft); font-size: 13px; line-height: 1.8; margin-bottom: 0; }
+.article-photo { margin: 40px 0; }
+.article-photo img { display: block; height: auto; width: 100%; }
+.article-photo-portrait img { aspect-ratio: 4 / 3; object-fit: cover; }
+.article-photo figcaption { color: var(--ink-muted); font-size: 10px; line-height: 1.6; margin-top: 12px; }
 .article-table-wrap { margin: 36px 0; overflow-x: auto; }
 .article-body table { border-collapse: collapse; font-size: 12px; line-height: 1.6; width: 100%; }
 .article-body th { background: var(--forest); color: var(--white); text-align: left; }
@@ -680,6 +719,10 @@ details[open] summary span { transform: rotate(45deg); }
   .process-step:nth-child(3) { border-left: 0; padding-left: 0; }
   .service-cta { padding-left: 24px; padding-right: 24px; }
   .related-grid { grid-template-columns: repeat(2, 1fr); }
+  .home-guide-grid { grid-template-columns: 1.15fr .85fr; }
+  .home-guide-card:last-child { grid-column: 1 / -1; }
+  .journal-index-page { padding-top: 72px; }
+  .journal-index-hero { padding: 96px 24px 72px; }
   .journal-page { padding-top: 72px; }
   .article-header { padding: 88px 24px 56px; }
   .article-hero { padding: 0 24px; }
@@ -726,6 +769,9 @@ details[open] summary span { transform: rotate(45deg); }
   .service-item img { display: none; }
   .service-item:hover { grid-template-columns: 30px 1fr; }
   .service-item h3 { font-size: 27px; }
+  .home-guides-heading { align-items: start; gap: 32px; grid-template-columns: 1fr; }
+  .home-guide-grid { grid-template-columns: 1fr; margin-top: 52px; }
+  .home-guide-card:last-child { grid-column: auto; }
   .about { grid-template-columns: 1fr; }
   .about-portrait { justify-self: start; margin-right: 16px; }
   .portrait-caption { left: 16px; right: -16px; }
@@ -763,6 +809,12 @@ details[open] summary span { transform: rotate(45deg); }
   .project-pair img, .project-pair figure:last-child img { height: auto; margin-top: 0; }
   .service-cta { align-items: flex-start; flex-direction: column; padding: 64px 20px; }
   .related-grid { grid-template-columns: 1fr; }
+  .journal-index-hero { padding: 72px 20px 56px; }
+  .journal-index-hero h1 { font-size: clamp(50px, 14vw, 66px); }
+  .journal-index-hero > p:not(.eyebrow) { font-size: 19px; }
+  .journal-index-grid { display: block; }
+  .guide-card, .guide-card.featured { display: block; margin-bottom: 56px; }
+  .journal-index-cta { align-items: flex-start; flex-direction: column; gap: 36px; padding: 64px 20px; }
   .journal-nav { display: none; }
   .article-header { padding: 72px 20px 48px; }
   .article-header h1 { font-size: clamp(48px, 14vw, 64px); }

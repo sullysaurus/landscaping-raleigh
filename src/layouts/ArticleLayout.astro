@@ -1,0 +1,134 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import LeafMark from '../components/LeafMark.astro';
+
+interface TocItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  path: string;
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  imageCaption: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  eyebrow: string;
+  headline: string;
+  emphasis: string;
+  deck: string;
+  datePublished?: string;
+  dateLabel?: string;
+  about: string[];
+  toc: TocItem[];
+}
+
+const {
+  path,
+  title,
+  description,
+  image,
+  imageAlt,
+  imageCaption,
+  imageWidth = 1200,
+  imageHeight = 1600,
+  eyebrow,
+  headline,
+  emphasis,
+  deck,
+  datePublished = '2026-08-03',
+  dateLabel = 'August 3, 2026',
+  about,
+  toc,
+} = Astro.props;
+
+const url = `https://www.landscapingraleigh.com${path}`;
+const imageUrl = `https://www.landscapingraleigh.com${image}`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: title,
+      description,
+      image: imageUrl,
+      datePublished,
+      dateModified: datePublished,
+      author: { '@type': 'Person', '@id': 'https://www.landscapingraleigh.com/#norman-rabins', name: 'Norman Rabins' },
+      publisher: { '@type': 'Organization', '@id': 'https://www.landscapingraleigh.com/#organization', name: 'Garden & Art Landscapes' },
+      mainEntityOfPage: url,
+      about,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.landscapingraleigh.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Journal', item: 'https://www.landscapingraleigh.com/journal/' },
+        { '@type': 'ListItem', position: 3, name: title, item: url },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  imageWidth={imageWidth}
+  imageHeight={imageHeight}
+  imageAlt={imageAlt}
+  schema={schema}
+>
+  <div class="journal-page">
+    <a class="skip-link" href="#article">Skip to article</a>
+    <header class="site-header is-scrolled">
+      <a class="brand" href="/" aria-label="Garden and Art Landscapes home"><LeafMark class="brand-mark" /><span>Garden <i>&</i> Art</span></a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="article-site-nav" data-menu-button><span class="sr-only">Toggle navigation</span><span></span><span></span></button>
+      <nav id="article-site-nav" class="site-nav" aria-label="Main navigation" data-nav><a href="/#work">Work</a><a href="/#services">Services</a><a href="/journal/">Journal</a><a href="/#about">About</a><a href="/#contact">Contact</a></nav>
+      <a class="header-call" href="tel:+19192352245">919 235 2245</a>
+    </header>
+
+    <main id="article">
+      <article>
+        <header class="article-header">
+          <p class="eyebrow">{eyebrow}</p>
+          <h1>{headline}<br /><em>{emphasis}</em></h1>
+          <p class="article-deck">{deck}</p>
+          <div class="article-byline"><span>By Norman Rabins</span><span>Horticulturist · NC Landscape Contractor #1901</span><time datetime={datePublished}>{dateLabel}</time></div>
+        </header>
+
+        <figure class="article-hero">
+          <img src={image} alt={imageAlt} width={imageWidth} height={imageHeight} fetchpriority="high" decoding="async" />
+          <figcaption>{imageCaption}</figcaption>
+        </figure>
+
+        <div class="article-layout">
+          <aside class="article-toc" aria-label="Article contents">
+            <p>In this guide</p>
+            {toc.map((item) => <a href={item.href}>{item.label}</a>)}
+          </aside>
+          <div class="article-body"><slot /></div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><LeafMark /><span>Garden <i>&</i> Art Landscapes</span></div>
+      <p>Serving Raleigh, Durham, Chapel Hill, Cary, Holly Springs and surrounding communities.</p>
+      <div class="footer-meta"><span>© {new Date().getFullYear()} Garden & Art Landscapes</span><span>NC Landscape Contractor #1901 · Bonded & insured</span><a href="/privacy/">Privacy</a><a href="/#contact">Contact</a></div>
+    </footer>
+  </div>
+
+  <script>
+    const button = document.querySelector('[data-menu-button]');
+    const nav = document.querySelector('[data-nav]');
+    button?.addEventListener('click', () => { const open = button.getAttribute('aria-expanded') === 'true'; button.setAttribute('aria-expanded', String(!open)); nav?.classList.toggle('is-open', !open); });
+    nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { button?.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); }));
+  </script>
+</BaseLayout>

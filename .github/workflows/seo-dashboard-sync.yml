@@ -1,0 +1,35 @@
+name: Update SEO dashboard
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 12 * * 1'
+
+permissions:
+  contents: write
+
+jobs:
+  search-console:
+    if: ${{ vars.GSC_SYNC_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch the latest 28-day Search Console snapshot
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          GSC_PROPERTY: https://www.landscapingraleigh.com/
+        run: node scripts/sync-search-console.mjs
+      - name: Publish the updated dashboard data
+        run: |
+          if git diff --quiet -- src/data/gsc-snapshot.json; then
+            echo "No Search Console changes to publish."
+            exit 0
+          fi
+          git config user.name "seo-dashboard-bot"
+          git config user.email "seo-dashboard-bot@users.noreply.github.com"
+          git add src/data/gsc-snapshot.json
+          git commit -m "Update Search Console dashboard data"
+          git push

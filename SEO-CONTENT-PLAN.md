@@ -5,6 +5,51 @@ Website: `https://www.landscapingraleigh.com/`
 Primary market: Raleigh and the Triangle, North Carolina
 Primary goal: qualified residential landscape-design and installation inquiries
 
+## August 3, 2026 execution refresh
+
+Live Keywords Everywhere research was refreshed before publishing the Journal. This refresh supersedes the July volume figures where the same keyword appears; the older research remains below as the planning baseline.
+
+### What is now published
+
+- All priority Raleigh service pages are live in the codebase.
+- `/journal/` is the permanent guide index and is linked from the main navigation.
+- The homepage has a latest-guides module linked to the Journal.
+- Eight Journal entries are now built: standing water, Raleigh planting zone, low-maintenance landscaping, Raleigh clay-soil plants, landscape designer vs. landscape architect, retaining-wall drainage, sod-installation cost and an in-progress paver-patio project note.
+- Five blog-specific editorial images were created so the guides no longer rely so heavily on reused portfolio photography. The project note uses three original job-progress photographs.
+
+### Current evidence and gaps
+
+| Topic or query | U.S. monthly volume | Current content status | Next decision |
+| --- | ---: | --- | --- |
+| front yard landscaping ideas | 40,500 | Missing | Build a Raleigh-specific visual roundup when enough original project photos are available |
+| low maintenance front yard landscaping | 4,400 | Published supporting guide | Add stronger internal links and original finished-project examples over time |
+| retaining wall drainage | 2,900 | Published guide | Support with a completed wall project story |
+| landscape lighting ideas | 2,400 | Missing | Publish a visual guide after collecting strong dusk/night photography |
+| patio drainage | 1,000 | Partial coverage | Create a focused patio-drainage guide; avoid competing with retaining-wall content |
+| what planting zone is Raleigh NC | 590 | Published guide | Monitor for impressions and expand only from first-party query data |
+| how much does sod installation cost | 590 | Published guide | Add local project examples and updated supplier evidence annually |
+| standing water in yard | 320 | Published guide | Add a real drainage case study |
+| landscape designer vs landscape architect | 260 | Published guide | Maintain NC licensing references |
+| cost of landscaping front yard | 260 | Missing | Publish only after Garden & Art supplies defensible local ranges and inclusions |
+| best plants for clay soil | 260 | Published guide | Add original plant and soil photography as projects are documented |
+| landscape lighting cost | 140 | Missing | Pair with the lighting-ideas guide or a transparent service cost section |
+| hardscape cost | 140 | Missing | Publish after defining realistic project ranges and variables |
+| hardscaping Raleigh NC | 90 | Service page published | Add the in-progress patio story now; add the finished version later |
+| rain garden plants NC | 50 | Missing | Next high-fit horticultural guide |
+| Raleigh Rainwater Rewards | 40 | Missing | Next high-fit local program guide |
+| best time to plant trees in North Carolina | 50 | Missing | Seasonal guide after the two local drainage topics |
+
+### Recommended next publishing order
+
+1. Raleigh Rainwater Rewards: a homeowner guide.
+2. Rain-garden plants for North Carolina sun, shade and clay.
+3. Patio drainage in Raleigh clay soil.
+4. When to plant trees and shrubs in North Carolina.
+5. Landscape-lighting ideas and cost, once original nighttime photography is available.
+6. Front-yard landscaping cost and hardscape cost, once the company provides defensible ranges.
+
+The complete dated export manifest and caveats live in `research/keywords-everywhere/2026-08-03/README.md`.
+
 ## Executive direction
 
 Build a measurable local-search system in the first 90 days, then use the evidence it produces to choose the next quarter. Build authority in this order:
