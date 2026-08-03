@@ -24,8 +24,8 @@ Astro writes the static site to `dist/`.
 
 ## Project structure
 
-- `src/pages/` contains the homepage and thank-you route.
-- `src/layouts/` contains the shared document layout and metadata.
+- `src/pages/` contains the homepage, five Raleigh service pages, privacy, proposal, dashboard, and thank-you routes.
+- `src/layouts/` contains shared document metadata and the reusable commercial service-page layout.
 - `src/components/` contains reusable interface elements.
 - `src/styles/global.css` contains the design system and responsive styles.
 - `public/` contains project photography, artwork, icons, and the web manifest.

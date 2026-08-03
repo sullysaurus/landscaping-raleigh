@@ -1,0 +1,84 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const hero = { src: '/img/portfolio/6.jpg', alt: 'Natural stone water garden with a small waterfall and surrounding plants', caption: 'Water integrated as part of the garden', width: 1800, height: 1350 };
+const process = [
+  { title: 'Read the symptoms', copy: 'We start with where water appears, how long it remains and what happens uphill. Photos taken during or after rain can help reveal patterns that are invisible on a dry visit.' },
+  { title: 'Trace the water', copy: 'Grade, roof runoff, compacted clay, neighboring flow, low spots and existing drains are considered together. The visible puddle is not always the source of the problem.' },
+  { title: 'Choose a response', copy: 'The right approach may slow, spread, redirect, store or absorb water. Recommendations are matched to the site instead of defaulting to one drainage product.' },
+  { title: 'Build and plant', copy: 'Grading, stone, conveyance and planting are coordinated so the solution functions during storms and still belongs in the landscape between them.' },
+];
+const faqs = [
+  { question: 'Why does water stand in my Raleigh yard?', answer: 'Common contributors include compacted clay soil, a low area with no outlet, concentrated roof runoff, changes in neighboring grade and undersized or blocked drainage paths. Several causes can overlap, which is why diagnosis should come before a proposed system.' },
+  { question: 'Do I automatically need a French drain?', answer: 'No. A French drain is useful in certain subsurface-water situations, but it is not the answer to every wet yard. Surface grading, downspout routing, a swale, a rain garden or another approach may be more suitable. We recommend a method only after reading the site.' },
+  { question: 'What is a rain garden?', answer: 'A rain garden is a shallow planted area designed to receive runoff and let it soak in over time. It is not a permanently wet pond. Its size, location, soil preparation, overflow route and plant community all matter to how well it works.' },
+  { question: 'Can drainage be attractive?', answer: 'Yes. Stone channels, planted low areas and rain gardens can become intentional landscape features. Appearance never replaces function, but a horticulture-led design can address both instead of leaving a purely utilitarian strip through the yard.' },
+  { question: 'Can you solve water against my foundation?', answer: 'Water near a foundation deserves careful attention, but foundation waterproofing, structural repair and engineered stormwater work may require other qualified specialists. Garden & Art defines the landscape scope and will not present planting or surface work as a cure for an issue outside that scope.' },
+  { question: 'When is the best time to assess a drainage problem?', answer: 'Evidence from a substantial rain is especially helpful. Take photos or short videos that show where water enters, how deep it becomes and how long it remains. A site visit can then connect that evidence to slope, soil and existing drainage features.' },
+];
+const related = [
+  { href: '/landscape-design-raleigh/', title: 'Landscape design', copy: 'Coordinate drainage with the full plan for planting, circulation and outdoor living.' },
+  { href: '/native-garden-design-raleigh/', title: 'Native garden design', copy: 'Choose site-right plants for rain gardens, moist areas and changing conditions.' },
+  { href: '/hardscaping-raleigh/', title: 'Hardscaping', copy: 'Plan patios, walls and paths with base preparation and water movement in mind.' },
+];
+---
+
+<ServiceLayout
+  path="/drainage-rain-gardens-raleigh/"
+  title="Yard Drainage Raleigh NC | Rain Gardens & Solutions"
+  description="Yard drainage and rain garden design in Raleigh, NC. Diagnose standing water and create site-specific grading, runoff and planted solutions."
+  serviceName="Yard Drainage and Rain Gardens in Raleigh, NC"
+  serviceType="Residential landscape drainage and rain garden design"
+  schemaDescription="Site-specific residential yard drainage and rain garden design for Raleigh properties, integrating water management with the surrounding landscape."
+  hero={hero}
+  heroEyebrow="Yard drainage & rain gardens · Raleigh, NC"
+  heroTitle="Give rainwater"
+  heroEmphasis="somewhere better to go."
+  heroLead="Garden & Art studies how water moves through a Raleigh property, then develops landscape drainage and rain-garden solutions that work with the site instead of treating every wet yard the same way."
+  ctaLabel="Request a drainage assessment"
+  introEyebrow="Diagnose before digging"
+  introTitle="Standing water is a symptom."
+  introEmphasis="Find the cause."
+  introLede="A useful drainage plan begins by understanding where the water comes from, how it travels and where it can safely go."
+  introParagraphs={[
+    'Raleigh’s clay-rich soils absorb water slowly, especially where construction, traffic or years of use have compacted them. Add roof runoff, low grades and intense summer storms, and a yard can stay soggy long after the clouds clear. The result may be unusable lawn, stressed plants, erosion, mud or water crossing a patio and path.',
+    'Garden & Art approaches these problems as part of the landscape. Norman Rabins combines horticultural knowledge with practical design and installation experience, looking at soil, grade, planting and built features together. That broader view matters because moving water away from one spot without understanding the full route can simply create a new problem somewhere else.',
+  ]}
+  checklist={[
+    'Standing water and persistently soggy lawn or planting beds',
+    'Roof and downspout runoff moving across the property',
+    'Erosion, exposed roots and washed mulch or soil',
+    'Rain gardens, planted swales and dry-creek-style features',
+    'Drainage coordination around patios, paths and retaining walls',
+  ]}
+  processEyebrow="A site-specific process"
+  processTitle="Follow the water."
+  processEmphasis="Then design the landscape."
+  process={process}
+  localEyebrow="Function that belongs in the garden"
+  localTitle="Manage water without"
+  localEmphasis="giving up the landscape."
+  localLede="A drainage feature is part of the property every day, not only when it rains. It should be designed with that reality in mind."
+  localParagraphs={[
+    'A shallow planted basin can collect runoff while creating a changing garden of grasses, perennials and shrubs. A stone-lined route can make occasional flow legible rather than looking like accidental erosion. Adjusting grade or a downspout may solve one area quietly, leaving the main garden free to do something else.',
+    'The solution must still have a safe overflow path and respect property boundaries, utilities and structures. We do not promise that a rain garden will absorb unlimited water, or that every low spot can be corrected through planting. When civil engineering, foundation work or municipal approval is the appropriate next step, that boundary should be clear.',
+  ]}
+  gallery={[
+    hero,
+    { src: '/img/portfolio/1.jpg', alt: 'Curved retaining wall beside a graded and planted garden bed', caption: 'Grade, structure and planting planned as one landscape', width: 1350, height: 1800 },
+  ]}
+  factorsEyebrow="Scope, timing and investment"
+  factorsTitle="What shapes a drainage"
+  factorsEmphasis="project."
+  factorsIntro="The cost and sequence depend on diagnosis. A small runoff correction and a property-wide grading problem are different projects, even if both appear first as a puddle."
+  factors={[
+    { title: 'Source and volume', copy: 'A single downspout, broad surface flow and groundwater each behave differently. The contributing area and expected volume influence the response.' },
+    { title: 'Grade and outlet', copy: 'Slope, downstream conditions and a safe discharge or overflow route determine what is possible. Water should not be pushed onto a neighbor or structure.' },
+    { title: 'Soil and access', copy: 'Compacted clay, buried construction debris, tree roots and equipment access affect excavation, preparation and installation.' },
+    { title: 'Landscape integration', copy: 'Stone, planting, irrigation changes and repairs to lawn, beds or hardscape are part of the complete scope rather than invisible extras.' },
+  ]}
+  faqs={faqs}
+  related={related}
+  finalTitle="Ready to understand what the rain is"
+  finalEmphasis="showing you?"
+/>

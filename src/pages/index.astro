@@ -9,14 +9,15 @@ import ArrowIcon from '../components/ArrowIcon.astro';
 const belowFoldLoading = import.meta.env.DEV ? 'eager' : 'lazy';
 
 const services = [
-  { number: '01', title: 'Landscape design', copy: 'Thoughtful plant selection, layout, lighting and irrigation—composed around how you want to live outdoors.', image: '/img/services/landscape.jpg', width: 972, height: 972 },
-  { number: '02', title: 'Hardscapes', copy: 'Patios, retaining walls and walkways that give the garden structure and age beautifully.', image: '/img/services/firepit.jpg', width: 1024, height: 1024 },
-  { number: '03', title: 'Water systems', copy: 'Rainwater harvesting and efficient irrigation systems designed to conserve natural resources.', image: '/img/services/sprinkler.jpg', width: 889, height: 887 },
-  { number: '04', title: 'Outdoor lighting', copy: 'Subtle, custom lighting that extends the garden into the evening without overpowering it.', image: '/img/services/lighting.jpg', width: 1067, height: 1067 },
-  { number: '05', title: 'Lawn & bed care', copy: 'Practical, attentive maintenance for healthy lawns, perennial beds and seasonal color.', image: '/img/services/lawn.jpg', width: 250, height: 250 },
-  { number: '06', title: 'Sod installation', copy: 'Durable, healthy new lawns installed efficiently for everyday foot traffic and play.', image: '/img/services/sod.jpg', width: 400, height: 396 },
-  { number: '07', title: 'Cleanups & mulching', copy: 'Seasonal clearing, re-edging and mulching that brings order and vitality back to the garden.', image: '/img/services/cleanup.jpg', width: 418, height: 420 },
-  { number: '08', title: 'Tree work & pruning', copy: 'Careful pruning that supports the long-term form, health and safety of trees and shrubs.', image: '/img/services/pruning.jpg', width: 396, height: 399 },
+  { number: '01', title: 'Landscape design', copy: 'Thoughtful plant selection, layout, lighting and irrigation—composed around how you want to live outdoors.', image: '/img/services/landscape.jpg', width: 972, height: 972, href: '/landscape-design-raleigh/' },
+  { number: '02', title: 'Hardscapes', copy: 'Patios, retaining walls and walkways that give the garden structure and age beautifully.', image: '/img/services/firepit.jpg', width: 1024, height: 1024, href: '/hardscaping-raleigh/' },
+  { number: '03', title: 'Drainage & rain gardens', copy: 'Site-specific ways to manage runoff and standing water while keeping the solution part of the garden.', image: '/img/services/sprinkler.jpg', width: 889, height: 887, href: '/drainage-rain-gardens-raleigh/' },
+  { number: '04', title: 'Outdoor lighting', copy: 'Subtle, custom lighting that extends the garden into the evening without overpowering it.', image: '/img/services/lighting.jpg', width: 1067, height: 1067, href: '/landscape-lighting-raleigh/' },
+  { number: '05', title: 'Native garden design', copy: 'Layered, site-right planting for Raleigh clay, shade, seasonal interest and habitat value.', image: '/img/hero-garden.jpg', width: 1774, height: 887, href: '/native-garden-design-raleigh/' },
+  { number: '06', title: 'Lawn & bed care', copy: 'Practical, attentive maintenance for healthy lawns, perennial beds and seasonal color.', image: '/img/services/lawn.jpg', width: 250, height: 250 },
+  { number: '07', title: 'Sod installation', copy: 'Durable, healthy new lawns installed efficiently for everyday foot traffic and play.', image: '/img/services/sod.jpg', width: 400, height: 396 },
+  { number: '08', title: 'Cleanups & mulching', copy: 'Seasonal clearing, re-edging and mulching that brings order and vitality back to the garden.', image: '/img/services/cleanup.jpg', width: 418, height: 420 },
+  { number: '09', title: 'Tree work & pruning', copy: 'Careful pruning that supports the long-term form, health and safety of trees and shrubs.', image: '/img/services/pruning.jpg', width: 396, height: 399 },
 ];
 
 const landscapes = [
@@ -130,7 +131,7 @@ const schema = {
         <h1 id="hero-heading">Landscapes with<br /><em>a point of view.</em></h1>
         <p class="hero-intro">Landscape design, installation and garden care in Raleigh, shaped by horticultural knowledge and an artist’s eye.</p>
         <div class="hero-actions">
-          <a class="button button-clay" href="#contact">Plan your landscape <ArrowIcon /></a>
+          <a class="button button-clay" href="/landscape-design-raleigh/">Plan your landscape <ArrowIcon /></a>
           <a class="text-link light" href="#work">Explore our work <span>↓</span></a>
         </div>
       </div>
@@ -189,7 +190,7 @@ const schema = {
             <span class="service-number">{service.number}</span>
             <img src={service.image} alt="" width={service.width} height={service.height} loading="lazy" decoding="async" />
             <div>
-              <h3>{service.title}</h3>
+              <h3>{service.href ? <a href={service.href}>{service.title}</a> : service.title}</h3>
               <p>{service.copy}</p>
             </div>
           </article>

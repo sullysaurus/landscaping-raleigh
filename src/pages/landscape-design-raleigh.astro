@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeafMark from '../components/LeafMark.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': 'https://www.landscapingraleigh.com/landscape-design-raleigh/#service',
+      name: 'Residential Landscape Design in Raleigh, NC',
+      serviceType: 'Landscape design and installation',
+      description: 'Horticulture-led residential landscape design for Raleigh properties, integrating planting, hardscape, water and outdoor lighting.',
+      url: 'https://www.landscapingraleigh.com/landscape-design-raleigh/',
+      image: 'https://www.landscapingraleigh.com/img/portfolio/10.jpg',
+      provider: {
+        '@type': 'HomeAndConstructionBusiness',
+        '@id': 'https://www.landscapingraleigh.com/#organization',
+        name: 'Garden & Art Landscapes',
+        url: 'https://www.landscapingraleigh.com/',
+        telephone: '+1-919-235-2245',
+      },
+      areaServed: { '@type': 'City', name: 'Raleigh', containedInPlace: { '@type': 'State', name: 'North Carolina' } },
+      audience: { '@type': 'Audience', audienceType: 'Residential homeowners' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.landscapingraleigh.com/landscape-design-raleigh/#breadcrumbs',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.landscapingraleigh.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Landscape Design Raleigh', item: 'https://www.landscapingraleigh.com/landscape-design-raleigh/' },
+      ],
+    },
+  ],
+};
+
+const faqs = [
+  {
+    question: 'What does a Raleigh landscape designer help with?',
+    answer: 'A landscape designer connects how you want to use the property with its sun, shade, soil, drainage and existing features. The result can coordinate planting, patios, paths, walls, lighting and water systems so the whole landscape works as one composition.',
+  },
+  {
+    question: 'Can you work with an existing garden?',
+    answer: 'Yes. A redesign can preserve mature plants and structures that still serve the space, correct problem areas and introduce a clearer planting and circulation plan. Starting over is not automatically the best answer.',
+  },
+  {
+    question: 'Do you design both plants and hardscaping?',
+    answer: 'Yes. Garden & Art considers plants and built elements together. Patios, walkways, retaining walls and focal features should support the garden, while planting softens structure and changes through the seasons.',
+  },
+  {
+    question: 'How do Raleigh clay soil and drainage affect the design?',
+    answer: 'They influence grading, plant selection, bed preparation and how water moves through the site. We assess visible conditions before recommending an approach. Issues involving a foundation, engineered structure or municipal drainage may require another qualified professional.',
+  },
+  {
+    question: 'Can a project be completed in phases?',
+    answer: 'Often, yes. A coherent plan makes it easier to establish priorities and phase work without creating conflicts between future patios, utilities, drainage and planting. The right sequence depends on the site and scope.',
+  },
+  {
+    question: 'How much does landscape design cost in Raleigh?',
+    answer: 'Cost depends on property size, the depth of the design, existing conditions, materials, plant quantities and whether installation is included. A conversation and site review are the responsible way to define scope before pricing.',
+  },
+];
+---
+
+<BaseLayout
+  title="Raleigh Landscape Design | Garden & Art Landscapes"
+  description="Residential landscape design in Raleigh, NC, guided by horticultural expertise and an artist’s eye. Plan planting, hardscape, water and lighting."
+  image="/img/portfolio/10.jpg"
+  imageWidth={1200}
+  imageHeight={1600}
+  imageAlt="Brick patio garden, fountain and layered planting designed by Garden & Art Landscapes"
+  schema={schema}
+>
+  <div class="service-page">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="Garden and Art Landscapes home">
+        <LeafMark class="brand-mark" />
+        <span>Garden <i>&</i> Art</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+        <span class="sr-only">Toggle navigation</span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation" data-nav>
+        <a href="/#work">Work</a>
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <a class="header-call" href="tel:+19192352245">919 235 2245</a>
+    </header>
+
+    <main id="main">
+      <section class="service-hero" aria-labelledby="service-heading">
+        <img class="service-hero-image" src="/img/portfolio/10.jpg" alt="Brick patio garden with a fountain and established plantings" width="1200" height="1600" fetchpriority="high" decoding="async" />
+        <div class="service-hero-scrim"></div>
+        <div class="service-hero-content">
+          <p class="eyebrow light">Residential landscape design · Raleigh, NC</p>
+          <h1 id="service-heading">A landscape shaped<br />around <em>your life.</em></h1>
+          <p class="service-hero-lead">Garden & Art creates residential landscapes that unite planting, structure, water and light—designed for Raleigh’s conditions and the way you want to live outdoors.</p>
+          <a class="button button-clay" href="/#contact">Request a design conversation <ArrowIcon /></a>
+          <div class="service-proof" aria-label="Experience and credentials">
+            <span>Serving the Triangle since 2005</span>
+            <span>NC Landscape Contractor #1901</span>
+            <span>Led by horticulturist Norman Rabins</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-section">
+        <div class="service-intro-grid">
+          <div>
+            <p class="eyebrow">Design before decoration</p>
+            <h2>One clear idea for the <em>whole property.</em></h2>
+          </div>
+          <div>
+            <p class="service-lede">Residential landscape design is the process of turning your goals and your site’s real conditions into a practical plan for outdoor space.</p>
+            <p>That means looking beyond a list of plants. We consider how you arrive, move, gather and look out into the garden; where sun and shade fall; how water behaves after a storm; what should stay; and what the landscape can become over time.</p>
+            <p>Norman Rabins brings horticultural training, experience caring for major plant collections at the New York Botanical Garden and more than two decades of Triangle-area work to each design. His approach is garden-first and personal: built elements give the space structure, while plants provide rhythm, seasonal change and life.</p>
+            <ul class="service-checklist">
+              <li>New gardens and complete property transformations</li>
+              <li>Front entries, backyards and outdoor living areas</li>
+              <li>Planting plans for sun, shade and challenging conditions</li>
+              <li>Patios, paths, walls, water features and garden focal points</li>
+              <li>Renovations that work with valuable existing plants and structures</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-section dark">
+        <p class="eyebrow light">How the process works</p>
+        <h2>From first walk-through<br />to <em>a garden that grows in.</em></h2>
+        <div class="process-grid">
+          <article class="process-step">
+            <span>01</span><h3>Conversation</h3>
+            <p>We begin with what is working, what is not and how you hope to use the space. Scope, priorities and project fit become clearer before design work begins.</p>
+          </article>
+          <article class="process-step">
+            <span>02</span><h3>Site reading</h3>
+            <p>We look at circulation, views, grade, water, soil, light and existing plants or structures. Raleigh’s clay soils and summer conditions are part of the brief.</p>
+          </article>
+          <article class="process-step">
+            <span>03</span><h3>Design direction</h3>
+            <p>Layout, materials and planting are developed as one system. The level of documentation is matched to the project rather than padded with unnecessary deliverables.</p>
+          </article>
+          <article class="process-step">
+            <span>04</span><h3>Installation</h3>
+            <p>When Garden & Art carries out the work, design intent stays connected to field decisions. Larger projects can be sequenced in sensible phases.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="service-section alt">
+        <div class="service-split">
+          <div>
+            <p class="eyebrow">Designed for this place</p>
+            <h2>Raleigh conditions are not an <em>afterthought.</em></h2>
+          </div>
+          <div>
+            <p class="service-lede">A convincing garden belongs to its site. It should respond to the Piedmont climate while still feeling unmistakably yours.</p>
+            <p>Plant selection begins with conditions—not a fashionable palette pasted onto every property. Sun exposure, root competition, moisture, clay soil, deer pressure and the maintenance you realistically want all narrow the choices. From there, texture, form, color and seasonal sequence create the character.</p>
+            <p>Water is considered as part of the composition. Depending on the site, that can mean guiding runoff, protecting planting areas, using rainwater more thoughtfully or making a visible water feature feel at home. Where a concern falls outside landscape contracting—such as structural engineering or foundation repair—we define that boundary rather than promise the wrong solution.</p>
+          </div>
+        </div>
+        <div class="project-pair" aria-label="Examples of Garden and Art landscape work">
+          <figure>
+            <img src="/img/portfolio/12.jpg" alt="Terraced garden beds and retaining walls arranged around a mature oak tree" width="1200" height="1600" loading="lazy" decoding="async" />
+            <figcaption>Existing canopy becomes the center of a terraced garden</figcaption>
+          </figure>
+          <figure>
+            <img src="/img/portfolio/3.jpg" alt="Custom wood garden gate leading to a flagstone path through lush planting" width="1350" height="1800" loading="lazy" decoding="async" />
+            <figcaption>A garden threshold that frames the path ahead</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="service-section">
+        <div class="service-split">
+          <div>
+            <p class="eyebrow">Scope, schedule and investment</p>
+            <h2>What shapes a landscape <em>project.</em></h2>
+            <p>Responsible pricing starts with a defined scope. A small planting renovation and a full design-build transformation require different levels of discovery, documentation and installation.</p>
+          </div>
+          <div class="factor-list">
+            <div><h3>Site complexity</h3><p>Access, slope, drainage, existing trees and structures influence both the design and how work can be built.</p></div>
+            <div><h3>Materials and features</h3><p>Patios, walls, lighting, irrigation, water features and custom details each affect budget and sequencing.</p></div>
+            <div><h3>Planting scale</h3><p>Plant size, quantity, availability, bed preparation and establishment needs matter as much as the plant list itself.</p></div>
+            <div><h3>Phasing and timing</h3><p>Design and installation time depend on scope, season, material lead times and the current project schedule. We discuss a realistic sequence after reviewing the property.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-section alt" aria-labelledby="faq-heading">
+        <p class="eyebrow">Common questions</p>
+        <h2 id="faq-heading">Before we begin.</h2>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details>
+              <summary>{faq.question}<span>+</span></summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section class="service-section related-services" aria-labelledby="related-heading">
+        <p class="eyebrow">Plan the whole landscape</p>
+        <h2 id="related-heading">Related <em>services.</em></h2>
+        <div class="related-grid">
+          <a href="/drainage-rain-gardens-raleigh/"><h3>Drainage & rain gardens</h3><p>Address standing water and runoff as part of the property’s complete design.</p><span>Explore service →</span></a>
+          <a href="/hardscaping-raleigh/"><h3>Hardscaping</h3><p>Give outdoor rooms structure with patios, paths, walls and gathering features.</p><span>Explore service →</span></a>
+          <a href="/native-garden-design-raleigh/"><h3>Native garden design</h3><p>Build layered, site-right planting for Raleigh conditions and seasonal change.</p><span>Explore service →</span></a>
+          <a href="/landscape-lighting-raleigh/"><h3>Landscape lighting</h3><p>Extend the experience with restrained path, patio and focal lighting.</p><span>Explore service →</span></a>
+        </div>
+      </section>
+
+      <section class="service-cta">
+        <h2>Ready to see what your landscape <em>could become?</em></h2>
+        <a class="button button-paper" href="/#contact">Tell us about your property <ArrowIcon /></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><LeafMark /><span>Garden <i>&</i> Art Landscapes</span></div>
+      <p>Serving Raleigh, Durham, Chapel Hill, Cary, Holly Springs and surrounding communities.</p>
+      <div class="footer-meta">
+        <span>© {new Date().getFullYear()} Garden & Art Landscapes</span>
+        <span>NC Landscape Contractor #1901 · Bonded & insured</span>
+        <a href="/privacy/">Privacy</a>
+        <a href="https://dannysullivan.ai" target="_blank" rel="noopener noreferrer">Website by Danny Sullivan</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const button = document.querySelector('[data-menu-button]');
+    const nav = document.querySelector('[data-nav]');
+    const header = document.querySelector('[data-header]');
+    button?.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      nav?.classList.toggle('is-open', !open);
+    });
+    nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      button?.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+    }));
+    const observer = new IntersectionObserver(([entry]) => header?.classList.toggle('is-scrolled', !entry.isIntersecting));
+    const sentinel = document.querySelector('.service-hero');
+    if (sentinel) observer.observe(sentinel);
+  </script>
+</BaseLayout>

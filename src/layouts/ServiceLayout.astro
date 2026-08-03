@@ -1,0 +1,235 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import LeafMark from '../components/LeafMark.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
+
+interface Image {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+}
+
+interface FAQ { question: string; answer: string; }
+interface ProcessStep { title: string; copy: string; }
+interface Factor { title: string; copy: string; }
+interface RelatedLink { href: string; title: string; copy: string; }
+
+interface Props {
+  path: string;
+  title: string;
+  description: string;
+  serviceName: string;
+  serviceType: string;
+  schemaDescription: string;
+  hero: Image;
+  heroEyebrow: string;
+  heroTitle: string;
+  heroEmphasis: string;
+  heroLead: string;
+  ctaLabel: string;
+  introEyebrow: string;
+  introTitle: string;
+  introEmphasis: string;
+  introLede: string;
+  introParagraphs: string[];
+  checklist: string[];
+  processEyebrow: string;
+  processTitle: string;
+  processEmphasis: string;
+  process: ProcessStep[];
+  localEyebrow: string;
+  localTitle: string;
+  localEmphasis: string;
+  localLede: string;
+  localParagraphs: string[];
+  gallery: Image[];
+  factorsEyebrow: string;
+  factorsTitle: string;
+  factorsEmphasis: string;
+  factorsIntro: string;
+  factors: Factor[];
+  faqs: FAQ[];
+  related: RelatedLink[];
+  finalTitle: string;
+  finalEmphasis: string;
+}
+
+const props = Astro.props;
+const {
+  path, title, description, serviceName, serviceType, schemaDescription, hero,
+  heroEyebrow, heroTitle, heroEmphasis, heroLead, ctaLabel,
+  introEyebrow, introTitle, introEmphasis, introLede, introParagraphs, checklist,
+  processEyebrow, processTitle, processEmphasis, process,
+  localEyebrow, localTitle, localEmphasis, localLede, localParagraphs, gallery,
+  factorsEyebrow, factorsTitle, factorsEmphasis, factorsIntro, factors,
+  faqs, related, finalTitle, finalEmphasis,
+} = props;
+
+const url = `https://www.landscapingraleigh.com${path}`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${url}#service`,
+      name: serviceName,
+      serviceType,
+      description: schemaDescription,
+      url,
+      image: `https://www.landscapingraleigh.com${hero.src}`,
+      provider: {
+        '@type': 'HomeAndConstructionBusiness',
+        '@id': 'https://www.landscapingraleigh.com/#organization',
+        name: 'Garden & Art Landscapes',
+        url: 'https://www.landscapingraleigh.com/',
+        telephone: '+1-919-235-2245',
+      },
+      areaServed: { '@type': 'City', name: 'Raleigh', containedInPlace: { '@type': 'State', name: 'North Carolina' } },
+      audience: { '@type': 'Audience', audienceType: 'Residential homeowners' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumbs`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.landscapingraleigh.com/' },
+        { '@type': 'ListItem', position: 2, name: serviceName, item: url },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={hero.src}
+  imageWidth={hero.width}
+  imageHeight={hero.height}
+  imageAlt={hero.alt}
+  schema={schema}
+>
+  <div class="service-page">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="Garden and Art Landscapes home">
+        <LeafMark class="brand-mark" />
+        <span>Garden <i>&</i> Art</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+        <span class="sr-only">Toggle navigation</span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation" data-nav>
+        <a href="/#work">Work</a><a href="/#services">Services</a><a href="/#about">About</a><a href="/#contact">Contact</a>
+      </nav>
+      <a class="header-call" href="tel:+19192352245">919 235 2245</a>
+    </header>
+
+    <main id="main">
+      <section class="service-hero" aria-labelledby="service-heading">
+        <img class="service-hero-image" src={hero.src} alt={hero.alt} width={hero.width} height={hero.height} fetchpriority="high" decoding="async" />
+        <div class="service-hero-scrim"></div>
+        <div class="service-hero-content">
+          <p class="eyebrow light">{heroEyebrow}</p>
+          <h1 id="service-heading">{heroTitle}<br /><em>{heroEmphasis}</em></h1>
+          <p class="service-hero-lead">{heroLead}</p>
+          <a class="button button-clay" href="/#contact">{ctaLabel} <ArrowIcon /></a>
+          <div class="service-proof" aria-label="Experience and credentials">
+            <span>Serving the Triangle since 2005</span><span>NC Landscape Contractor #1901</span><span>Led by horticulturist Norman Rabins</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-section">
+        <div class="service-intro-grid">
+          <div><p class="eyebrow">{introEyebrow}</p><h2>{introTitle} <em>{introEmphasis}</em></h2></div>
+          <div>
+            <p class="service-lede">{introLede}</p>
+            {introParagraphs.map((paragraph: string) => <p>{paragraph}</p>)}
+            <ul class="service-checklist">{checklist.map((item: string) => <li>{item}</li>)}</ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-section dark">
+        <p class="eyebrow light">{processEyebrow}</p>
+        <h2>{processTitle}<br /><em>{processEmphasis}</em></h2>
+        <div class="process-grid">
+          {process.map((step: ProcessStep, index: number) => (
+            <article class="process-step"><span>{String(index + 1).padStart(2, '0')}</span><h3>{step.title}</h3><p>{step.copy}</p></article>
+          ))}
+        </div>
+      </section>
+
+      <section class="service-section alt">
+        <div class="service-split">
+          <div><p class="eyebrow">{localEyebrow}</p><h2>{localTitle} <em>{localEmphasis}</em></h2></div>
+          <div>
+            <p class="service-lede">{localLede}</p>
+            {localParagraphs.map((paragraph: string) => <p>{paragraph}</p>)}
+          </div>
+        </div>
+        <div class="project-pair" aria-label={`${serviceName} project examples`}>
+          {gallery.map((image: Image) => (
+            <figure><img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" /><figcaption>{image.caption}</figcaption></figure>
+          ))}
+        </div>
+      </section>
+
+      <section class="service-section">
+        <div class="service-split">
+          <div><p class="eyebrow">{factorsEyebrow}</p><h2>{factorsTitle} <em>{factorsEmphasis}</em></h2><p>{factorsIntro}</p></div>
+          <div class="factor-list">
+            {factors.map((factor: Factor) => <div><h3>{factor.title}</h3><p>{factor.copy}</p></div>)}
+          </div>
+        </div>
+      </section>
+
+      <section class="service-section alt" aria-labelledby="faq-heading">
+        <p class="eyebrow">Common questions</p><h2 id="faq-heading">Before we begin.</h2>
+        <div class="faq-list">
+          {faqs.map((faq: FAQ) => <details><summary>{faq.question}<span>+</span></summary><p>{faq.answer}</p></details>)}
+        </div>
+      </section>
+
+      <section class="service-section related-services" aria-labelledby="related-heading">
+        <p class="eyebrow">Plan the whole landscape</p><h2 id="related-heading">Related <em>services.</em></h2>
+        <div class="related-grid">
+          {related.map((link: RelatedLink) => <a href={link.href}><h3>{link.title}</h3><p>{link.copy}</p><span>Explore service →</span></a>)}
+        </div>
+      </section>
+
+      <section class="service-cta">
+        <h2>{finalTitle} <em>{finalEmphasis}</em></h2>
+        <a class="button button-paper" href="/#contact">Tell us about your property <ArrowIcon /></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><LeafMark /><span>Garden <i>&</i> Art Landscapes</span></div>
+      <p>Serving Raleigh, Durham, Chapel Hill, Cary, Holly Springs and surrounding communities.</p>
+      <div class="footer-meta">
+        <span>© {new Date().getFullYear()} Garden & Art Landscapes</span><span>NC Landscape Contractor #1901 · Bonded & insured</span><a href="/privacy/">Privacy</a><a href="https://dannysullivan.ai" target="_blank" rel="noopener noreferrer">Website by Danny Sullivan</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const button = document.querySelector('[data-menu-button]');
+    const nav = document.querySelector('[data-nav]');
+    const header = document.querySelector('[data-header]');
+    button?.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      nav?.classList.toggle('is-open', !open);
+    });
+    nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      button?.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+    }));
+    const observer = new IntersectionObserver(([entry]) => header?.classList.toggle('is-scrolled', !entry.isIntersecting));
+    const sentinel = document.querySelector('.service-hero');
+    if (sentinel) observer.observe(sentinel);
+  </script>
+</BaseLayout>

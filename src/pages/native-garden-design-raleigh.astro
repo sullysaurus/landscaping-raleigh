@@ -1,0 +1,84 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const hero = { src: '/img/hero-garden.jpg', alt: 'Layered woodland garden with a path through mature trees and flowering plants', caption: 'Layered planting creates a garden that feels rooted in place', width: 1774, height: 887 };
+const process = [
+  { title: 'Read the site', copy: 'Sun, shade, moisture, clay, roots, deer pressure and existing plants define the conditions. A plant can be native to the region and still be wrong for a particular spot.' },
+  { title: 'Set priorities', copy: 'We discuss the desired character, seasonal interest, wildlife goals and realistic maintenance. Those choices guide the balance of structure, diversity and openness.' },
+  { title: 'Build the community', copy: 'Trees, shrubs, grasses, perennials and ground layers are composed for form and succession, not chosen as isolated specimens from a checklist.' },
+  { title: 'Prepare and establish', copy: 'Bed preparation, planting size, spacing, mulch and early watering shape success. The garden then needs attentive establishment while roots fill in and weeds are managed.' },
+];
+const faqs = [
+  { question: 'Does a native garden use only plants native to North Carolina?', answer: 'It can, but the right approach depends on your goals. Some homeowners want a strictly native palette; others want a native-forward garden that includes a limited number of well-behaved, site-appropriate nonnative plants. We make the design intent clear rather than using “native” as a vague label.' },
+  { question: 'Are native gardens maintenance-free?', answer: 'No garden is maintenance-free. Native plants can be well adapted when matched to the site, but young gardens still need watering, weeding, editing and seasonal care. As plants establish, the work often shifts from replacing struggling plants toward guiding a developing community.' },
+  { question: 'Can native plants grow in Raleigh clay soil?', answer: 'Many can, but clay is not one uniform condition. Drainage, compaction, slope, moisture and disturbance vary across a property. Plant selection and soil preparation should respond to the specific bed rather than assuming every “clay-tolerant” plant will thrive everywhere.' },
+  { question: 'Can you design a native garden for shade?', answer: 'Yes. Woodland-edge and forest plants can create layered shade gardens using trees, shrubs, ferns, sedges, groundcovers and seasonal flowers. Root competition and dry shade under established trees still need to be addressed honestly.' },
+  { question: 'Will a native garden attract pollinators?', answer: 'A diverse garden with flowers across the growing season and appropriate host plants can support pollinators and other wildlife. Avoiding unnecessary pesticide use and providing shelter and water also matter. No single “pollinator plant” creates a complete habitat by itself.' },
+  { question: 'Can an existing traditional landscape become more natural?', answer: 'Yes. The transition can happen in phases by expanding beds, replacing invasive or poorly adapted plants, adding layers and reducing isolated lawn where that supports your goals. Valuable mature trees and shrubs can remain part of the new design.' },
+];
+const related = [
+  { href: '/landscape-design-raleigh/', title: 'Landscape design', copy: 'Connect a native-forward planting plan to circulation, gathering and the full property.' },
+  { href: '/drainage-rain-gardens-raleigh/', title: 'Drainage & rain gardens', copy: 'Use site-right planting as part of a thoughtful response to runoff and wet areas.' },
+  { href: '/hardscaping-raleigh/', title: 'Hardscaping', copy: 'Frame naturalistic planting with paths, terraces and gathering spaces that belong.' },
+];
+---
+
+<ServiceLayout
+  path="/native-garden-design-raleigh/"
+  title="Native Garden Design Raleigh NC | Garden & Art Landscapes"
+  description="Native and natural garden design in Raleigh, NC. Site-right plants, layered habitat and horticultural expertise for distinctive residential gardens."
+  serviceName="Native Garden Design in Raleigh, NC"
+  serviceType="Native and naturalistic residential garden design"
+  schemaDescription="Native-forward and naturalistic residential garden design for Raleigh properties, with site-right planting for sun, shade, clay soil and moisture conditions."
+  hero={hero}
+  heroEyebrow="Native & natural garden design · Raleigh, NC"
+  heroTitle="A garden that feels"
+  heroEmphasis="at home here."
+  heroLead="Garden & Art creates native-forward Raleigh gardens with layered planting, seasonal movement and habitat value—grounded in horticulture and designed for the specific conditions of your property."
+  ctaLabel="Plan your native garden"
+  introEyebrow="Site-right, not slogan-first"
+  introTitle="Native is a relationship,"
+  introEmphasis="not a label."
+  introLede="A strong native garden matches plants to place, then composes them into a landscape that is beautiful, useful and possible to care for."
+  introParagraphs={[
+    'Native plants have evolved within regional climate and ecological relationships, but that does not make every native plant suitable for every Raleigh yard. A sun-loving Piedmont meadow plant will not solve dry shade beneath mature oaks. A moisture-loving species may struggle on a compacted slope. Design begins with those distinctions.',
+    'Norman Rabins brings a horticulturist’s knowledge of plant communities and an artist’s attention to form, repetition and contrast. Garden & Art can create a fully native palette or a native-forward garden based on your goals, always avoiding the false promise that a natural-looking garden simply takes care of itself.',
+  ]}
+  checklist={[
+    'Native-forward front yards and complete garden renovations',
+    'Woodland, shade and mature-tree planting design',
+    'Pollinator gardens with multi-season bloom and habitat structure',
+    'Rain-garden and moisture-tolerant planting communities',
+    'Lower-lawn landscapes with paths, edges and intentional year-round form',
+  ]}
+  processEyebrow="Planting design with a long view"
+  processTitle="Choose for the site."
+  processEmphasis="Compose for the seasons."
+  process={process}
+  localEyebrow="Raleigh gardens in real conditions"
+  localTitle="Work with clay, shade"
+  localEmphasis="and summer weather."
+  localLede="The best plant palette is not the longest list. It is the community that can occupy the site well and still deliver the experience you want."
+  localParagraphs={[
+    'In a Raleigh landscape, one property may move from hot roadside sun to a damp low area and then into dry shade under established canopy. We use those changes to organize the design. Repeating a smaller number of dependable plants often creates more coherence and resilience than installing one of everything.',
+    'Naturalistic does not have to mean chaotic. Clear paths, defined edges, evergreen structure and deliberate masses help a garden read well through winter and during establishment. Seasonal cutting back, selective editing and weed control remain part of stewardship, especially while young plants are filling their intended space.',
+  ]}
+  gallery={[
+    { src: '/img/portfolio/12.jpg', alt: 'Terraced planting beds arranged beneath a mature oak tree', caption: 'Mature canopy guides the structure of a layered shade garden', width: 1200, height: 1600 },
+    { src: '/img/portfolio/3.jpg', alt: 'Flagstone garden path surrounded by layered green planting and mature trees', caption: 'A defined path brings clarity to abundant planting', width: 1350, height: 1800 },
+  ]}
+  factorsEyebrow="Scope, establishment and investment"
+  factorsTitle="What shapes a native garden"
+  factorsEmphasis="project."
+  factorsIntro="Planting design is an investment in a landscape that develops over time. Bed preparation and establishment are as important as the species list."
+  factors={[
+    { title: 'Existing conditions', copy: 'Light, drainage, compaction, roots, invasive plants and deer pressure determine what preparation is needed and which plants are realistic.' },
+    { title: 'Plant size and density', copy: 'Smaller plants can be economical and establish well, but they need time and early weed control. Larger material changes the initial effect and budget.' },
+    { title: 'Bed preparation', copy: 'Removing lawn or invasive growth, protecting tree roots, shaping beds and managing difficult soil can represent a substantial part of the work.' },
+    { title: 'Establishment care', copy: 'Watering, mulch, weeding, replacements and seasonal editing should be planned rather than treated as an afterthought once installation is complete.' },
+  ]}
+  faqs={faqs}
+  related={related}
+  finalTitle="Ready for a garden that grows"
+  finalEmphasis="more rooted with time?"
+/>

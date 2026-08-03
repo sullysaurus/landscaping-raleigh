@@ -1,0 +1,84 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const hero = { src: '/img/services/firepit.jpg', alt: 'Stone patio and circular fire feature overlooking a green landscape', caption: 'Stonework creates a generous outdoor gathering room', width: 1024, height: 1024 };
+const process = [
+  { title: 'Define the use', copy: 'Dining, gathering, circulation, grade changes and views call for different dimensions and relationships. We begin with what the space needs to make possible.' },
+  { title: 'Fit the site', copy: 'Existing architecture, trees, slope, drainage and access shape the layout. The hardscape should feel anchored to the property rather than dropped onto it.' },
+  { title: 'Select materials', copy: 'Color, texture, scale, durability and maintenance are considered together. Samples and project context are more useful than choosing from an isolated catalog image.' },
+  { title: 'Prepare and build', copy: 'Excavation, base, edges, drainage and transitions receive the same attention as the visible surface. Planting then settles the structure into the garden.' },
+];
+const faqs = [
+  { question: 'What does hardscaping include?', answer: 'Residential hardscaping can include patios, walkways, steps, retaining or seat walls, fire features, garden edging and other built elements. The appropriate scope depends on the property, intended use and any permit or engineering requirements.' },
+  { question: 'Do you design the planting around the patio or wall?', answer: 'Yes. Garden & Art’s differentiator is treating structure and planting as one composition. Plants soften edges, frame views, provide shade or enclosure and keep an outdoor room connected to the larger garden.' },
+  { question: 'Which patio material is best for Raleigh?', answer: 'There is no single best material. Natural stone, concrete pavers, brick and other options differ in appearance, cost, installation, heat, maintenance and how they relate to the house. Site conditions and the design direction should guide the choice.' },
+  { question: 'Why do base preparation and drainage matter?', answer: 'The visible surface is only one part of a durable hardscape. Excavation depth, compacted base, edge restraint, slope and water movement help limit settlement, movement and puddling. Requirements vary with material, soil and use.' },
+  { question: 'Can you build a retaining wall on a sloped yard?', answer: 'Many slopes can be shaped with landscape walls, but height, loading, drainage, property lines and local requirements affect what is appropriate. Walls that require engineering or permitting must be handled to those standards rather than treated as simple garden edging.' },
+  { question: 'Can hardscape work be phased?', answer: 'Often, but the complete design and construction sequence should be understood first. It is usually inefficient to install planting or irrigation where future excavation, access or utility work will disturb it.' },
+];
+const related = [
+  { href: '/landscape-design-raleigh/', title: 'Landscape design', copy: 'Start with a complete plan that connects outdoor rooms to the rest of the property.' },
+  { href: '/landscape-lighting-raleigh/', title: 'Landscape lighting', copy: 'Plan subtle path, step and focal lighting before hardscape construction is complete.' },
+  { href: '/drainage-rain-gardens-raleigh/', title: 'Drainage & rain gardens', copy: 'Address grading and water movement around patios, walls and walkways.' },
+];
+---
+
+<ServiceLayout
+  path="/hardscaping-raleigh/"
+  title="Hardscaping Raleigh NC | Patios, Walkways & Walls"
+  description="Residential hardscaping in Raleigh, NC: patios, walkways, walls and fire features designed with sound preparation as part of a living garden."
+  serviceName="Residential Hardscaping in Raleigh, NC"
+  serviceType="Hardscape design and installation"
+  schemaDescription="Residential patios, walkways, landscape walls and fire features designed and installed as part of an integrated Raleigh landscape."
+  hero={hero}
+  heroEyebrow="Residential hardscaping · Raleigh, NC"
+  heroTitle="Give the garden"
+  heroEmphasis="a lasting structure."
+  heroLead="Garden & Art designs Raleigh patios, walkways, walls and gathering spaces as part of a living landscape—grounded in sound preparation and softened by thoughtful planting."
+  ctaLabel="Discuss your hardscape project"
+  introEyebrow="Structure in service of the garden"
+  introTitle="Build the places where"
+  introEmphasis="outdoor life happens."
+  introLede="Good hardscaping makes a property easier to use while giving the garden form, proportion and a sense of permanence."
+  introParagraphs={[
+    'A patio is not simply a paved rectangle. Its size affects whether chairs can move comfortably; its position changes the view from inside; its edges decide how the garden meets the gathering space. The same thinking applies to a path, wall, set of steps or fire feature. Each element should solve a practical need and strengthen the whole composition.',
+    'Garden & Art combines design, horticulture and landscape construction under one point of view. Norman Rabins considers architecture, grade, water, mature trees and planting from the beginning. The result is hardscape that supports the way you want to live outdoors without feeling separate from the land around it.',
+  ]}
+  checklist={[
+    'Patios for dining, gathering and everyday outdoor use',
+    'Walkways, garden paths, steps and entry sequences',
+    'Retaining walls, seat walls and terraced planting areas',
+    'Fire features and focal elements for outdoor rooms',
+    'Planting, lighting and drainage coordinated with construction',
+  ]}
+  processEyebrow="Design and construction"
+  processTitle="What you see rests on"
+  processEmphasis="what you do not."
+  process={process}
+  localEyebrow="A garden-plus-structure approach"
+  localTitle="Hardscape should look"
+  localEmphasis="better as the garden grows."
+  localLede="The most convincing outdoor rooms balance durable materials with living edges, shade, texture and seasonal change."
+  localParagraphs={[
+    'We use planting to connect built work to the property: softening a wall, creating enclosure around a patio, framing a path or preserving the presence of a mature tree. Material joints, wall lines and path curves can echo the house without making the landscape feel rigid.',
+    'Raleigh’s clay soil and heavy rain make water movement and base preparation central to the design. Patios need intentional slope; walls need appropriate drainage; runoff needs a route that does not erode adjacent beds. These details are not decorative, but handling them well allows the finished space to feel effortless.',
+  ]}
+  gallery={[
+    { src: '/img/portfolio/14.jpg', alt: 'Large stone outdoor fireplace beside a flagstone patio', caption: 'A substantial stone focal point anchors the patio', width: 1000, height: 1333 },
+    { src: '/img/portfolio/16.JPG', alt: 'Circular brick fire pit with curved stone garden seating', caption: 'A woodland gathering space shaped around the fire', width: 1000, height: 1333 },
+  ]}
+  factorsEyebrow="Materials, schedule and investment"
+  factorsTitle="What shapes a hardscape"
+  factorsEmphasis="project."
+  factorsIntro="Pricing should follow a defined design and site review. Surface area matters, but access, excavation, walls, utilities and preparation can be just as important."
+  factors={[
+    { title: 'Layout and grade', copy: 'Curves, elevation changes, steps and retaining conditions affect excavation, layout time and the amount of structural work below the surface.' },
+    { title: 'Material selection', copy: 'Natural stone, pavers and brick vary in unit cost, labor, pattern, waste and edge details. The right comparison considers the installed system.' },
+    { title: 'Access and removal', copy: 'Equipment access, demolition, hauling and protection of the house, lawn and mature trees influence how the work can proceed.' },
+    { title: 'Connected systems', copy: 'Drainage, sleeves, irrigation, electrical preparation, lighting and planting should be sequenced before surfaces close off access.' },
+  ]}
+  faqs={faqs}
+  related={related}
+  finalTitle="Ready to make your outdoor space"
+  finalEmphasis="work beautifully?"
+/>

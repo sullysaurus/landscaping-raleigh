@@ -1,0 +1,84 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const hero = { src: '/img/services/lighting.jpg', alt: 'Raleigh home and front garden illuminated with path and landscape lighting at night', caption: 'Layered lighting guides arrival without flattening the garden', width: 1067, height: 1067 };
+const process = [
+  { title: 'Walk after dark', copy: 'Night reveals needs that are easy to miss in daylight: dark transitions, glare, hidden steps and views from inside. We identify what should be seen and what should remain quiet.' },
+  { title: 'Set the hierarchy', copy: 'Safety, arrival, gathering and focal points are ranked. A few purposeful layers usually create a stronger result than lighting every tree, wall and planting bed.' },
+  { title: 'Choose and place', copy: 'Beam spread, brightness, color, shielding and mounting position are considered with plant growth and normal movement through the landscape.' },
+  { title: 'Install and aim', copy: 'Cable routes and fixture locations are coordinated with planting and hardscape. Final aiming happens in darkness, when glare and balance can be judged properly.' },
+];
+const faqs = [
+  { question: 'What kinds of landscape lighting do you design?', answer: 'A residential plan may combine path, step, patio, focal, tree and architectural lighting. The mix depends on how the property is used at night. We aim for a clear hierarchy rather than giving every feature the same brightness.' },
+  { question: 'Can outdoor lighting be subtle and still improve safety?', answer: 'Yes. Good placement can reveal a change in grade, path edge or step without creating glare. More brightness is not automatically safer; a very bright source can reduce visibility beyond it and make the rest of the garden feel darker.' },
+  { question: 'Should lighting be planned before a patio or planting project?', answer: 'Ideally, yes. Early coordination can provide sensible cable routes, sleeves beneath hardscape and fixture positions that account for mature plant size. Lighting can also be added to an existing landscape, but access may limit certain placements.' },
+  { question: 'Do LED landscape lights use much electricity?', answer: 'Modern low-voltage LED systems generally use far less electricity than older lamp technologies, but total use depends on fixture wattage, quantity and operating hours. Controls and a sensible lighting plan help avoid unnecessary runtime.' },
+  { question: 'How do you avoid glare into windows or neighboring properties?', answer: 'Fixture position, shielding, beam angle and brightness all matter. We consider sight lines from paths, seating areas, interior rooms and adjacent properties, then aim the system after dark rather than relying only on a daytime layout.' },
+  { question: 'Does landscape lighting require maintenance?', answer: 'Yes. Plants grow into beams, fixtures can shift, lenses collect debris and weather affects connections. Periodic cleaning, trimming, aiming and system review keep the original design working as the garden changes.' },
+];
+const related = [
+  { href: '/landscape-design-raleigh/', title: 'Landscape design', copy: 'Plan nighttime use and views as part of the complete outdoor experience.' },
+  { href: '/hardscaping-raleigh/', title: 'Hardscaping', copy: 'Coordinate step, path, patio and wall lighting before construction closes access.' },
+  { href: '/native-garden-design-raleigh/', title: 'Native garden design', copy: 'Use restrained lighting that supports the garden without overpowering it.' },
+];
+---
+
+<ServiceLayout
+  path="/landscape-lighting-raleigh/"
+  title="Landscape Lighting Raleigh NC | Garden & Art Landscapes"
+  description="Landscape lighting design and installation in Raleigh, NC. Subtle path, step, patio and focal lighting planned around your home and garden."
+  serviceName="Landscape Lighting in Raleigh, NC"
+  serviceType="Residential landscape lighting design and installation"
+  schemaDescription="Subtle residential landscape lighting design and installation for Raleigh homes, gardens, patios, paths and outdoor focal points."
+  hero={hero}
+  heroEyebrow="Landscape lighting · Raleigh, NC"
+  heroTitle="Let the garden live"
+  heroEmphasis="after dark."
+  heroLead="Garden & Art designs residential landscape lighting in Raleigh to guide movement, extend outdoor living and reveal the garden at night—without washing everything in light."
+  ctaLabel="Plan your outdoor lighting"
+  introEyebrow="See enough, not everything"
+  introTitle="Light the experience,"
+  introEmphasis="not just the objects."
+  introLede="Effective landscape lighting creates orientation and atmosphere through contrast. The darkness around a beam is part of the design."
+  introParagraphs={[
+    'A welcoming path, a visible step and a softly lit tree solve different problems. Treating them all with the same fixture and brightness can produce glare, visual clutter and a flat scene. We begin with how you arrive, where you gather, what you see from inside and which parts of the garden deserve emphasis.',
+    'Garden & Art approaches lighting as an extension of landscape design. Norman Rabins considers plant form, architecture, hardscape and seasonal growth so fixtures support the composition in daylight and after dark. The goal is not to make the property look like daytime. It is to create a second, quieter way of experiencing it.',
+  ]}
+  checklist={[
+    'Path and entry lighting for comfortable nighttime movement',
+    'Step, wall and grade-change lighting coordinated with hardscape',
+    'Patio and gathering-area lighting for outdoor use',
+    'Focal lighting for trees, garden art and architectural details',
+    'Low-voltage LED systems, controls and thoughtful fixture placement',
+  ]}
+  processEyebrow="A nighttime design process"
+  processTitle="Aim with intention."
+  processEmphasis="Leave room for shadow."
+  process={process}
+  localEyebrow="Light that respects the landscape"
+  localTitle="Comfort, character"
+  localEmphasis="and restraint."
+  localLede="A good system should help people use the property while preserving the atmosphere that makes a garden feel different from an indoor room."
+  localParagraphs={[
+    'We favor shielded, appropriately scaled fixtures and deliberate beam placement. Warm light can complement brick, stone, bark and foliage, while careful aiming reduces direct views into the source. Controls and schedules keep the system operating when it adds value rather than running automatically all night.',
+    'Plants are not static. A young shrub may grow into a beam; foliage changes through the seasons; a tree canopy can alter how light reaches the ground. Fixture access, adjustment and periodic review belong in the plan. Responsible lighting also means avoiding unnecessary spill toward neighbors and leaving portions of the property dark.',
+  ]}
+  gallery={[
+    hero,
+    { src: '/img/services/firepit.jpg', alt: 'Stone patio and fire feature with integrated wall lighting at dusk', caption: 'Low wall lights support gathering as evening settles in', width: 1024, height: 1024 },
+  ]}
+  factorsEyebrow="System scope and investment"
+  factorsTitle="What shapes a lighting"
+  factorsEmphasis="project."
+  factorsIntro="Fixture count alone does not define the system. Quality, cable routes, controls, installation conditions and careful nighttime aiming all affect scope."
+  factors={[
+    { title: 'Lighting priorities', copy: 'A focused entry and path plan differs from a layered property-wide system with trees, patios, art and architectural accents.' },
+    { title: 'Fixture and beam quality', copy: 'Construction, finish, shielding, output and optical control influence how fixtures perform, weather and disappear into the landscape.' },
+    { title: 'Access and infrastructure', copy: 'Existing hardscape, mature roots, transformer location, cable routes and the availability of sleeves affect installation.' },
+    { title: 'Controls and adjustment', copy: 'Timers or other controls, zones, commissioning after dark and future aiming should be included in a complete plan.' },
+  ]}
+  faqs={faqs}
+  related={related}
+  finalTitle="Ready to experience your landscape"
+  finalEmphasis="in a new light?"
+/>

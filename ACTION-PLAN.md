@@ -16,6 +16,7 @@
 - [x] Netlify security headers and asset caching
 - [x] Direct apex-domain redirects
 - [x] Clear license wording
+- [x] Five priority Raleigh service pages, with schema and internal links, ready for deployment
 
 ## Deployment verification
 
@@ -46,13 +47,13 @@
 - [ ] Claim or complete the Google Business Profile
 - [ ] Correct conflicting directory listings
 - [ ] Create the direct review link and request template
-- [ ] Publish the first Raleigh service page
+- [ ] Publish the first Raleigh service page (landscape design page built and ready for deployment)
 - [ ] Publish the first before-and-after project case study
 - [ ] Add verified testimonials or Google reviews to the website
 
 ## Next 60–90 days
 
-- [ ] Publish the remaining priority service pages
+- [ ] Deploy the remaining priority service pages (all five are built and ready)
 - [ ] Publish two strong local guides or project stories per month
 - [ ] Add authentic project photos to Google at least monthly
 - [ ] Post one useful Google update every two weeks
