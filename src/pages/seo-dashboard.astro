@@ -9,6 +9,7 @@ const counts = {
   needsInput: seoTargets.filter((item) => item.status === 'Needs input').length,
 };
 const gscByKeyword = new Map(gscSnapshot.rows.map((row) => [row.keyword.toLowerCase(), row]));
+const rankedCount = seoTargets.filter((item) => gscByKeyword.has(item.keyword.toLowerCase())).length;
 const gscUpdated = gscSnapshot.lastUpdated
   ? new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(gscSnapshot.lastUpdated))
   : 'Not connected yet';
@@ -38,6 +39,7 @@ const rankTrend = (change: number | null) => {
       <div><strong>{counts.published}</strong><span>Published</span></div>
       <div><strong>{counts.planned}</strong><span>Planned</span></div>
       <div><strong>{counts.needsInput}</strong><span>Needs client input</span></div>
+      <div><strong>{rankedCount}</strong><span>Keywords with Google data</span></div>
       <p><strong>Updated August 3, 2026</strong><br />Search volume: Keywords Everywhere, {researchDate}. Google data: {gscUpdated}.</p>
     </section>
 
@@ -56,7 +58,7 @@ const rankTrend = (change: number | null) => {
 
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Keyword</th><th>Monthly searches</th><th>Content page</th><th>Status</th><th>Who is searching</th><th>Current Google rank</th><th>{metricWindow}</th><th>Next step</th></tr></thead>
+          <thead><tr><th>Keyword</th><th>Current Google rank</th><th>Monthly searches</th><th>Content page</th><th>Status</th><th>{metricWindow}</th><th>Who is searching</th><th>Next step</th></tr></thead>
           <tbody>
             {seoTargets.map((item) => {
               const metric = gscByKeyword.get(item.keyword.toLowerCase());
@@ -64,12 +66,12 @@ const rankTrend = (change: number | null) => {
               return (
                 <tr data-tracker-row data-status={item.status} data-search={`${item.keyword} ${item.content} ${item.audience}`.toLowerCase()}>
                   <td data-label="Keyword"><strong>{item.keyword}</strong><small>{item.intent} · {item.type}</small></td>
+                  <td data-label="Google rank">{metric ? <><strong class="rank-number">#{metric.position.toFixed(1)}</strong><span class={`rank-trend ${trend?.className}`}>{trend?.label}</span>{typeof metric.previousPosition === 'number' && <small>Previous: #{metric.previousPosition.toFixed(1)}</small>}</> : <><strong class="rank-number rank-empty">—</strong><small>No Google data yet</small></>}</td>
                   <td data-label="Searches"><strong>{item.volume.toLocaleString('en-US')}</strong><small>estimated / month</small></td>
                   <td data-label="Content">{item.url ? <a href={item.url}>{item.content}</a> : <strong>{item.content}</strong>}</td>
                   <td data-label="Status"><span class={`status status-${item.status.toLowerCase().replace(' ', '-')}`}>{item.status}</span></td>
-                  <td data-label="Audience">{item.audience}</td>
-                  <td data-label="Google rank">{metric ? <><strong class="rank-number">#{metric.position.toFixed(1)}</strong><span class={`rank-trend ${trend?.className}`}>{trend?.label}</span>{typeof metric.previousPosition === 'number' && <small>Previous: #{metric.previousPosition.toFixed(1)}</small>}</> : <span class="muted">No exact-query data yet</span>}</td>
                   <td data-label="Google activity">{metric ? <><strong>{metric.impressions.toLocaleString('en-US')} impressions</strong><small>{metric.clicks} clicks · {(metric.ctr * 100).toFixed(1)}% CTR</small></> : <span class="muted">Waiting for GSC</span>}</td>
+                  <td data-label="Audience">{item.audience}</td>
                   <td data-label="Next step">{item.nextStep}</td>
                 </tr>
               );
@@ -114,7 +116,7 @@ const rankTrend = (change: number | null) => {
     h1 { color: #173e32; font-size: clamp(44px, 5vw, 72px); line-height: 1; margin: 16px 0 0; }
     .page-header nav { display: flex; gap: 12px; }
     .page-header nav a { background: #fff; border: 2px solid #b9b8ae; border-radius: 5px; color: #173e32; font-size: 17px; font-weight: 700; padding: 13px 18px; }
-    .summary { align-items: stretch; display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(150px, 210px)) 1fr; margin: 24px 0; }
+    .summary { align-items: stretch; display: grid; gap: 12px; grid-template-columns: repeat(4, minmax(150px, 210px)) 1fr; margin: 24px 0; }
     .summary > div { align-items: center; background: #fff; border: 2px solid #d0cfc5; border-radius: 6px; display: flex; gap: 14px; padding: 17px 20px; }
     .summary > div strong { color: #173e32; font-family: var(--serif); font-size: 40px; font-weight: 500; line-height: 1; }
     .summary > div span { font-size: 17px; font-weight: 700; line-height: 1.2; }
@@ -133,7 +135,7 @@ const rankTrend = (change: number | null) => {
     td { border-bottom: 2px solid #d6d5cd; color: #29352f; font-size: 16px; line-height: 1.5; padding: 18px 14px; vertical-align: top; }
     tbody tr:nth-child(even) { background: #f7f6f1; }
     tbody tr:hover { background: #eef3ef; }
-    th:nth-child(1) { width: 15%; } th:nth-child(2) { width: 8%; } th:nth-child(3) { width: 14%; } th:nth-child(4) { width: 8%; } th:nth-child(5) { width: 15%; } th:nth-child(6) { width: 11%; } th:nth-child(7) { width: 11%; }
+    th:nth-child(1) { width: 15%; } th:nth-child(2) { width: 11%; } th:nth-child(3) { width: 8%; } th:nth-child(4) { width: 14%; } th:nth-child(5) { width: 8%; } th:nth-child(6) { width: 11%; } th:nth-child(7) { width: 15%; }
     td strong, td a { color: #142b22; display: block; font-size: 17px; font-weight: 750; }
     td a { text-decoration-color: #bd6948; text-decoration-thickness: 2px; text-underline-offset: 4px; }
     td small { color: #5a655f; display: block; font-size: 14px; line-height: 1.4; margin-top: 5px; }
@@ -142,6 +144,7 @@ const rankTrend = (change: number | null) => {
     .status-planned { background: #e1e8f3; color: #294f80; }
     .status-needs-input { background: #f3e5c8; color: #71470d; }
     td .rank-number { color: #173e32; font-family: var(--serif); font-size: 34px; font-weight: 600; line-height: 1; }
+    td .rank-empty { color: #737d77; font-size: 42px; }
     .rank-trend { display: block; font-size: 15px; font-weight: 800; margin-top: 8px; }
     .trend-up { color: #167345; }
     .trend-down { color: #a03d2f; }
@@ -153,7 +156,7 @@ const rankTrend = (change: number | null) => {
       .page-header { align-items: start; flex-direction: column; gap: 22px; }
       .page-header nav { width: 100%; }
       .page-header nav a { flex: 1; text-align: center; }
-      .summary { grid-template-columns: repeat(3, 1fr); }
+      .summary { grid-template-columns: repeat(2, 1fr); }
       .summary p { grid-column: 1 / -1; text-align: left; }
       .controls { align-items: stretch; flex-direction: column; }
       .controls input { width: 100%; }
