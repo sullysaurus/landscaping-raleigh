@@ -36,47 +36,68 @@ if (!tokenResponse.ok) {
 }
 
 const { access_token: accessToken } = await tokenResponse.json();
-const end = new Date();
-end.setUTCDate(end.getUTCDate() - 3);
-const start = new Date(end);
-start.setUTCDate(start.getUTCDate() - 27);
 const dateString = (date) => date.toISOString().slice(0, 10);
+const currentEnd = new Date();
+currentEnd.setUTCDate(currentEnd.getUTCDate() - 3);
+const currentStart = new Date(currentEnd);
+currentStart.setUTCDate(currentStart.getUTCDate() - 27);
+const previousEnd = new Date(currentStart);
+previousEnd.setUTCDate(previousEnd.getUTCDate() - 1);
+const previousStart = new Date(previousEnd);
+previousStart.setUTCDate(previousStart.getUTCDate() - 27);
 
-const analyticsResponse = await fetch(
-  `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(property)}/searchAnalytics/query`,
-  {
-    method: 'POST',
-    headers: { authorization: `Bearer ${accessToken}`, 'content-type': 'application/json' },
-    body: JSON.stringify({
-      startDate: dateString(start),
-      endDate: dateString(end),
-      dimensions: ['query'],
-      type: 'web',
-      rowLimit: 25000,
-      dataState: 'final',
-    }),
-  },
-);
+const querySearchConsole = async (start, end) => {
+  const response = await fetch(
+    `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(property)}/searchAnalytics/query`,
+    {
+      method: 'POST',
+      headers: { authorization: `Bearer ${accessToken}`, 'content-type': 'application/json' },
+      body: JSON.stringify({
+        startDate: dateString(start),
+        endDate: dateString(end),
+        dimensions: ['query'],
+        type: 'web',
+        rowLimit: 25000,
+        dataState: 'final',
+      }),
+    },
+  );
 
-if (!analyticsResponse.ok) {
-  throw new Error(`Search Console query failed (${analyticsResponse.status}): ${await analyticsResponse.text()}`);
-}
+  if (!response.ok) {
+    throw new Error(`Search Console query failed (${response.status}): ${await response.text()}`);
+  }
 
-const analytics = await analyticsResponse.json();
-const rows = (analytics.rows || []).map((row) => ({
-  keyword: row.keys[0].toLowerCase(),
-  clicks: row.clicks,
-  impressions: row.impressions,
-  ctr: row.ctr,
-  position: row.position,
-}));
+  const analytics = await response.json();
+  return (analytics.rows || []).map((row) => ({
+    keyword: row.keys[0].toLowerCase(),
+    clicks: row.clicks,
+    impressions: row.impressions,
+    ctr: row.ctr,
+    position: row.position,
+  }));
+};
+
+const [currentRows, previousRows] = await Promise.all([
+  querySearchConsole(currentStart, currentEnd),
+  querySearchConsole(previousStart, previousEnd),
+]);
+const previousByKeyword = new Map(previousRows.map((row) => [row.keyword, row]));
+const rows = currentRows.map((row) => {
+  const previous = previousByKeyword.get(row.keyword);
+  return {
+    ...row,
+    previousPosition: previous?.position ?? null,
+    positionChange: previous ? previous.position - row.position : null,
+  };
+});
 
 const snapshot = {
   lastUpdated: new Date().toISOString(),
   property,
-  window: `${dateString(start)} to ${dateString(end)}`,
+  window: `${dateString(currentStart)} to ${dateString(currentEnd)}`,
+  comparisonWindow: `${dateString(previousStart)} to ${dateString(previousEnd)}`,
   rows,
 };
 
 await writeFile(new URL('../src/data/gsc-snapshot.json', import.meta.url), `${JSON.stringify(snapshot, null, 2)}\n`);
-console.log(`Updated Search Console snapshot with ${rows.length} queries for ${snapshot.window}.`);
+console.log(`Updated Search Console snapshot with ${rows.length} queries for ${snapshot.window}, compared with ${snapshot.comparisonWindow}.`);
