@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LeafMark from '../components/LeafMark.astro';
 import { metricWindow, researchDate, seoTargets } from '../data/seo-tracker';
 import gscSnapshot from '../data/gsc-snapshot.json';
 
@@ -9,111 +8,67 @@ const counts = {
   planned: seoTargets.filter((item) => item.status === 'Planned').length,
   needsInput: seoTargets.filter((item) => item.status === 'Needs input').length,
 };
-
 const gscByKeyword = new Map(gscSnapshot.rows.map((row) => [row.keyword.toLowerCase(), row]));
-const lastUpdated = gscSnapshot.lastUpdated
+const gscUpdated = gscSnapshot.lastUpdated
   ? new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(gscSnapshot.lastUpdated))
-  : 'Waiting for Search Console';
+  : 'Not connected yet';
 ---
 
 <BaseLayout
   title="SEO Keyword & Content Tracker | Garden & Art Landscapes"
-  description="A client-friendly tracker for Garden & Art Landscapes keyword targets, published content and upcoming SEO work."
+  description="Garden & Art Landscapes keyword, content and Google Search Console tracker."
   noindex
 >
-  <a class="skip-link" href="#tracker">Skip to keyword tracker</a>
   <main class="tracker-page" id="tracker">
-    <header class="tracker-header">
-      <a class="tracker-brand" href="/" aria-label="Garden and Art Landscapes home"><LeafMark /><span>Garden <i>&</i> Art Landscapes</span></a>
-      <div><span>Client SEO tracker</span><strong>Updated August 3, 2026</strong></div>
+    <header class="page-header">
+      <div>
+        <a href="/">Garden & Art Landscapes</a>
+        <h1>SEO content tracker</h1>
+      </div>
+      <nav aria-label="Tracker links"><a href="/journal/">View Journal</a><a href="/sitemap.xml">View sitemap</a></nav>
     </header>
 
-    <section class="tracker-intro">
-      <div>
-        <p class="eyebrow light">Simple, visible progress</p>
-        <h1>What we are targeting.<br /><em>What is live. What is next.</em></h1>
-        <p>This table connects each search phrase to one page, its intended audience and the next action. Search performance will appear in the same rows after Google Search Console is connected.</p>
-      </div>
-      <aside>
-        <span>Primary goal</span>
-        <strong>Qualified Raleigh homeowners, not traffic for its own sake.</strong>
-        <p>Broad educational topics earn attention. Service pages and project stories turn that attention into trust and inquiries.</p>
-      </aside>
+    <section class="summary" aria-label="Tracker summary">
+      <div><strong>{counts.published}</strong><span>Published</span></div>
+      <div><strong>{counts.planned}</strong><span>Planned</span></div>
+      <div><strong>{counts.needsInput}</strong><span>Needs client input</span></div>
+      <p><strong>Updated August 3, 2026</strong><br />Search volume: Keywords Everywhere, {researchDate}. Google data: {gscUpdated}.</p>
     </section>
 
-    <section class="tracker-stats" aria-label="SEO tracker summary">
-      <article><strong>{seoTargets.length}</strong><span>keyword targets tracked</span></article>
-      <article><strong>{counts.published}</strong><span>targets with content live</span></article>
-      <article><strong>{counts.planned}</strong><span>approved next topics</span></article>
-      <article><strong>{counts.needsInput}</strong><span>waiting on proof or pricing</span></article>
-    </section>
-
-    <section class="tracker-explainer">
-      <div>
-        <p class="eyebrow">Who searches the planting-zone question?</p>
-        <h2>Mostly local homeowners<br /><em>and gardeners.</em></h2>
-      </div>
-      <div>
-        <p>“What planting zone is Raleigh NC” is informational intent: someone is choosing plants, checking a nursery label, planning a garden or trying to understand what will survive locally. At about <strong>590 U.S. searches per month</strong>, it is a meaningful Raleigh-specific question.</p>
-        <p>It is not a direct “hire now” phrase. Its job is to reach the right local audience early, demonstrate Norman’s horticultural expertise and guide interested readers toward native-garden and landscape-design services.</p>
-      </div>
-    </section>
-
-    <section class="keyword-section" id="keywords">
-      <header>
-        <div><p class="eyebrow">Keyword and content map</p><h2>One target.<br /><em>One clear owner.</em></h2></div>
-        <p>Monthly volume is a directional Keywords Everywhere estimate. Broad terms are U.S.-wide; phrases containing Raleigh reflect local wording.</p>
-      </header>
-
-      <div class="tracker-controls" aria-label="Filter keyword tracker">
-        <label><span class="sr-only">Search keywords or content</span><input type="search" placeholder="Search keyword or page…" data-tracker-search /></label>
+    <section class="table-section">
+      <div class="controls" aria-label="Filter keyword tracker">
+        <label><span>Find a keyword or page</span><input type="search" placeholder="Type to search…" data-tracker-search /></label>
         <div role="group" aria-label="Filter by status">
-          <button class="is-active" type="button" data-filter="All">All <span>{seoTargets.length}</span></button>
-          <button type="button" data-filter="Published">Published <span>{counts.published}</span></button>
-          <button type="button" data-filter="Planned">Planned <span>{counts.planned}</span></button>
-          <button type="button" data-filter="Needs input">Needs input <span>{counts.needsInput}</span></button>
+          <button class="is-active" type="button" data-filter="All">All ({seoTargets.length})</button>
+          <button type="button" data-filter="Published">Published ({counts.published})</button>
+          <button type="button" data-filter="Planned">Planned ({counts.planned})</button>
+          <button type="button" data-filter="Needs input">Needs input ({counts.needsInput})</button>
         </div>
       </div>
 
-      <div class="keyword-table-wrap">
-        <table class="keyword-table">
-          <thead><tr><th>Target keyword</th><th>Intent / audience</th><th>Monthly searches</th><th>Content owner</th><th>Status</th><th>{metricWindow}</th><th>Next action</th></tr></thead>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Keyword</th><th>Monthly searches</th><th>Content page</th><th>Status</th><th>Who is searching</th><th>{metricWindow}</th><th>Next step</th></tr></thead>
           <tbody>
             {seoTargets.map((item) => {
               const metric = gscByKeyword.get(item.keyword.toLowerCase());
               return (
                 <tr data-tracker-row data-status={item.status} data-search={`${item.keyword} ${item.content} ${item.audience}`.toLowerCase()}>
-                  <td data-label="Target"><strong>{item.keyword}</strong><small>{item.type}</small></td>
-                  <td data-label="Audience"><span class={`intent intent-${item.intent.toLowerCase()}`}>{item.intent}</span><small>{item.audience}</small></td>
-                  <td data-label="Demand"><b>{item.volume.toLocaleString('en-US')}</b><small>Keywords Everywhere</small></td>
+                  <td data-label="Keyword"><strong>{item.keyword}</strong><small>{item.intent} · {item.type}</small></td>
+                  <td data-label="Searches"><strong>{item.volume.toLocaleString('en-US')}</strong><small>estimated / month</small></td>
                   <td data-label="Content">{item.url ? <a href={item.url}>{item.content}</a> : <strong>{item.content}</strong>}</td>
                   <td data-label="Status"><span class={`status status-${item.status.toLowerCase().replace(' ', '-')}`}>{item.status}</span></td>
-                  <td data-label="Google">{metric ? <><b>{metric.impressions.toLocaleString('en-US')} impr.</b><small>{metric.clicks} clicks · pos. {metric.position.toFixed(1)}</small></> : <span class="pending">Awaiting GSC</span>}</td>
-                  <td data-label="Next"><small>{item.nextStep}</small></td>
+                  <td data-label="Audience">{item.audience}</td>
+                  <td data-label="Google">{metric ? <><strong>{metric.impressions.toLocaleString('en-US')} impressions</strong><small>{metric.clicks} clicks · position {metric.position.toFixed(1)}</small></> : <span class="muted">Waiting for GSC</span>}</td>
+                  <td data-label="Next step">{item.nextStep}</td>
                 </tr>
               );
             })}
           </tbody>
         </table>
-        <p class="empty-state" hidden data-empty-state>No targets match this filter.</p>
+        <p class="empty" hidden data-empty-state>No rows match this filter.</p>
       </div>
     </section>
-
-    <section class="automation-section" id="automation">
-      <div class="automation-copy">
-        <p class="eyebrow light">Automatic reporting</p>
-        <h2>The table is ready<br /><em>for live Google data.</em></h2>
-        <p>The content plan works now without analytics. Once the URL-prefix Search Console property is verified, a weekly job can refresh impressions, clicks, click-through rate and average position for every target above.</p>
-      </div>
-      <div class="automation-steps">
-        <article><span>01</span><div><strong>Verify without DNS</strong><p>Add `https://www.landscapingraleigh.com/` as a URL-prefix property, choose HTML tag and publish the token through the site.</p></div></article>
-        <article><span>02</span><div><strong>Grant read-only access</strong><p>Add a reporting service account as a Search Console user. It can read performance without changing the website.</p></div></article>
-        <article><span>03</span><div><strong>Refresh weekly</strong><p>A scheduled build updates the snapshot and redeploys this table. Search Console normally has a two-to-three-day reporting lag.</p></div></article>
-      </div>
-      <aside><span>Search data status</span><strong>{lastUpdated}</strong><p>Keyword-demand research: Keywords Everywhere, {researchDate}. Search performance source: Google Search Console after connection.</p></aside>
-    </section>
-
-    <footer class="tracker-footer"><div><LeafMark /><span>Garden <i>&</i> Art Landscapes</span></div><p>Client SEO tracker · demand is estimated; performance will be first-party Google data.</p><a href="/journal/">View published guides</a></footer>
   </main>
 
   <script>
@@ -122,20 +77,16 @@ const lastUpdated = gscSnapshot.lastUpdated
     const rows = [...document.querySelectorAll('[data-tracker-row]')];
     const empty = document.querySelector('[data-empty-state]');
     let activeFilter = 'All';
-
     const updateRows = () => {
       const query = search instanceof HTMLInputElement ? search.value.trim().toLowerCase() : '';
       let shown = 0;
       rows.forEach((row) => {
         if (!(row instanceof HTMLElement)) return;
-        const statusMatch = activeFilter === 'All' || row.dataset.status === activeFilter;
-        const searchMatch = !query || row.dataset.search?.includes(query);
-        row.hidden = !(statusMatch && searchMatch);
+        row.hidden = !((activeFilter === 'All' || row.dataset.status === activeFilter) && (!query || row.dataset.search?.includes(query)));
         if (!row.hidden) shown += 1;
       });
       if (empty instanceof HTMLElement) empty.hidden = shown !== 0;
     };
-
     buttons.forEach((button) => button.addEventListener('click', () => {
       if (!(button instanceof HTMLButtonElement)) return;
       activeFilter = button.dataset.filter ?? 'All';
@@ -146,118 +97,67 @@ const lastUpdated = gscSnapshot.lastUpdated
   </script>
 
   <style>
-    :global(body) { background: #dcd6c8; }
-    .tracker-page { background: var(--paper); box-shadow: var(--shadow-lift); margin: 24px auto; max-width: 1440px; overflow: hidden; }
-    .tracker-header { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; min-height: 76px; padding: 0 42px; }
-    .tracker-brand { align-items: center; display: flex; font-family: var(--serif); font-size: 19px; text-decoration: none; }
-    .tracker-brand :global(svg), .tracker-footer :global(svg) { height: 30px; margin-right: 9px; width: 30px; }
-    .tracker-brand i, .tracker-footer i { color: var(--clay); font-weight: 400; }
-    .tracker-header > div { align-items: flex-end; display: flex; flex-direction: column; }
-    .tracker-header span, .tracker-header strong { font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
-    .tracker-header span { color: var(--clay-dark); }
-    .tracker-header strong { color: var(--ink-muted); margin-top: 4px; }
-
-    .tracker-intro { background: var(--forest-deep); color: var(--white); display: grid; gap: 72px; grid-template-columns: 1.4fr .6fr; padding: 78px 64px; }
-    .tracker-intro h1 { color: var(--white); font-size: clamp(52px, 6vw, 86px); }
-    .tracker-intro > div > p:last-child { color: rgba(255,253,247,.7); line-height: 1.75; margin: 30px 0 0; max-width: 760px; }
-    .tracker-intro aside { align-self: end; border-left: 1px solid var(--line-light); padding-left: 28px; }
-    .tracker-intro aside > span, .automation-section aside > span { color: var(--clay); font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-    .tracker-intro aside strong { display: block; font-family: var(--serif); font-size: 28px; font-weight: 400; line-height: 1.15; margin-top: 18px; }
-    .tracker-intro aside p { color: rgba(255,253,247,.55); font-size: 11px; line-height: 1.7; }
-
-    .tracker-stats { background: var(--paper-deep); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); }
-    .tracker-stats article { align-items: center; border-right: 1px solid var(--line); display: flex; gap: 14px; padding: 26px 30px; }
-    .tracker-stats article:last-child { border-right: 0; }
-    .tracker-stats strong { color: var(--clay-dark); font-family: var(--serif); font-size: 50px; font-weight: 400; line-height: 1; }
-    .tracker-stats span { color: var(--ink-soft); font-size: 9px; letter-spacing: .08em; line-height: 1.4; text-transform: uppercase; }
-
-    .tracker-explainer { display: grid; gap: 72px; grid-template-columns: .9fr 1.1fr; padding: 68px 64px; }
-    .tracker-explainer h2, .keyword-section h2, .automation-section h2 { font-size: clamp(42px, 5vw, 66px); }
-    .tracker-explainer > div:last-child { align-self: end; }
-    .tracker-explainer > div:last-child p { color: var(--ink-soft); font-size: 13px; line-height: 1.8; }
-    .tracker-explainer > div:last-child strong { color: var(--forest); }
-
-    .keyword-section { border-top: 1px solid var(--line); padding: 68px 42px 84px; }
-    .keyword-section > header { align-items: end; display: grid; gap: 72px; grid-template-columns: 1fr .75fr; }
-    .keyword-section > header > p { color: var(--ink-soft); font-size: 12px; line-height: 1.7; margin: 0; }
-    .tracker-controls { align-items: center; display: flex; gap: 18px; justify-content: space-between; margin-top: 42px; }
-    .tracker-controls input { background: var(--white); border: 1px solid var(--line); border-radius: 2px; color: var(--ink); min-height: 42px; padding: 0 14px; width: min(320px, 36vw); }
-    .tracker-controls > div { display: flex; gap: 6px; }
-    .tracker-controls button { background: transparent; border: 1px solid var(--line); border-radius: 2px; color: var(--ink-soft); cursor: pointer; font-size: 9px; min-height: 38px; padding: 0 12px; }
-    .tracker-controls button span { color: var(--ink-muted); margin-left: 6px; }
-    .tracker-controls button.is-active { background: var(--forest); border-color: var(--forest); color: var(--white); }
-    .tracker-controls button.is-active span { color: rgba(255,255,255,.58); }
-    .keyword-table-wrap { margin-top: 16px; overflow-x: auto; }
-    .keyword-table { border-collapse: collapse; min-width: 1260px; width: 100%; }
-    .keyword-table th { background: var(--forest); color: rgba(255,253,247,.65); font-size: 8px; letter-spacing: .1em; padding: 12px; text-align: left; text-transform: uppercase; }
-    .keyword-table td { border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 10px; line-height: 1.5; padding: 15px 12px; vertical-align: top; }
-    .keyword-table th:nth-child(1) { width: 17%; }
-    .keyword-table th:nth-child(2) { width: 18%; }
-    .keyword-table th:nth-child(3) { width: 9%; }
-    .keyword-table th:nth-child(4) { width: 16%; }
-    .keyword-table th:nth-child(5) { width: 8%; }
-    .keyword-table th:nth-child(6) { width: 9%; }
-    .keyword-table td > strong, .keyword-table td > b, .keyword-table td > a { color: var(--ink); display: block; font-size: 11px; font-weight: 600; }
-    .keyword-table td > a { text-decoration-color: var(--clay); text-underline-offset: 3px; }
-    .keyword-table td small { color: var(--ink-muted); display: block; font-size: 8px; line-height: 1.5; margin-top: 5px; }
-    .intent, .status { border-radius: 999px; display: inline-block; font-size: 8px; font-weight: 700; letter-spacing: .06em; padding: 4px 7px; text-transform: uppercase; }
-    .intent { background: var(--limestone); color: var(--forest); }
-    .intent-hire { background: rgba(201,111,74,.14); color: var(--clay-dark); }
-    .status-published { background: rgba(39,105,78,.13); color: #27694e; }
-    .status-planned { background: rgba(50,82,126,.12); color: #32527e; }
-    .status-needs-input { background: rgba(163,106,26,.14); color: #8b5a16; }
-    .pending { color: var(--ink-muted); font-size: 9px; }
-    .empty-state { color: var(--ink-soft); padding: 32px; text-align: center; }
-
-    .automation-section { background: var(--forest); color: var(--white); display: grid; gap: 52px 70px; grid-template-columns: .8fr 1.2fr; padding: 74px 64px; }
-    .automation-section h2 { color: var(--white); }
-    .automation-copy > p:last-child { color: rgba(255,253,247,.6); font-size: 12px; line-height: 1.75; margin-top: 26px; }
-    .automation-steps { border-top: 1px solid var(--line-light); }
-    .automation-steps article { border-bottom: 1px solid var(--line-light); display: grid; gap: 18px; grid-template-columns: 32px 1fr; padding: 20px 0; }
-    .automation-steps article > span { color: var(--clay); font-size: 9px; padding-top: 4px; }
-    .automation-steps strong { font-family: var(--serif); font-size: 23px; font-weight: 400; }
-    .automation-steps p { color: rgba(255,253,247,.55); font-size: 10px; line-height: 1.65; margin: 5px 0 0; }
-    .automation-section aside { background: var(--forest-deep); grid-column: 1 / -1; padding: 24px 28px; }
-    .automation-section aside strong { display: block; font-family: var(--serif); font-size: 27px; font-weight: 400; margin-top: 8px; }
-    .automation-section aside p { color: rgba(255,253,247,.5); font-size: 9px; margin-bottom: 0; }
-
-    .tracker-footer { align-items: center; background: var(--forest-deep); color: rgba(255,253,247,.52); display: grid; font-size: 8px; grid-template-columns: 1fr auto 1fr; padding: 24px 42px; }
-    .tracker-footer > div { align-items: center; color: var(--white); display: flex; font-family: var(--serif); font-size: 15px; }
-    .tracker-footer p { margin: 0; }
-    .tracker-footer a { justify-self: end; text-underline-offset: 3px; }
-
-    @media (max-width: 820px) {
-      .tracker-page { box-shadow: none; margin: 0; }
-      .tracker-header { padding: 0 20px; }
-      .tracker-header > div span { display: none; }
-      .tracker-intro, .tracker-explainer, .keyword-section > header, .automation-section { grid-template-columns: 1fr; }
-      .tracker-intro { gap: 42px; padding: 58px 20px; }
-      .tracker-intro h1 { font-size: 50px; }
-      .tracker-stats { grid-template-columns: repeat(2, 1fr); }
-      .tracker-stats article:nth-child(2) { border-right: 0; }
-      .tracker-stats article { border-bottom: 1px solid var(--line); padding: 20px; }
-      .tracker-explainer, .keyword-section, .automation-section { gap: 34px; padding: 52px 20px; }
-      .tracker-controls { align-items: stretch; flex-direction: column; }
-      .tracker-controls input { width: 100%; }
-      .tracker-controls > div { flex-wrap: wrap; }
-      .tracker-controls button { flex: 1 1 auto; }
-      .keyword-table { min-width: 0; }
-      .keyword-table thead { display: none; }
-      .keyword-table tbody, .keyword-table tr, .keyword-table td { display: block; }
-      .keyword-table tr { border: 1px solid var(--line); margin-bottom: 14px; padding: 10px 14px; }
-      .keyword-table td { align-items: start; border-bottom: 1px solid var(--line); display: grid; gap: 14px; grid-template-columns: 70px 1fr; padding: 10px 0; }
-      .keyword-table td:last-child { border-bottom: 0; }
-      .keyword-table td::before { color: var(--ink-muted); content: attr(data-label); font-size: 7px; font-weight: 700; letter-spacing: .1em; padding-top: 3px; text-transform: uppercase; }
-      .automation-section aside { grid-column: auto; }
-      .tracker-footer { gap: 16px; grid-template-columns: 1fr; padding: 24px 20px; }
-      .tracker-footer a { justify-self: start; }
+    :global(body) { background: #f4f1e9; color: #18231d; }
+    .tracker-page { margin: 0 auto; max-width: 1800px; padding: 40px; }
+    .page-header { align-items: end; border-bottom: 3px solid #173e32; display: flex; justify-content: space-between; padding-bottom: 26px; }
+    .page-header > div > a { color: #285847; font-size: 18px; font-weight: 700; }
+    h1 { color: #173e32; font-size: clamp(44px, 5vw, 72px); line-height: 1; margin: 16px 0 0; }
+    .page-header nav { display: flex; gap: 12px; }
+    .page-header nav a { background: #fff; border: 2px solid #b9b8ae; border-radius: 5px; color: #173e32; font-size: 17px; font-weight: 700; padding: 13px 18px; }
+    .summary { align-items: stretch; display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(150px, 210px)) 1fr; margin: 24px 0; }
+    .summary > div { align-items: center; background: #fff; border: 2px solid #d0cfc5; border-radius: 6px; display: flex; gap: 14px; padding: 17px 20px; }
+    .summary > div strong { color: #173e32; font-family: var(--serif); font-size: 40px; font-weight: 500; line-height: 1; }
+    .summary > div span { font-size: 17px; font-weight: 700; line-height: 1.2; }
+    .summary p { align-self: center; color: #4b5650; font-size: 16px; line-height: 1.55; margin: 0; text-align: right; }
+    .controls { align-items: end; background: #e9e5da; border: 2px solid #cbc8bc; display: flex; gap: 24px; justify-content: space-between; padding: 20px; }
+    .controls label { display: grid; gap: 8px; font-size: 16px; font-weight: 700; }
+    .controls input { background: #fff; border: 2px solid #999b94; border-radius: 4px; color: #18231d; font-size: 19px; min-height: 52px; padding: 0 14px; width: min(420px, 35vw); }
+    .controls > div { display: flex; flex-wrap: wrap; gap: 8px; }
+    .controls button { background: #fff; border: 2px solid #969a91; border-radius: 4px; color: #24352d; cursor: pointer; font-size: 16px; font-weight: 700; min-height: 48px; padding: 0 15px; }
+    .controls button.is-active { background: #173e32; border-color: #173e32; color: #fff; }
+    .table-wrap { overflow-x: auto; }
+    table { background: #fff; border-collapse: collapse; min-width: 1450px; width: 100%; }
+    th { background: #173e32; border-right: 1px solid #46665c; color: #fff; font-size: 16px; line-height: 1.3; padding: 17px 14px; text-align: left; }
+    td { border-bottom: 2px solid #d6d5cd; color: #29352f; font-size: 16px; line-height: 1.5; padding: 18px 14px; vertical-align: top; }
+    tbody tr:nth-child(even) { background: #f7f6f1; }
+    tbody tr:hover { background: #eef3ef; }
+    th:nth-child(1) { width: 17%; } th:nth-child(2) { width: 9%; } th:nth-child(3) { width: 16%; } th:nth-child(4) { width: 9%; } th:nth-child(5) { width: 17%; } th:nth-child(6) { width: 12%; }
+    td strong, td a { color: #142b22; display: block; font-size: 17px; font-weight: 750; }
+    td a { text-decoration-color: #bd6948; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+    td small { color: #5a655f; display: block; font-size: 14px; line-height: 1.4; margin-top: 5px; }
+    .status { border-radius: 999px; display: inline-block; font-size: 14px; font-weight: 800; padding: 7px 11px; }
+    .status-published { background: #dcece4; color: #18563c; }
+    .status-planned { background: #e1e8f3; color: #294f80; }
+    .status-needs-input { background: #f3e5c8; color: #71470d; }
+    .muted { color: #59645e; }
+    .empty { font-size: 18px; padding: 40px; text-align: center; }
+    @media (max-width: 900px) {
+      .tracker-page { padding: 22px 16px; }
+      .page-header { align-items: start; flex-direction: column; gap: 22px; }
+      .page-header nav { width: 100%; }
+      .page-header nav a { flex: 1; text-align: center; }
+      .summary { grid-template-columns: repeat(3, 1fr); }
+      .summary p { grid-column: 1 / -1; text-align: left; }
+      .controls { align-items: stretch; flex-direction: column; }
+      .controls input { width: 100%; }
+      .controls button { flex: 1 1 46%; }
+      table { min-width: 0; }
+      thead { display: none; }
+      tbody, tr, td { display: block; }
+      tr { border: 2px solid #b8bbb2; border-radius: 6px; margin: 16px 0; overflow: hidden; }
+      td { align-items: start; display: grid; gap: 16px; grid-template-columns: 120px 1fr; padding: 15px; }
+      td::before { color: #526059; content: attr(data-label); font-size: 14px; font-weight: 800; }
     }
-
+    @media (max-width: 560px) {
+      h1 { font-size: 46px; }
+      .summary { grid-template-columns: 1fr; }
+      .summary p { grid-column: auto; }
+      td { grid-template-columns: 95px 1fr; }
+    }
     @media print {
-      :global(body) { background: var(--paper); }
-      .tracker-page { box-shadow: none; margin: 0; max-width: none; }
-      .tracker-controls { display: none; }
-      .tracker-intro, .automation-section, .tracker-footer { print-color-adjust: exact; }
+      :global(body) { background: #fff; }
+      .tracker-page { max-width: none; padding: 0; }
+      .controls, .page-header nav { display: none; }
     }
   </style>
 </BaseLayout>
