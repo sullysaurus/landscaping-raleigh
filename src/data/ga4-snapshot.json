@@ -1,12 +1,12 @@
 {
-  "lastUpdated": null,
+  "lastUpdated": "2026-08-04T00:21:00.198Z",
   "property": "548354885",
-  "window": "Waiting for first update",
-  "comparisonWindow": "Waiting for first update",
+  "window": "2026-07-08 to 2026-08-04",
+  "comparisonWindow": "2026-06-10 to 2026-07-07",
   "current": {
-    "users": 0,
-    "sessions": 0,
-    "pageViews": 0,
+    "users": 1,
+    "sessions": 1,
+    "pageViews": 1,
     "organicSessions": 0,
     "formLeads": 0,
     "phoneClicks": 0,
