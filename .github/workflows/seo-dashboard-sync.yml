@@ -17,19 +17,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Fetch the latest 28-day Search Console snapshot
+      - name: Fetch the latest Search Console and Analytics snapshots
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
           GSC_PROPERTY: https://www.landscapingraleigh.com/
+          GA4_PROPERTY_ID: '548354885'
         run: node scripts/sync-search-console.mjs
       - name: Publish the updated dashboard data
         run: |
-          if git diff --quiet -- src/data/gsc-snapshot.json; then
-            echo "No Search Console changes to publish."
+          if git diff --quiet -- src/data/gsc-snapshot.json src/data/ga4-snapshot.json; then
+            echo "No Google reporting changes to publish."
             exit 0
           fi
           git config user.name "seo-dashboard-bot"
           git config user.email "seo-dashboard-bot@users.noreply.github.com"
-          git add src/data/gsc-snapshot.json
-          git commit -m "Update Search Console dashboard data"
+          git add src/data/gsc-snapshot.json src/data/ga4-snapshot.json
+          git commit -m "Update Google dashboard data"
           git push

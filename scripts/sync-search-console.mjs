@@ -3,6 +3,7 @@ import { writeFile } from 'node:fs/promises';
 
 const credentialsSource = process.env.GSC_SERVICE_ACCOUNT_JSON;
 const property = process.env.GSC_PROPERTY || 'https://www.landscapingraleigh.com/';
+const ga4PropertyId = process.env.GA4_PROPERTY_ID || '548354885';
 
 if (!credentialsSource) {
   throw new Error('GSC_SERVICE_ACCOUNT_JSON is required. Store the complete service-account JSON as a repository secret.');
@@ -14,7 +15,10 @@ const now = Math.floor(Date.now() / 1000);
 const header = base64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
 const claims = base64url(JSON.stringify({
   iss: credentials.client_email,
-  scope: 'https://www.googleapis.com/auth/webmasters.readonly',
+  scope: [
+    'https://www.googleapis.com/auth/webmasters.readonly',
+    'https://www.googleapis.com/auth/analytics.readonly',
+  ].join(' '),
   aud: credentials.token_uri || 'https://oauth2.googleapis.com/token',
   iat: now,
   exp: now + 3600,
@@ -45,6 +49,14 @@ const previousEnd = new Date(currentStart);
 previousEnd.setUTCDate(previousEnd.getUTCDate() - 1);
 const previousStart = new Date(previousEnd);
 previousStart.setUTCDate(previousStart.getUTCDate() - 27);
+
+const analyticsEnd = new Date();
+const analyticsStart = new Date(analyticsEnd);
+analyticsStart.setUTCDate(analyticsStart.getUTCDate() - 27);
+const previousAnalyticsEnd = new Date(analyticsStart);
+previousAnalyticsEnd.setUTCDate(previousAnalyticsEnd.getUTCDate() - 1);
+const previousAnalyticsStart = new Date(previousAnalyticsEnd);
+previousAnalyticsStart.setUTCDate(previousAnalyticsStart.getUTCDate() - 27);
 
 const querySearchConsole = async (start, end) => {
   const response = await fetch(
@@ -99,5 +111,82 @@ const snapshot = {
   rows,
 };
 
+const runAnalyticsReport = async (body) => {
+  const response = await fetch(
+    `https://analyticsdata.googleapis.com/v1beta/properties/${ga4PropertyId}:runReport`,
+    {
+      method: 'POST',
+      headers: { authorization: `Bearer ${accessToken}`, 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`Analytics query failed (${response.status}): ${await response.text()}`);
+  }
+
+  return response.json();
+};
+
+const numberValue = (value) => Number(value || 0);
+const queryAnalytics = async (start, end) => {
+  const dateRanges = [{ startDate: dateString(start), endDate: dateString(end) }];
+  const [totalsReport, channelsReport, eventsReport] = await Promise.all([
+    runAnalyticsReport({
+      dateRanges,
+      metrics: [{ name: 'totalUsers' }, { name: 'sessions' }, { name: 'screenPageViews' }],
+    }),
+    runAnalyticsReport({
+      dateRanges,
+      dimensions: [{ name: 'sessionDefaultChannelGroup' }],
+      metrics: [{ name: 'sessions' }],
+    }),
+    runAnalyticsReport({
+      dateRanges,
+      dimensions: [{ name: 'eventName' }],
+      metrics: [{ name: 'eventCount' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'eventName',
+          inListFilter: { values: ['generate_lead', 'phone_click', 'email_click'] },
+        },
+      },
+    }),
+  ]);
+
+  const totals = totalsReport.rows?.[0]?.metricValues || [];
+  const organicRow = channelsReport.rows?.find((row) => row.dimensionValues?.[0]?.value === 'Organic Search');
+  const events = new Map((eventsReport.rows || []).map((row) => [
+    row.dimensionValues?.[0]?.value,
+    numberValue(row.metricValues?.[0]?.value),
+  ]));
+
+  return {
+    users: numberValue(totals[0]?.value),
+    sessions: numberValue(totals[1]?.value),
+    pageViews: numberValue(totals[2]?.value),
+    organicSessions: numberValue(organicRow?.metricValues?.[0]?.value),
+    formLeads: events.get('generate_lead') || 0,
+    phoneClicks: events.get('phone_click') || 0,
+    emailClicks: events.get('email_click') || 0,
+  };
+};
+
+const [currentAnalytics, previousAnalytics] = await Promise.all([
+  queryAnalytics(analyticsStart, analyticsEnd),
+  queryAnalytics(previousAnalyticsStart, previousAnalyticsEnd),
+]);
+
+const analyticsSnapshot = {
+  lastUpdated: new Date().toISOString(),
+  property: ga4PropertyId,
+  window: `${dateString(analyticsStart)} to ${dateString(analyticsEnd)}`,
+  comparisonWindow: `${dateString(previousAnalyticsStart)} to ${dateString(previousAnalyticsEnd)}`,
+  current: currentAnalytics,
+  previous: previousAnalytics,
+};
+
 await writeFile(new URL('../src/data/gsc-snapshot.json', import.meta.url), `${JSON.stringify(snapshot, null, 2)}\n`);
+await writeFile(new URL('../src/data/ga4-snapshot.json', import.meta.url), `${JSON.stringify(analyticsSnapshot, null, 2)}\n`);
 console.log(`Updated Search Console snapshot with ${rows.length} queries for ${snapshot.window}, compared with ${snapshot.comparisonWindow}.`);
+console.log(`Updated Analytics snapshot for ${analyticsSnapshot.window}, compared with ${analyticsSnapshot.comparisonWindow}.`);

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { metricWindow, researchDate, seoTargets } from '../data/seo-tracker';
 import gscSnapshot from '../data/gsc-snapshot.json';
+import ga4Snapshot from '../data/ga4-snapshot.json';
 
 const counts = {
   published: seoTargets.filter((item) => item.status === 'Published').length,
@@ -19,6 +20,23 @@ const rankTrend = (change: number | null) => {
     ? { label: `Up ${Math.abs(change).toFixed(1)} positions`, className: 'trend-up' }
     : { label: `Down ${Math.abs(change).toFixed(1)} positions`, className: 'trend-down' };
 };
+const analyticsRows = [
+  { label: 'Website visitors', key: 'users', help: 'People who visited the website' },
+  { label: 'Visits', key: 'sessions', help: 'Total website visits' },
+  { label: 'Pages viewed', key: 'pageViews', help: 'Total pages viewed' },
+  { label: 'Google search visits', key: 'organicSessions', help: 'Visits from unpaid Google search' },
+  { label: 'Contact forms sent', key: 'formLeads', help: 'Completed contact forms' },
+  { label: 'Phone number clicks', key: 'phoneClicks', help: 'Clicks on a phone number' },
+  { label: 'Email address clicks', key: 'emailClicks', help: 'Clicks on an email address' },
+] as const;
+const changeLabel = (current: number, previous: number) => {
+  if (current === previous) return 'No change';
+  const difference = current - previous;
+  return `${difference > 0 ? '+' : ''}${difference.toLocaleString('en-US')}`;
+};
+const analyticsUpdated = ga4Snapshot.lastUpdated
+  ? new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(ga4Snapshot.lastUpdated))
+  : 'Waiting for first update';
 ---
 
 <BaseLayout
@@ -34,6 +52,25 @@ const rankTrend = (change: number | null) => {
       </div>
       <nav aria-label="Tracker links"><a href="/journal/">View Journal</a><a href="/sitemap.xml">View sitemap</a></nav>
     </header>
+
+    <section class="activity-section" aria-labelledby="activity-heading">
+      <div class="section-heading">
+        <div><h2 id="activity-heading">Website activity</h2><p>Automatically updated from Google Analytics. Latest 28 days compared with the previous 28 days.</p></div>
+        <p><strong>Updated:</strong> {analyticsUpdated}</p>
+      </div>
+      <div class="activity-table-wrap">
+        <table class="activity-table">
+          <thead><tr><th>What we are measuring</th><th>Latest 28 days</th><th>Previous 28 days</th><th>Change</th></tr></thead>
+          <tbody>
+            {analyticsRows.map((item) => {
+              const current = ga4Snapshot.current[item.key];
+              const previous = ga4Snapshot.previous[item.key];
+              return <tr><td><strong>{item.label}</strong><small>{item.help}</small></td><td><strong>{current.toLocaleString('en-US')}</strong></td><td>{previous.toLocaleString('en-US')}</td><td><strong class={current > previous ? 'trend-up' : current < previous ? 'trend-down' : 'trend-flat'}>{changeLabel(current, previous)}</strong></td></tr>;
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
 
     <section class="summary" aria-label="Tracker summary">
       <div><strong>{counts.published}</strong><span>Published</span></div>
@@ -116,6 +153,16 @@ const rankTrend = (change: number | null) => {
     h1 { color: #173e32; font-size: clamp(44px, 5vw, 72px); line-height: 1; margin: 16px 0 0; }
     .page-header nav { display: flex; gap: 12px; }
     .page-header nav a { background: #fff; border: 2px solid #b9b8ae; border-radius: 5px; color: #173e32; font-size: 17px; font-weight: 700; padding: 13px 18px; }
+    .activity-section { margin: 30px 0; }
+    .section-heading { align-items: end; display: flex; gap: 24px; justify-content: space-between; margin-bottom: 14px; }
+    .section-heading h2 { color: #173e32; font-size: 36px; line-height: 1.1; margin: 0 0 7px; }
+    .section-heading p { color: #4b5650; font-size: 17px; line-height: 1.45; margin: 0; }
+    .activity-table-wrap { overflow-x: auto; }
+    .activity-table { min-width: 760px; }
+    .activity-table th:first-child { width: 46%; }
+    .activity-table th:not(:first-child) { width: 18%; }
+    .activity-table td { font-size: 18px; padding: 16px 18px; }
+    .activity-table td > strong { font-size: 21px; }
     .summary { align-items: stretch; display: grid; gap: 12px; grid-template-columns: repeat(4, minmax(150px, 210px)) 1fr; margin: 24px 0; }
     .summary > div { align-items: center; background: #fff; border: 2px solid #d0cfc5; border-radius: 6px; display: flex; gap: 14px; padding: 17px 20px; }
     .summary > div strong { color: #173e32; font-family: var(--serif); font-size: 40px; font-weight: 500; line-height: 1; }
@@ -157,6 +204,13 @@ const rankTrend = (change: number | null) => {
       .page-header nav { width: 100%; }
       .page-header nav a { flex: 1; text-align: center; }
       .summary { grid-template-columns: repeat(2, 1fr); }
+      .section-heading { align-items: start; flex-direction: column; }
+      .activity-table { min-width: 700px; }
+      .activity-table thead { display: table-header-group; }
+      .activity-table tbody { display: table-row-group; }
+      .activity-table tr { border: 0; border-radius: 0; display: table-row; margin: 0; overflow: visible; }
+      .activity-table td { display: table-cell; }
+      .activity-table td::before { display: none; }
       .summary p { grid-column: 1 / -1; text-align: left; }
       .controls { align-items: stretch; flex-direction: column; }
       .controls input { width: 100%; }

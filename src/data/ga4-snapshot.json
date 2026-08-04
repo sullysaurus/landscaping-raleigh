@@ -1,0 +1,24 @@
+{
+  "lastUpdated": null,
+  "property": "548354885",
+  "window": "Waiting for first update",
+  "comparisonWindow": "Waiting for first update",
+  "current": {
+    "users": 0,
+    "sessions": 0,
+    "pageViews": 0,
+    "organicSessions": 0,
+    "formLeads": 0,
+    "phoneClicks": 0,
+    "emailClicks": 0
+  },
+  "previous": {
+    "users": 0,
+    "sessions": 0,
+    "pageViews": 0,
+    "organicSessions": 0,
+    "formLeads": 0,
+    "phoneClicks": 0,
+    "emailClicks": 0
+  }
+}
