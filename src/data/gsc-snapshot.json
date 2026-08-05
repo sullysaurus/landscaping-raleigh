@@ -1,7 +1,305 @@
 {
-  "lastUpdated": "2026-08-04T00:20:59.936Z",
+  "lastUpdated": "2026-08-05T14:52:08.623Z",
   "property": "https://www.landscapingraleigh.com/",
-  "window": "2026-07-05 to 2026-08-01",
-  "comparisonWindow": "2026-06-07 to 2026-07-04",
-  "rows": []
+  "window": "2026-07-06 to 2026-08-02",
+  "comparisonWindow": "2026-06-08 to 2026-07-05",
+  "rows": [
+    {
+      "keyword": "art and landscape design",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 44,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "artworks landscaping",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "custom design landscape raleigh nc",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 31,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "custom patio installation north carolina museum of natural sciences",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 68,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "custom paver patio contractor pope house museum",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 54,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "custom paver patio contractor whole brain escape",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 60,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "custom paver patio services north carolina museum of natural sciences",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 28,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "garden artist",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 40,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "garden arts",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 38,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape architect raleigh",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 43,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape architecture raleigh nc",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 69.5,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape builder raleigh",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 27,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape design in raleigh nc",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 42,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape design north raleigh",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 22.5,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape design raleigh",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 29,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape design raleigh nc",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 28.166666666666668,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape designer cary nc",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 40,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape designer raleigh",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 38,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape designer raleigh nc",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 31,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape designers raleigh nc",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 39,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape lighting contractor whole brain escape",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 74,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscaping artist",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 45,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscaping design raleigh nc",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 36,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "north raleigh landscape design",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 23,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "raleigh landscape",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 32,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "raleigh landscape architect",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 51,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "raleigh landscape architects",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 43,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "raleigh landscape design",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 28.5,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "raleigh landscape designer",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "raleigh landscaping design",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 31,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "raleigh nc landscape architect",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 50,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "raleigh nc landscape design",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 33,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "residential landscape design raleigh nc",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 42,
+      "previousPosition": null,
+      "positionChange": null
+    }
+  ]
 }
