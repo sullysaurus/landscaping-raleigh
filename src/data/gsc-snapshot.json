@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-08-06T14:02:25.095Z",
+  "lastUpdated": "2026-08-07T17:03:07.199Z",
   "property": "https://www.landscapingraleigh.com/",
-  "window": "2026-07-07 to 2026-08-03",
-  "comparisonWindow": "2026-06-09 to 2026-07-06",
+  "window": "2026-07-08 to 2026-08-04",
+  "comparisonWindow": "2026-06-10 to 2026-07-07",
   "rows": [
     {
       "keyword": "landscape design raleigh nc",
@@ -43,9 +43,9 @@
     {
       "keyword": "custom patio installation north carolina museum of natural sciences",
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 68.5,
+      "position": 67.33333333333333,
       "previousPosition": null,
       "positionChange": null
     },
@@ -61,9 +61,9 @@
     {
       "keyword": "custom paver patio contractor whole brain escape",
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 60.5,
+      "position": 54.333333333333336,
       "previousPosition": null,
       "positionChange": null
     },
@@ -115,9 +115,18 @@
     {
       "keyword": "garden landscaping",
       "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 14,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "glendale landscape artist",
+      "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 15,
+      "position": 40,
       "previousPosition": null,
       "positionChange": null
     },
@@ -140,6 +149,15 @@
       "positionChange": null
     },
     {
+      "keyword": "landscape architects raleigh nc",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 57,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
       "keyword": "landscape architecture raleigh",
       "clicks": 0,
       "impressions": 1,
@@ -151,18 +169,18 @@
     {
       "keyword": "landscape architecture raleigh nc",
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 6,
       "ctr": 0,
-      "position": 68.4,
+      "position": 68.16666666666667,
       "previousPosition": null,
       "positionChange": null
     },
     {
       "keyword": "landscape builder raleigh",
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 27,
+      "position": 26.666666666666668,
       "previousPosition": null,
       "positionChange": null
     },
@@ -187,9 +205,9 @@
     {
       "keyword": "landscape design raleigh",
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 4,
       "ctr": 0,
-      "position": 28.333333333333332,
+      "position": 27.75,
       "previousPosition": null,
       "positionChange": null
     },
@@ -241,9 +259,27 @@
     {
       "keyword": "landscape lighting contractor whole brain escape",
       "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 60.5,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscape lighting installation raleigh nc",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 79.5,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "landscapes",
+      "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 74,
+      "position": 9,
       "previousPosition": null,
       "positionChange": null
     },
@@ -313,18 +349,27 @@
     {
       "keyword": "raleigh landscape design",
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 4,
       "ctr": 0,
-      "position": 27.666666666666668,
+      "position": 26.75,
       "previousPosition": null,
       "positionChange": null
     },
     {
       "keyword": "raleigh landscape designer",
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 37,
+      "position": 36.666666666666664,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "raleigh landscaping",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9,
       "previousPosition": null,
       "positionChange": null
     },
@@ -349,18 +394,27 @@
     {
       "keyword": "raleigh nc landscape design",
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 2,
       "ctr": 0,
-      "position": 33,
+      "position": 32,
       "previousPosition": null,
       "positionChange": null
     },
     {
       "keyword": "residential landscape design raleigh nc",
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 39.5,
+      "position": 37,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "sod installation raleigh",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 59,
       "previousPosition": null,
       "positionChange": null
     },
@@ -379,6 +433,24 @@
       "impressions": 1,
       "ctr": 0,
       "position": 22,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "work of art landscape",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 17,
+      "previousPosition": null,
+      "positionChange": null
+    },
+    {
+      "keyword": "yard art",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1,
       "previousPosition": null,
       "positionChange": null
     }
