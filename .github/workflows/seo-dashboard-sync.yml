@@ -3,7 +3,7 @@ name: Update SEO dashboard
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 12 * * 1'
+    - cron: '0 11 * * *'
 
 permissions:
   contents: write
