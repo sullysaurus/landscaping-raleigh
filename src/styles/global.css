@@ -683,6 +683,7 @@ details[open] summary span { transform: rotate(45deg); }
 .article-sources { border-top: 1px solid var(--line); margin-top: 64px; }
 .article-sources h2 { font-size: 32px; }
 .article-sources li { font-size: 12px; margin: 6px 0; }
+.article-production-note { color: var(--ink-muted) !important; font-size: 11px !important; margin-top: 24px; }
 
 @media (max-width: 980px) {
   :root { --page: calc(100vw - 48px); }

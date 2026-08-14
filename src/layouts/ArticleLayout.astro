@@ -22,6 +22,9 @@ interface Props {
   deck: string;
   datePublished?: string;
   dateLabel?: string;
+  authorName?: string;
+  authorType?: 'Person' | 'Organization';
+  authorCredential?: string;
   about: string[];
   toc: TocItem[];
 }
@@ -41,6 +44,9 @@ const {
   deck,
   datePublished = '2026-08-03',
   dateLabel = 'August 3, 2026',
+  authorName = 'Norman Rabins',
+  authorType = 'Person',
+  authorCredential = 'Horticulturist · NC Landscape Contractor #1901',
   about,
   toc,
 } = Astro.props;
@@ -58,7 +64,11 @@ const schema = {
       image: imageUrl,
       datePublished,
       dateModified: datePublished,
-      author: { '@type': 'Person', '@id': 'https://www.landscapingraleigh.com/#norman-rabins', name: 'Norman Rabins' },
+      author: {
+        '@type': authorType,
+        '@id': authorType === 'Person' ? 'https://www.landscapingraleigh.com/#norman-rabins' : 'https://www.landscapingraleigh.com/#organization',
+        name: authorName,
+      },
       publisher: { '@type': 'Organization', '@id': 'https://www.landscapingraleigh.com/#organization', name: 'Garden & Art Landscapes' },
       mainEntityOfPage: url,
       about,
@@ -100,7 +110,7 @@ const schema = {
           <p class="eyebrow">{eyebrow}</p>
           <h1>{headline}<br /><em>{emphasis}</em></h1>
           <p class="article-deck">{deck}</p>
-          <div class="article-byline"><span>By Norman Rabins</span><span>Horticulturist · NC Landscape Contractor #1901</span><time datetime={datePublished}>{dateLabel}</time></div>
+          <div class="article-byline"><span>By {authorName}</span><span>{authorCredential}</span><time datetime={datePublished}>{dateLabel}</time></div>
         </header>
 
         <figure class="article-hero">

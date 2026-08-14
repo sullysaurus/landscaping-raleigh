@@ -3,14 +3,32 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import LeafMark from '../../components/LeafMark.astro';
 import ArrowIcon from '../../components/ArrowIcon.astro';
 import { guides } from '../../data/guides';
+import { getCollection } from 'astro:content';
+
+const buildTime = new Date();
+const generatedPosts = await getCollection(
+  'journal',
+  ({ data }) => !data.draft && data.publishedAt.valueOf() <= buildTime.valueOf(),
+);
+const generatedGuides = generatedPosts.map((post) => ({
+  href: `/journal/${post.id}/`,
+  title: post.data.title,
+  excerpt: post.data.excerpt,
+  category: post.data.category,
+  date: post.data.publishedAt.toISOString().slice(0, 10),
+  dateLabel: post.data.publishedAt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }),
+  image: post.data.image,
+  imageAlt: post.data.imageAlt,
+}));
+const allGuides = [...generatedGuides, ...guides].sort((a, b) => b.date.localeCompare(a.date));
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Raleigh Landscape & Garden Guides',
-  description: 'Practical Raleigh landscape and garden guidance from horticulturist Norman Rabins.',
+  description: 'Practical Raleigh landscape and garden guidance from Garden & Art Landscapes.',
   url: 'https://www.landscapingraleigh.com/journal/',
-  hasPart: guides.map((guide) => ({ '@type': 'Article', headline: guide.title, url: `https://www.landscapingraleigh.com${guide.href}` })),
+  hasPart: allGuides.map((guide) => ({ '@type': 'Article', headline: guide.title, url: `https://www.landscapingraleigh.com${guide.href}` })),
 };
 ---
 
@@ -28,11 +46,11 @@ const schema = {
       <header class="journal-index-hero">
         <p class="eyebrow">Field notes for Raleigh landscapes</p>
         <h1>Practical guidance.<br /><em>Rooted in place.</em></h1>
-        <p>Clear answers about planting, drainage, design and care—written for Raleigh conditions by horticulturist and landscape contractor Norman Rabins.</p>
+        <p>Clear answers about planting, drainage, design and care—grounded in Raleigh conditions and Garden & Art's horticultural perspective.</p>
       </header>
 
       <section class="journal-index-grid section-pad" aria-label="Landscape and garden guides">
-        {guides.map((guide, index) => (
+        {allGuides.map((guide, index) => (
           <article class:list={['guide-card', { featured: index === 0 }]}>
             <a class="guide-card-image" href={guide.href}><img src={guide.image} alt={guide.imageAlt} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" /></a>
             <div class="guide-card-copy">

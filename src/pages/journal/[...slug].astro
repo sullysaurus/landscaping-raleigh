@@ -1,0 +1,66 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+export async function getStaticPaths() {
+  const buildTime = new Date();
+  const posts = await getCollection(
+    'journal',
+    ({ data }) => !data.draft && data.publishedAt.valueOf() <= buildTime.valueOf(),
+  );
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+interface Props {
+  post: CollectionEntry<'journal'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const publishedDate = post.data.publishedAt;
+const datePublished = publishedDate.toISOString().slice(0, 10);
+const dateLabel = publishedDate.toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<ArticleLayout
+  path={`/journal/${post.id}/`}
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+  imageAlt={post.data.imageAlt}
+  imageCaption={post.data.imageCaption}
+  imageWidth={post.data.imageWidth}
+  imageHeight={post.data.imageHeight}
+  eyebrow={post.data.eyebrow}
+  headline={post.data.headline}
+  emphasis={post.data.emphasis}
+  deck={post.data.deck}
+  datePublished={datePublished}
+  dateLabel={dateLabel}
+  authorName="Garden & Art Landscapes"
+  authorType="Organization"
+  authorCredential="Raleigh landscape research and guidance"
+  about={post.data.about}
+  toc={post.data.toc}
+>
+  <p class="article-answer"><strong>The short answer:</strong> {post.data.shortAnswer}</p>
+  <Content />
+
+  <section class="article-cta">
+    <p class="eyebrow light">A site-specific Raleigh landscape</p>
+    <h2>Turn general guidance into a plan for your property.</h2>
+    <p>Garden & Art Landscapes brings horticultural knowledge, design thinking and construction experience to Triangle gardens.</p>
+    <a class="button button-clay" href={post.data.serviceHref}>{post.data.serviceLabel}</a>
+  </section>
+
+  <section class="article-sources">
+    <h2>Sources and further reading</h2>
+    <ul>{post.data.sources.map((source) => <li><a href={source.url}>{source.title}</a></li>)}</ul>
+    {post.data.productionNote && <p class="article-production-note">{post.data.productionNote}</p>}
+  </section>
+</ArticleLayout>

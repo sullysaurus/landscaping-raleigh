@@ -3,6 +3,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import LeafMark from '../components/LeafMark.astro';
 import ArrowIcon from '../components/ArrowIcon.astro';
 import { guides } from '../data/guides';
+import { getCollection } from 'astro:content';
+
+const buildTime = new Date();
+const generatedPosts = await getCollection(
+  'journal',
+  ({ data }) => !data.draft && data.publishedAt.valueOf() <= buildTime.valueOf(),
+);
+const generatedGuides = generatedPosts.map((post) => ({
+  href: `/journal/${post.id}/`,
+  title: post.data.title,
+  excerpt: post.data.excerpt,
+  category: post.data.category,
+  date: post.data.publishedAt.toISOString().slice(0, 10),
+  dateLabel: post.data.publishedAt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }),
+  image: post.data.image,
+  imageAlt: post.data.imageAlt,
+}));
+const allGuides = [...generatedGuides, ...guides].sort((a, b) => b.date.localeCompare(a.date));
 
 // Local full-page previews can jump past native lazy-loaded images before they
 // are requested. Load them eagerly in development while preserving the lighter
@@ -206,7 +224,7 @@ const schema = {
         <div><p>Practical guidance on planting, drainage, design and care—written for the conditions homeowners face here.</p><a class="text-link" href="/journal/">Browse every guide <ArrowIcon /></a></div>
       </div>
       <div class="home-guide-grid">
-        {guides.slice(0, 3).map((guide, index) => (
+        {allGuides.slice(0, 3).map((guide, index) => (
           <article class:list={['home-guide-card', { featured: index === 0 }]}>
             <a href={guide.href} class="home-guide-image"><img src={guide.image} alt={guide.imageAlt} width="1200" height="900" loading={belowFoldLoading} decoding="async" /></a>
             <p class="eyebrow">{guide.category}</p>

@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   search-console:
-    if: ${{ vars.GSC_SYNC_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,19 +17,23 @@ jobs:
         with:
           node-version: 22
       - name: Fetch the latest Search Console and Analytics snapshots
+        if: ${{ vars.GSC_SYNC_ENABLED == 'true' }}
+        continue-on-error: true
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
           GSC_PROPERTY: https://www.landscapingraleigh.com/
           GA4_PROPERTY_ID: '548354885'
         run: node scripts/sync-search-console.mjs
-      - name: Publish the updated dashboard data
+      - name: Advance the daily content release
+        run: node -e "require('node:fs').writeFileSync('src/data/seo-release.json', JSON.stringify({ buildDate: new Date().toISOString().slice(0, 10) }, null, 2) + '\\n')"
+      - name: Publish reporting updates and today's content release
         run: |
-          if git diff --quiet -- src/data/gsc-snapshot.json src/data/ga4-snapshot.json; then
-            echo "No Google reporting changes to publish."
+          if git diff --quiet -- src/data/gsc-snapshot.json src/data/ga4-snapshot.json src/data/seo-release.json; then
+            echo "Today's release marker and Google reporting data are already current."
             exit 0
           fi
           git config user.name "seo-dashboard-bot"
           git config user.email "seo-dashboard-bot@users.noreply.github.com"
-          git add src/data/gsc-snapshot.json src/data/ga4-snapshot.json
-          git commit -m "Update Google dashboard data"
+          git add src/data/gsc-snapshot.json src/data/ga4-snapshot.json src/data/seo-release.json
+          git commit -m "Release daily SEO content"
           git push

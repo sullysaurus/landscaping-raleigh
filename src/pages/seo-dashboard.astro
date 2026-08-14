@@ -3,14 +3,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { metricWindow, researchDate, seoTargets } from '../data/seo-tracker';
 import gscSnapshot from '../data/gsc-snapshot.json';
 import ga4Snapshot from '../data/ga4-snapshot.json';
+import scheduledTopics from '../../content-machine/topics.json';
+import { getCollection } from 'astro:content';
+
+const buildDate = new Date().toISOString().slice(0, 10);
+const generatedIds = new Set((await getCollection('journal')).map((post) => post.id));
+const scheduledKeywords = new Set(scheduledTopics.map((topic) => topic.primaryKeyword.toLowerCase()));
+const scheduledTargets = scheduledTopics.map((topic) => {
+  const isGenerated = generatedIds.has(topic.slug);
+  const isLive = isGenerated && topic.publishDate <= buildDate;
+  const dateLabel = new Date(`${topic.publishDate}T00:00:00Z`).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC',
+  });
+  return {
+    keyword: topic.primaryKeyword,
+    volume: topic.volume,
+    intent: topic.buyerStage === 'Consideration' ? 'Compare' : 'Learn',
+    audience: topic.rationale,
+    content: topic.workingTitle,
+    url: isLive ? `/journal/${topic.slug}/` : undefined,
+    type: 'Scheduled guide',
+    status: isLive ? 'Published' : 'Planned',
+    nextStep: isGenerated ? `Scheduled for ${dateLabel}` : `Draft and verify before ${dateLabel}`,
+  };
+});
+const trackingTargets = [
+  ...seoTargets.filter((target) => !scheduledKeywords.has(target.keyword.toLowerCase())),
+  ...scheduledTargets,
+];
 
 const counts = {
-  published: seoTargets.filter((item) => item.status === 'Published').length,
-  planned: seoTargets.filter((item) => item.status === 'Planned').length,
-  needsInput: seoTargets.filter((item) => item.status === 'Needs input').length,
+  published: trackingTargets.filter((item) => item.status === 'Published').length,
+  planned: trackingTargets.filter((item) => item.status === 'Planned').length,
+  needsInput: trackingTargets.filter((item) => item.status === 'Needs input').length,
 };
 const gscByKeyword = new Map(gscSnapshot.rows.map((row) => [row.keyword.toLowerCase(), row]));
-const rankedCount = seoTargets.filter((item) => gscByKeyword.has(item.keyword.toLowerCase())).length;
+const rankedCount = trackingTargets.filter((item) => gscByKeyword.has(item.keyword.toLowerCase())).length;
 const gscUpdated = gscSnapshot.lastUpdated
   ? new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(gscSnapshot.lastUpdated))
   : 'Not connected yet';
@@ -84,7 +112,7 @@ const analyticsUpdated = ga4Snapshot.lastUpdated
       <div class="controls" aria-label="Filter keyword tracker">
         <label><span>Find a keyword or page</span><input type="search" placeholder="Type to search…" data-tracker-search /></label>
         <div role="group" aria-label="Filter by status">
-          <button class="is-active" type="button" data-filter="All">All ({seoTargets.length})</button>
+          <button class="is-active" type="button" data-filter="All">All ({trackingTargets.length})</button>
           <button type="button" data-filter="Published">Published ({counts.published})</button>
           <button type="button" data-filter="Planned">Planned ({counts.planned})</button>
           <button type="button" data-filter="Needs input">Needs input ({counts.needsInput})</button>
@@ -97,14 +125,14 @@ const analyticsUpdated = ga4Snapshot.lastUpdated
         <table>
           <thead><tr><th>Keyword</th><th>Current Google rank</th><th>Monthly searches</th><th>Content page</th><th>Status</th><th>{metricWindow}</th><th>Who is searching</th><th>Next step</th></tr></thead>
           <tbody>
-            {seoTargets.map((item) => {
+            {trackingTargets.map((item) => {
               const metric = gscByKeyword.get(item.keyword.toLowerCase());
               const trend = metric ? rankTrend(metric.positionChange ?? null) : null;
               return (
                 <tr data-tracker-row data-status={item.status} data-search={`${item.keyword} ${item.content} ${item.audience}`.toLowerCase()}>
                   <td data-label="Keyword"><strong>{item.keyword}</strong><small>{item.intent} · {item.type}</small></td>
                   <td data-label="Google rank">{metric ? <><strong class="rank-number">#{metric.position.toFixed(1)}</strong><span class={`rank-trend ${trend?.className}`}>{trend?.label}</span>{typeof metric.previousPosition === 'number' && <small>Previous: #{metric.previousPosition.toFixed(1)}</small>}</> : <><strong class="rank-number rank-empty">—</strong><small>No Google data yet</small></>}</td>
-                  <td data-label="Searches"><strong>{item.volume.toLocaleString('en-US')}</strong><small>estimated / month</small></td>
+                  <td data-label="Searches">{typeof item.volume === 'number' ? <><strong>{item.volume.toLocaleString('en-US')}</strong><small>estimated / month</small></> : <><strong>—</strong><small>Next KE refresh</small></>}</td>
                   <td data-label="Content">{item.url ? <a href={item.url}>{item.content}</a> : <strong>{item.content}</strong>}</td>
                   <td data-label="Status"><span class={`status status-${item.status.toLowerCase().replace(' ', '-')}`}>{item.status}</span></td>
                   <td data-label="Google activity">{metric ? <><strong>{metric.impressions.toLocaleString('en-US')} impressions</strong><small>{metric.clicks} clicks · {(metric.ctr * 100).toFixed(1)}% CTR</small></> : <span class="muted">Waiting for GSC</span>}</td>
