@@ -25,7 +25,8 @@ jobs:
           GA4_PROPERTY_ID: '548354885'
         run: node scripts/sync-search-console.mjs
       - name: Advance the daily content release
-        run: node -e "require('node:fs').writeFileSync('src/data/seo-release.json', JSON.stringify({ buildDate: new Date().toISOString().slice(0, 10) }, null, 2) + '\\n')"
+        run: |
+          node -e "require('node:fs').writeFileSync('src/data/seo-release.json', JSON.stringify({ buildDate: new Date().toISOString().slice(0, 10) }, null, 2) + '\\n')"
       - name: Publish reporting updates and today's content release
         run: |
           if git diff --quiet -- src/data/gsc-snapshot.json src/data/ga4-snapshot.json src/data/seo-release.json; then
