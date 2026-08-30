@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-08-29T15:22:27.033Z",
+  "lastUpdated": "2026-08-30T15:06:54.105Z",
   "property": "548354885",
-  "window": "2026-08-02 to 2026-08-29",
-  "comparisonWindow": "2026-07-05 to 2026-08-01",
+  "window": "2026-08-03 to 2026-08-30",
+  "comparisonWindow": "2026-07-06 to 2026-08-02",
   "current": {
-    "users": 168,
-    "sessions": 233,
-    "pageViews": 394,
-    "organicSessions": 58,
+    "users": 178,
+    "sessions": 244,
+    "pageViews": 405,
+    "organicSessions": 63,
     "formLeads": 0,
     "phoneClicks": 2,
     "emailClicks": 2
