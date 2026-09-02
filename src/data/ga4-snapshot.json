@@ -1,22 +1,22 @@
 {
-  "lastUpdated": "2026-09-01T15:17:22.080Z",
+  "lastUpdated": "2026-09-02T14:47:58.019Z",
   "property": "548354885",
-  "window": "2026-08-05 to 2026-09-01",
-  "comparisonWindow": "2026-07-08 to 2026-08-04",
+  "window": "2026-08-06 to 2026-09-02",
+  "comparisonWindow": "2026-07-09 to 2026-08-05",
   "current": {
-    "users": 188,
-    "sessions": 249,
-    "pageViews": 406,
-    "organicSessions": 69,
+    "users": 191,
+    "sessions": 248,
+    "pageViews": 395,
+    "organicSessions": 65,
     "formLeads": 0,
     "phoneClicks": 1,
     "emailClicks": 2
   },
   "previous": {
-    "users": 9,
-    "sessions": 13,
-    "pageViews": 23,
-    "organicSessions": 1,
+    "users": 13,
+    "sessions": 23,
+    "pageViews": 49,
+    "organicSessions": 8,
     "formLeads": 0,
     "phoneClicks": 1,
     "emailClicks": 0
